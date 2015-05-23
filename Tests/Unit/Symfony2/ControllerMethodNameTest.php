@@ -3,15 +3,14 @@
 namespace MS\PHPMD\Tests\Unit\Symfony2;
 
 use MS\PHPMD\Rule\Symfony2\ControllerMethodName;
-use PHPMD\AbstractNode;
-use PHPMD\Report;
+use MS\PHPMD\Tests\Unit\AbstractApplyTest;
 
 /**
  * Class ControllerMethodNameTest
  *
  * @package MS\PHPMD\Tests\Unit\Symfony2
  */
-class ControllerMethodNameTest extends \PHPUnit_Framework_TestCase
+class ControllerMethodNameTest extends AbstractApplyTest
 {
     /**
      * @covers MS\PHPMD\Rule\Symfony2\ControllerMethodName
@@ -74,34 +73,10 @@ class ControllerMethodNameTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param AbstractNode $node
-     * @param int          $violationNumber
+     * @return ControllerMethodName
      */
-    private function assertRule(AbstractNode $node, $violationNumber)
+    protected function getRule()
     {
-        $rule = new ControllerMethodName();
-        $rule->setReport($this->getReport($violationNumber));
-        $rule->apply($node);
-    }
-
-    /**
-     * @param $violationNumber
-     *
-     * @return \Mockery\MockInterface|Report
-     */
-    private function getReport($violationNumber)
-    {
-        $report = \Mockery::mock('PHPMD\Report');
-        $report->shouldReceive('addRuleViolation')->times($violationNumber);
-
-        return $report;
-    }
-
-    /**
-     * close Mockery
-     */
-    public function tearDown()
-    {
-        \Mockery::close();
+        return new ControllerMethodName();
     }
 }
