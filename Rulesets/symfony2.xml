@@ -1,0 +1,35 @@
+<ruleset name="symfony2"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0
+                      http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+    <description>Contains rules for the Symfony2 framework.</description>
+
+    <rule name="ControllerMethodName"
+          message="The method name have to end with Action in this controller."
+          class="MS\PHPMD\Rule\Symfony2\ControllerMethodName">
+        <description>
+            <![CDATA[
+When the class is a concrete implementation and ends with Controller, the method names have to end with Action.
+If not, it is an indication for business logic in your controller.
+So you have to outsource your business logic to services or subscribers.
+            ]]>
+        </description>
+        <priority>3</priority>
+        <example>
+            <![CDATA[
+class FooController
+{
+    public function barAction() // good
+    {
+    }
+
+    public function doSomthing() // bad
+    {
+    }
+}
+            ]]>
+        </example>
+    </rule>
+</ruleset>
