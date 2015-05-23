@@ -33,7 +33,7 @@ abstract class AbstractApplyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param $violationNumber
+     * @param int $violationNumber
      *
      * @return \Mockery\MockInterface|Report
      */

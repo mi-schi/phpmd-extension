@@ -13,8 +13,8 @@ use Symfony\Component\Process\Process;
 abstract class AbstractProcessTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @param $filename
-     * @param $ruleset
+     * @param string $filename
+     * @param string $ruleset
      *
      * @return Process
      */
