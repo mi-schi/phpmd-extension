@@ -7,7 +7,7 @@
     <description>Contains rules for the Symfony2 framework.</description>
 
     <rule name="ControllerMethodName"
-          message="The method name have to end with Action in this controller."
+          message="The method name should end with Action in this controller."
           class="MS\PHPMD\Rule\Symfony2\ControllerMethodName">
         <description>
             <![CDATA[
@@ -27,6 +27,50 @@ class FooController
 
     public function doSomthing() // bad
     {
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
+    <rule name="EntitySimpleGetterSetter"
+          message="The method should only be a simple {0} in this entity. The found tokens to allowed tokens are {1}/{2}."
+          class="MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter">
+        <description>
+            <![CDATA[
+If the class is an entity, it should contain only simple getter or setter.
+Otherwise you have a data object and a business object in once. Swap out the methods with business logic to a model.
+Use a factory or a abstract MappedSuperclass for the model methods.
+            ]]>
+        </description>
+        <priority>3</priority>
+        <properties>
+            <property name="delimiter" value="," description="delimiter for explode" />
+            <property name="prefixes" value="get,set,is,has,add,remove" description="allowed prefixes for the methods" />
+            <property name="tokens" value="18" description="allowed tokens for the methods" />
+        </properties>
+        <example>
+            <![CDATA[
+class Entity
+{
+    private $data;
+
+    public function getData() // good
+    {
+        return $this->data;
+    }
+
+    public function setData($data) // bad
+    {
+        $this->data = $data;
+        $this->doSomething();
+    }
+
+    public function doSomthing() // bad
+    {
+        foreach ($this->data as $data) {
+            calculate($data);
+        }
     }
 }
             ]]>
