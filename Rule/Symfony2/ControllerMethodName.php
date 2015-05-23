@@ -2,6 +2,7 @@
 
 namespace MS\PHPMD\Rule\Symfony2;
 
+use PDepend\Source\AST\ASTClass;
 use PHPMD\AbstractNode;
 use PHPMD\AbstractRule;
 use PHPMD\Node\ClassNode;
@@ -39,7 +40,7 @@ class ControllerMethodName extends AbstractRule implements ClassAware
     }
 
     /**
-     * @param AbstractNode $node
+     * @param AbstractNode|ASTClass $node
      *
      * @return bool
      */

@@ -12,7 +12,7 @@ use MS\PHPMD\Tests\Functional\AbstractProcessTest;
 class ControllerMethodNameTest extends AbstractProcessTest
 {
     /**
-     * @covers PHPMD\Rule\Symfony2\ControllerMethodName
+     * @covers MS\PHPMD\Rule\Symfony2\ControllerMethodName
      */
     public function testRule()
     {
@@ -24,7 +24,7 @@ class ControllerMethodNameTest extends AbstractProcessTest
     }
 
     /**
-     * @covers PHPMD\Rule\Symfony2\ControllerMethodName
+     * @covers MS\PHPMD\Rule\Symfony2\ControllerMethodName
      */
     public function testRuleWIthAbstract()
     {
