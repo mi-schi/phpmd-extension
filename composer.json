@@ -1,0 +1,28 @@
+{
+  "name": "ms/phpmd-symfony2",
+  "description": "Extended mess detection rules for Symfony applications.",
+  "authors": [
+    {
+      "name": "Michael Schindler",
+      "email": "madsn@gmx.de"
+    }
+  ],
+  "support": {
+    "email": "madsn@gmx.de",
+    "source": "https://github.com/mi-schi/phpmd-symfony2",
+    "issues": "https://github.com/mi-schi/phpmd-symfony2/issues"
+  },
+  "license": "MIT",
+  "require": {
+    "phpmd/phpmd": "@stable"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.6.6",
+    "symfony/process": "~2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "MS\\PHPMD\\Rule\\": "Rule/"
+    }
+  }
+}
