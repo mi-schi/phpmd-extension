@@ -10,7 +10,7 @@ use Symfony\Component\Process\Process;
  *
  * @package MS\PHPMD\Tests\Functional
  */
-class AbstractProcessTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractProcessTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @param $filename
