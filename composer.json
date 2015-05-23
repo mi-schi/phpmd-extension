@@ -24,5 +24,10 @@
     "psr-4": {
       "MS\\PHPMD\\Rule\\": "Rule/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MS\\PHPMD\\": ""
+    }
   }
 }
