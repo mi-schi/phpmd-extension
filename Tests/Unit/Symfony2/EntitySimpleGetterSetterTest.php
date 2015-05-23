@@ -47,14 +47,14 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
         $validMethodNode->shouldReceive('getParentName')->andReturn($className);
         $validMethodNode->shouldReceive('getName')->andReturn($validMethodName);
         $validMethodNode->shouldReceive('findChildrenOfType')->andReturn(0);
-        $validMethodNode->shouldReceive('getTokens')->andReturn(18);
+        $validMethodNode->shouldReceive('getTokens')->andReturn(range(1, 18));
 
         $notValidMethodNode = \Mockery::mock('PHPMD\Node\MethodNode');
         $notValidMethodNode->shouldReceive('getImage')->andReturn($notValidMethodName);
         $notValidMethodNode->shouldReceive('getParentName')->andReturn($className);
         $notValidMethodNode->shouldReceive('getName')->andReturn($notValidMethodName);
         $notValidMethodNode->shouldReceive('findChildrenOfType')->andReturn(1);
-        $notValidMethodNode->shouldReceive('getTokens')->andReturn(20);
+        $notValidMethodNode->shouldReceive('getTokens')->andReturn(range(1, 21));
 
         $classNode = \Mockery::mock('PHPMD\Node\ClassNode');
         $classNode->shouldReceive('getDocComment')->andReturn('* @ORM\Entity()');
