@@ -34,17 +34,17 @@ class ControllerMethodName extends AbstractRule implements ClassAware
         /** @var MethodNode $method */
         foreach ($node->getMethods() as $method) {
             if ('Action' !== substr($method->getImage(), -6, 6)) {
-                $this->addViolation($method, array($method->getImage()));
+                $this->addViolation($method);
             }
         }
     }
 
     /**
-     * @param AbstractNode|ASTClass $node
+     * @param ClassNode|ASTClass $node
      *
      * @return bool
      */
-    private function isController(AbstractNode $node)
+    private function isController(ClassNode $node)
     {
         if (true === $node->isAbstract()) {
             return false;
