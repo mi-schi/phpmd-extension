@@ -43,7 +43,7 @@ Otherwise you have a data object and a business object in once. Swap out the met
 Use a factory or a abstract MappedSuperclass for the model methods.
             ]]>
         </description>
-        <priority>3</priority>
+        <priority>2</priority>
         <properties>
             <property name="delimiter" value="," description="delimiter for explode" />
             <property name="prefixes" value="get,set,is,has,add,remove" description="allowed prefixes for the methods" />

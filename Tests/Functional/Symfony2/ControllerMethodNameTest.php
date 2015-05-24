@@ -7,7 +7,7 @@ use MS\PHPMD\Tests\Functional\AbstractProcessTest;
 /**
  * Class ControllerMethodNameTest
  *
- * @package PHPMD\Tests\Symfony2
+ * @package PHPMD\Tests\Functional\Symfony2
  */
 class ControllerMethodNameTest extends AbstractProcessTest
 {
