@@ -2,11 +2,9 @@
 
 namespace MS\PHPMD\Rule\CleanCode;
 
-use PDepend\Source\AST\ASTClass;
 use PHPMD\AbstractNode;
 use PHPMD\AbstractRule;
 use PHPMD\Node\ClassNode;
-use PHPMD\Node\MethodNode;
 use PHPMD\Rule\ClassAware;
 
 /**
