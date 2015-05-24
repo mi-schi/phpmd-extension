@@ -1,0 +1,42 @@
+<ruleset name="cleancode"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0
+                      http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+    <description>Contains specific clean code rules for the Symfony2 framework.</description>
+
+    <rule name="ClassNameSingleResponsibility"
+          message="Try to avoid general suffixes like {0} found {1}. It might violate of the single responsibility principle."
+          class="MS\PHPMD\Rule\CleanCode\ClassNameSingleResponsibility"
+          externalInfoUrl="http://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager">
+        <description>
+            <![CDATA[
+Yeah you are on the right track. There is no business logic in the entities and the controllers are slim.
+Oh dear. Now you have classes like UserManager or PageHandler. But what do this classes?
+You might violate of the single responsibility principle. Split the Manager class. What do the methods?
+Can you use the event dispatcher pattern? No? Maybe better general suffixes are Builder, Writer, Reader, Converter.
+            ]]>
+        </description>
+        <priority>5</priority>
+        <properties>
+            <property name="delimiter" value="," description="delimiter for explode" />
+            <property name="suffixes" value="Manager,Handler,Helper,Util,Information,Processor" description="bad general suffixes" />
+        </properties>
+        <example>
+            <![CDATA[
+class FooManager // bad
+{
+    public function doSomething()
+    {
+    }
+
+    public function doCompletelyOtherThings()
+    {
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
+</ruleset>
