@@ -48,6 +48,10 @@ A method should be a wrapper for a try statement. It increase the readability. T
             ]]>
         </description>
         <priority>2</priority>
+        <properties>
+            <property name="delimiter" value="," description="delimiter for explode" />
+            <property name="allowedChildren" value="catch,finally" description="allowed children" />
+        </properties>
         <example>
             <![CDATA[
 class TryThings

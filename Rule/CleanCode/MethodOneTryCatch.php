@@ -16,11 +16,6 @@ use PHPMD\Rule\MethodAware;
  */
 class MethodOneTryCatch extends AbstractRule implements MethodAware
 {
-    const ALLOWED_CHILDREN = [
-        'catch',
-        'finally'
-    ];
-
     /**
      * @param AbstractNode $node
      */
@@ -50,9 +45,14 @@ class MethodOneTryCatch extends AbstractRule implements MethodAware
     {
         $children = $node->findChildrenOfType('ScopeStatement');
 
+        $allowedChildren = explode(
+            $this->getStringProperty('delimiter'),
+            $this->getStringProperty('allowedChildren')
+        );
+
         /** @var AbstractNode $child */
         foreach ($children as $child) {
-            if (true === in_array($child->getImage(), self::ALLOWED_CHILDREN) || true === $this->isChildOfTry($child)) {
+            if (true === in_array($child->getImage(), $allowedChildren) || true === $this->isChildOfTry($child)) {
                 continue;
             }
 
