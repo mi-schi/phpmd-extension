@@ -39,4 +39,50 @@ class FooManager // bad
         </example>
     </rule>
 
+    <rule name="MethodOneTryCatch"
+          message="This method contains more than one try statement. Swap out the try statement in an extra method. It increase the readability."
+          class="MS\PHPMD\Rule\CleanCode\MethodOneTryCatch">
+        <description>
+            <![CDATA[
+A method should be a wrapper for a try statement. It increase the readability. Try to find a good name for the method.
+            ]]>
+        </description>
+        <priority>2</priority>
+        <example>
+            <![CDATA[
+class TryThings
+{
+    public function tryToDoSomething() // good
+    {
+        try {
+            $this->doSomething();
+        } catch () {
+        }
+    }
+
+    public function doSomething() // bad
+    {
+        $this->work();
+
+        try {
+            $this->doSomething();
+        } catch () {
+        }
+
+        try {
+            $this->doSomething();
+        } catch () {
+        }
+
+        if (1 === 1) {
+            foreach ($data as $item) {
+                $this->doMore();
+            }
+        }
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
 </ruleset>

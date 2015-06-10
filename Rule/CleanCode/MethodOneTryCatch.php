@@ -1,0 +1,84 @@
+<?php
+
+namespace MS\PHPMD\Rule\CleanCode;
+
+use PHPMD\AbstractNode;
+use PHPMD\AbstractRule;
+use PHPMD\Node\MethodNode;
+use PHPMD\Rule\MethodAware;
+
+/**
+ * Class MethodOneTryCatch
+ *
+ * Methods should only have one try statement. If not, swap out the try statement in an extra method. It increase the readability.
+ *
+ * @package MS\PHPMD\Rule\CleanCode
+ */
+class MethodOneTryCatch extends AbstractRule implements MethodAware
+{
+    const ALLOWED_CHILDREN = [
+        'catch',
+        'finally'
+    ];
+
+    /**
+     * @param AbstractNode $node
+     */
+    public function apply(AbstractNode $node)
+    {
+        if (!$node instanceof MethodNode) {
+            return;
+        }
+
+        $countTry = count($node->findChildrenOfType('TryStatement'));
+
+        if (1 < $countTry) {
+            $this->addViolation($node);
+        }
+
+        if (1 === $countTry &&  true === $this->hasNotAllowedChildren($node)) {
+            $this->addViolation($node);
+        }
+    }
+
+    /**
+     * @param MethodNode $node
+     *
+     * @return bool
+     */
+    private function hasNotAllowedChildren(MethodNode $node)
+    {
+        $children = $node->findChildrenOfType('ScopeStatement');
+
+        /** @var AbstractNode $child */
+        foreach ($children as $child) {
+            if (true === in_array($child->getImage(), self::ALLOWED_CHILDREN) || true === $this->isChildOfTry($child)) {
+                continue;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @param AbstractNode $node
+     *
+     * @return bool
+     */
+    private function isChildOfTry(AbstractNode $node)
+    {
+        $parent = $node->getParent();
+
+        while (is_object($parent)) {
+            if ($parent->isInstanceOf('TryStatement')) {
+                return true;
+            }
+
+            $parent = $parent->getParent();
+        }
+
+        return false;
+    }
+}
