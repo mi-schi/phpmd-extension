@@ -37,14 +37,19 @@ class EntitySimpleGetterSetter extends AbstractRule implements ClassAware
             return;
         }
 
+        $prefixes = $this->getStringProperty('prefixes');
         $this->allowedPrefixes = explode(
             $this->getStringProperty('delimiter'),
-            $this->getStringProperty('prefixes')
+            $prefixes
         );
 
         /** @var MethodNode $method */
         foreach ($node->getMethods() as $method) {
-            $this->checkMethod($method);
+            if (true === $this->hasCorrectPrefix($method) && true === $this->isSimpleMethod($method)) {
+                continue;
+            }
+
+            $this->addViolation($method, [$prefixes]);
         }
     }
 
@@ -55,37 +60,54 @@ class EntitySimpleGetterSetter extends AbstractRule implements ClassAware
      */
     private function isEntity(ClassNode $node)
     {
-        return (preg_match('(\*\s*@(.)*Entity)i', $node->getDocComment()) > 0);
+        if (0 < preg_match('(\*\s*@(.)*Entity)i', $node->getDocComment())) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
      * @param MethodNode|ASTMethod $node
+     *
+     * @return bool
      */
-    private function checkMethod(MethodNode $node)
+    private function hasCorrectPrefix(MethodNode $node)
     {
-        $ok = false;
-
         foreach ($this->allowedPrefixes as $prefix) {
             if ($prefix === substr($node->getImage(), 0, strlen($prefix))) {
-                $ok = true;
-                break;
+                return true;
             }
         }
 
-        $allowedTokens = $this->getAllowedTokens($node);
-        $foundTokens = count($node->getTokens());
+        return false;
+    }
 
-        if ($foundTokens > $allowedTokens) {
-            $ok = false;
+    /**
+     * @param MethodNode|ASTMethod $node
+     *
+     * @return bool
+     */
+    private function isSimpleMethod(MethodNode $node)
+    {
+        $countScope = count($node->findChildrenOfType('ScopeStatement'));
+
+        if (0 !== $countScope) {
+            return false;
         }
 
-        if (false === $ok) {
-            $this->addViolation($node, [
-                implode(',', $this->allowedPrefixes),
-                $foundTokens,
-                $allowedTokens
-            ]);
+        $countReturn = count($node->findChildrenOfType('ReturnStatement'));
+        $countThis = $this->countThis($node);
+
+        if (1 < $countReturn) {
+            return false;
         }
+
+        if (($countReturn === 0 && 1 < $countThis) || ($countReturn === 1 && 2 < $countThis)) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -93,15 +115,17 @@ class EntitySimpleGetterSetter extends AbstractRule implements ClassAware
      *
      * @return int
      */
-    private function getAllowedTokens(MethodNode $node)
+    private function countThis(MethodNode $node)
     {
-        $allowedTokens = $this->getIntProperty('tokens');
-        $countReturn = count($node->findChildrenOfType('ReturnStatement'));
+        $count = 0;
+        $variables = $node->findChildrenOfType('Variable');
 
-        if ($countReturn > 0) {
-            $allowedTokens += 2;
+        foreach ($variables as $variable) {
+            if ($variable->getImage() === '$this') {
+                $count++;
+            }
         }
 
-        return $allowedTokens;
+        return $count;
     }
 }

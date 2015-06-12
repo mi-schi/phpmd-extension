@@ -20,9 +20,10 @@ class EntitySimpleGetterSetterTest extends AbstractProcessTest
             ->runPhpmd('Entity.php', 'symfony2.xml')
             ->getOutput();
 
-        $this->assertContains('Entity.php:65	The method should only be a simple get,set,is,has,add,remove in this entity. The found tokens to allowed tokens are 20/18.', $output);
-        $this->assertContains('Entity.php:76	The method should only be a simple get,set,is,has,add,remove in this entity. The found tokens to allowed tokens are 10/20.', $output);
-        $this->assertContains('Entity.php:84	The method should only be a simple get,set,is,has,add,remove in this entity. The found tokens to allowed tokens are 23/18.', $output);
+        $this->assertContains('Entity.php:65	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity.php:76	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity.php:86	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity.php:98	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
     }
 
     /**

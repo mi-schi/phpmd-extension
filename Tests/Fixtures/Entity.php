@@ -65,7 +65,17 @@ class Entity
     public function setDataExtra($data)
     {
         $this->data = $data;
-        $this->doSimple();
+        $this->doSimpleExtra();
+    }
+
+    /**
+     * bad
+     *
+     * @return mixed
+     */
+    public function doSimple()
+    {
+        return $this->data;
     }
 
     /**
@@ -73,15 +83,19 @@ class Entity
      *
      * @return $this
      */
-    public function doSimple()
+    public function setSome()
     {
+        if (1 == 1) {
+
+        }
+
         return $this;
     }
 
     /**
      * bad
      */
-    public function doMore()
+    public function setMore()
     {
         foreach ($this->data as $data) {
             $this->doSimple();

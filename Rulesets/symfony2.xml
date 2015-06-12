@@ -34,7 +34,7 @@ class FooController
     </rule>
 
     <rule name="EntitySimpleGetterSetter"
-          message="The method should only be a simple {0} in this entity. The found tokens to allowed tokens are {1}/{2}."
+          message="The method should only be a simple {0} in this entity."
           class="MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter">
         <description>
             <![CDATA[
@@ -46,8 +46,7 @@ Use a factory or a abstract MappedSuperclass for the model methods.
         <priority>2</priority>
         <properties>
             <property name="delimiter" value="," description="delimiter for explode" />
-            <property name="prefixes" value="get,set,is,has,add,remove" description="allowed prefixes for the methods" />
-            <property name="tokens" value="18" description="allowed tokens for the methods" />
+            <property name="prefixes" value="get,set,is,has,add,remove" description="allowed prefixes in the methods" />
         </properties>
         <example>
             <![CDATA[
@@ -58,6 +57,13 @@ class Entity
     public function getData() // good
     {
         return $this->data;
+    }
+
+    public function setData($data) // good
+    {
+        $this->data = $data;
+
+        return $this;
     }
 
     public function setData($data) // bad
