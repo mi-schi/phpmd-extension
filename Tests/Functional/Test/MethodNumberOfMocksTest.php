@@ -20,7 +20,7 @@ class MethodNumberOfMocksTest extends AbstractProcessTest
             ->runPhpmd('Test.php', 'test.xml')
             ->getOutput();
 
-        $this->assertContains('Test.php:29	4 mocks are found in this test. Try to reduce the mocks to 3 or less.', $output);
+        $this->assertContains('Test.php:35	4 mocks are found in this test. Try to reduce the mocks to 3 or less.', $output);
     }
 
     /**
