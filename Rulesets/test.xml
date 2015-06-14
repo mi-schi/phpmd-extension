@@ -1,0 +1,87 @@
+<ruleset name="test"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0
+                      http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+    <description>Contains rules for PHPUnit tests.</description>
+
+    <rule name="MethodNumberOfMocks"
+          message="{0} mocks are found in this test. Try to reduce the mocks to {1} or less."
+          class="MS\PHPMD\Rule\Test\MethodNumberOfMocks">
+        <description>
+            <![CDATA[
+A test should be smaller than the production code. If you have an excessive usage of mocks
+your production code is to complex or has to many dependencies.
+Try to reduce the complexity and dependency and make your production code as simple as you can.
+Then to write a test is much more easier with only a few mocks.
+            ]]>
+        </description>
+        <priority>4</priority>
+        <properties>
+            <property name="number" value="3" description="allowed Number of mocks" />
+            <property name="names" value="mock,getMock," description="filtered method names in the test" />
+        </properties>
+        <example>
+            <![CDATA[
+class Test extends \PHPUnit_Framework_TestCase
+{
+    public function testSomething() // good
+    {
+        $entityManager = \Mockery::mock('Doctrine\ORM\EntityManager');
+
+        // ...
+    }
+
+    public function testComplex() // bad
+    {
+        $entityManager = \Mockery::mock('Doctrine\ORM\EntityManager');
+        $service1 = \Mockery::mock('Service1');
+        $service2 = \Mockery::mock('Service2');
+        $service3 = \Mockery::mock('Service3');
+        $service4 = \Mockery::mock('Service4');
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
+    <rule name="MethodNumberOfAsserts"
+          message="{0} asserts are found in this test. Try to reduce the asserts to {1} or less."
+          class="MS\PHPMD\Rule\Test\MethodNumberOfMocks">
+        <description>
+            <![CDATA[
+
+            ]]>
+        </description>
+        <priority>4</priority>
+        <properties>
+            <property name="number" value="3" description="allowed Number of asserts" />
+            <property name="names" value="assert," description="filtered assert names in the test" />
+        </properties>
+        <example>
+            <![CDATA[
+class Test extends \PHPUnit_Framework_TestCase
+{
+    public function testSomething() // good
+    {
+        $this->assertTrue();
+        $this->assertFalse();
+        $this->assertContain();
+    }
+
+    public function testComplex() // bad
+    {
+        $this->assertTrue();
+        $this->assertFalse();
+        $this->assertContain();
+        $this->assertTrue();
+        $this->assertFalse();
+        $this->assertContain();
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
+</ruleset>
