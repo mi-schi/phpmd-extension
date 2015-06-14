@@ -9,7 +9,8 @@
 
     <testsuites>
         <testsuite name="PHPMD">
-            <directory>Tests</directory>
+            <directory>Tests/Functional</directory>
+            <directory>Tests/Unit</directory>
         </testsuite>
     </testsuites>
 
