@@ -16,6 +16,16 @@ use PHPMD\AbstractNode;
 abstract class AbstractMethodNumberOf extends AbstractRule implements ClassAware
 {
     /**
+     * @var array
+     */
+    private $names;
+
+    /**
+     * @var int
+     */
+    private $match;
+
+    /**
      * @param AbstractNode $node
      */
     public function apply(AbstractNode $node)
@@ -28,11 +38,12 @@ abstract class AbstractMethodNumberOf extends AbstractRule implements ClassAware
             return;
         }
 
+        $this->names = explode($this->getStringProperty('delimiter'), $this->getStringProperty('names'));
+        $this->match = $this->getBooleanProperty('match');
         $number = $this->getIntProperty('number');
-        $names = $this->getStringProperty('names');
 
         foreach ($node->getMethods() as $method) {
-            $count = $this->count($method, $names);
+            $count = $this->count($method);
 
             if ($number < $count) {
                 $this->addViolation($method, [$count, $number]);
@@ -56,21 +67,50 @@ abstract class AbstractMethodNumberOf extends AbstractRule implements ClassAware
 
     /**
      * @param MethodNode $node
-     * @param string     $names
      *
      * @return int
      */
-    private function count(MethodNode $node, $names)
+    private function count(MethodNode $node)
     {
         $count = 0;
         $methodPostfixes = $node->findChildrenOfType('MethodPostfix');
 
         foreach ($methodPostfixes as $methodPostfix) {
-            if (false !== strpos($names, $methodPostfix->getImage())) {
+            if (true === $this->isMethodPostfixInNames($methodPostfix)) {
                 $count++;
             }
         }
 
         return $count;
+    }
+
+    /**
+     * @param AbstractNode $methodPostfix
+     *
+     * @return bool
+     */
+    private function isMethodPostfixInNames(AbstractNode $methodPostfix)
+    {
+        if (true === $this->match) {
+            return in_array($methodPostfix->getImage(), $this->names);
+        }
+
+        return $this->isMethodPostfixContainsNames($methodPostfix);
+    }
+
+    /**
+     * @param AbstractNode $methodPostfix
+     *
+     * @return bool
+     */
+    private function isMethodPostfixContainsNames(AbstractNode $methodPostfix)
+    {
+        foreach ($this->names as $name) {
+            if (false !== strpos($methodPostfix->getImage(), $name)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

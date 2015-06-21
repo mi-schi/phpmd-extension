@@ -46,6 +46,20 @@ abstract class AbstractApplyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @param string $name
+     *
+     * @return \Mockery\MockInterface
+     */
+    protected function getNode($name)
+    {
+        $node = \Mockery::mock('PHPMD\AbstractNode');
+        $node->shouldReceive('getName')->andReturn($name);
+        $node->shouldReceive('getImage')->andReturn($name);
+
+        return $node;
+    }
+
+    /**
      * @return AbstractRule
      */
     abstract protected function getRule();
