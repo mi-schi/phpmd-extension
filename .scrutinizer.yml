@@ -1,6 +1,7 @@
 filter:
     excluded_paths:
       - vendor/*
+      - Tests/Fixtures/*
 
 tools:
     external_code_coverage: true
