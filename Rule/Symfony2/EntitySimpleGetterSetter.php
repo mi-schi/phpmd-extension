@@ -38,10 +38,7 @@ class EntitySimpleGetterSetter extends AbstractRule implements ClassAware
         }
 
         $prefixes = $this->getStringProperty('prefixes');
-        $this->allowedPrefixes = explode(
-            $this->getStringProperty('delimiter'),
-            $prefixes
-        );
+        $this->allowedPrefixes = explode($this->getStringProperty('delimiter'), $prefixes);
 
         /** @var MethodNode $method */
         foreach ($node->getMethods() as $method) {

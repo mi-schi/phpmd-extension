@@ -5,5 +5,8 @@ filter:
 
 tools:
     external_code_coverage: true
-    php_analyzer:
-        enabled: false
+
+checks:
+    php:
+        code_rating: true
+        duplication: true

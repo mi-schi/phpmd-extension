@@ -30,10 +30,7 @@ class ClassNameSingleResponsibility extends AbstractRule implements ClassAware
 
         foreach ($generalSuffixes as $generalSuffix) {
             if ($generalSuffix === substr($node->getImage(), strlen($generalSuffix) * -1)) {
-                $this->addViolation($node, [
-                    $suffixes,
-                    $generalSuffix
-                ]);
+                $this->addViolation($node, [$suffixes, $generalSuffix]);
                 break;
             }
         }
