@@ -20,7 +20,9 @@ Then to write a test is much more easier with only a few mocks.
         <priority>4</priority>
         <properties>
             <property name="number" value="3" description="allowed Number of mocks" />
-            <property name="names" value="mock,getMock," description="filtered method names in the test" />
+            <property name="names" value="mock,getMock" description="filtered method names in the test" />
+            <property name="delimiter" value="," description="delimiter for names" />
+            <property name="match" value="1" description="should the method name match" />
         </properties>
         <example>
             <![CDATA[
@@ -57,7 +59,9 @@ class Test extends \PHPUnit_Framework_TestCase
         <priority>4</priority>
         <properties>
             <property name="number" value="3" description="allowed Number of asserts" />
-            <property name="names" value="assert," description="filtered assert names in the test" />
+            <property name="names" value="assert" description="filtered assert names in the test" />
+            <property name="delimiter" value="," description="delimiter for names" />
+            <property name="match" value="0" description="should the assert name match" />
         </properties>
         <example>
             <![CDATA[

@@ -42,10 +42,17 @@ class Test extends \PHPUnit_Framework_TestCase
             ->getMock();
         $mock = \Mockery::mock('Class');
         $mock = \Mockery::mock('Class');
+    }
 
+    /**
+     * bad
+     */
+    public function testExcessive2()
+    {
         $this->assertTrue(true);
         $this->assertFalse(true);
         $this->assertCount(true);
+        $this->assertContains(true);
         $this->assertContains(true);
     }
 }
