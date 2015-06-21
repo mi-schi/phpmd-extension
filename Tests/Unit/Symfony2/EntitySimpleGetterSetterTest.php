@@ -134,20 +134,6 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
     }
 
     /**
-     * @param string $name
-     *
-     * @return \Mockery\MockInterface
-     */
-    private function getNode($name)
-    {
-        $node = \Mockery::mock('PHPMD\AbstractNode');
-        $node->shouldReceive('getName')->andReturn($name);
-        $node->shouldReceive('getImage')->andReturn($name);
-
-        return $node;
-    }
-
-    /**
      * @param array $methodNodes
      *
      * @return \Mockery\MockInterface
