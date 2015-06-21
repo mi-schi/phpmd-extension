@@ -46,6 +46,27 @@ abstract class AbstractApplyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @param string $className
+     * @param string $methodName
+     * @param array  $findChildrenOfType
+     *
+     * @return \Mockery\MockInterface
+     */
+    protected function getMethodNode($className, $methodName, array $findChildrenOfType = [])
+    {
+        $methodNode = \Mockery::mock('PHPMD\Node\MethodNode');
+        $methodNode->shouldReceive('getImage')->andReturn($methodName);
+        $methodNode->shouldReceive('getParentName')->andReturn($className);
+        $methodNode->shouldReceive('getName')->andReturn($methodName);
+
+        foreach ($findChildrenOfType as $argument => $return) {
+            $methodNode->shouldReceive('findChildrenOfType')->with($argument)->andReturn($return);
+        }
+
+        return $methodNode;
+    }
+
+    /**
      * @param string $name
      *
      * @return \Mockery\MockInterface

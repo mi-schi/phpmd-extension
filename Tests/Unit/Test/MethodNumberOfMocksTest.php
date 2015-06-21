@@ -12,20 +12,21 @@ use MS\PHPMD\Tests\Unit\AbstractApplyTest;
  */
 class MethodNumberOfMocksTest extends AbstractApplyTest
 {
+    const CLASS_NAME = 'FooControllerTest';
+
     /**
      * @covers MS\PHPMD\Rule\Test\MethodNumberOfMocks
      * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
      */
     public function testMoreMocks()
     {
-        $methodNode = \Mockery::mock('PHPMD\Node\MethodNode');
-        $methodNode->shouldReceive('getParentName')->andReturn('FooControllerTest');
-        $methodNode->shouldReceive('getName')->andReturn('FooControllerTest');
-        $methodNode->shouldReceive('findChildrenOfType')->andReturn(
-            array_merge(
+        $methodNode = $this->getMethodNode(
+            self::CLASS_NAME,
+            'testBar',
+            ['MethodPostfix' => array_merge(
                 array_fill(0, 3, $this->getNode('mock')),
                 array_fill(0, 1, $this->getNode('getMock'))
-            )
+            )]
         );
 
         $node = \Mockery::mock('PHPMD\Node\ClassNode');

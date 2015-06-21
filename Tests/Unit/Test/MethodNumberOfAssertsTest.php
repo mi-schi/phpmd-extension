@@ -12,6 +12,8 @@ use MS\PHPMD\Tests\Unit\AbstractApplyTest;
  */
 class MethodNumberOfAssertsTest extends AbstractApplyTest
 {
+    const CLASS_NAME = 'FooControllerTest';
+
     /**
      * @covers MS\PHPMD\Rule\Test\MethodNumberOfAsserts
      * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
@@ -41,12 +43,13 @@ class MethodNumberOfAssertsTest extends AbstractApplyTest
      */
     public function testLessAsserts()
     {
-        $methodNode = \Mockery::mock('PHPMD\Node\MethodNode');
-        $methodNode->shouldReceive('findChildrenOfType')->andReturn(
-            array_merge(
+        $methodNode = $this->getMethodNode(
+            self::CLASS_NAME,
+            'testBar',
+            ['MethodPostfix' => array_merge(
                 array_fill(0, 3, $this->getNode('assertTrue')),
                 array_fill(0, 5, $this->getNode('if'))
-            )
+            )]
         );
 
         $node = \Mockery::mock('PHPMD\Node\ClassNode');
@@ -62,10 +65,11 @@ class MethodNumberOfAssertsTest extends AbstractApplyTest
      */
     public function testMoreAsserts()
     {
-        $methodNode = \Mockery::mock('PHPMD\Node\MethodNode');
-        $methodNode->shouldReceive('getParentName')->andReturn('FooControllerTest');
-        $methodNode->shouldReceive('getName')->andReturn('FooControllerTest');
-        $methodNode->shouldReceive('findChildrenOfType')->andReturn(array_fill(0, 4, $this->getNode('assertContains')));
+        $methodNode = $this->getMethodNode(
+            self::CLASS_NAME,
+            'testBar',
+            ['MethodPostfix' => array_fill(0, 4, $this->getNode('assertContains'))]
+        );
 
         $node = \Mockery::mock('PHPMD\Node\ClassNode');
         $node->shouldReceive('getImage')->andReturn('FooControllerTest');

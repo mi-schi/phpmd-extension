@@ -40,7 +40,7 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
      */
     public function testValidEntity()
     {
-        $methodNode = $this->getMethodNode('getData', [
+        $methodNode = $this->getMethodNode(self::CLASS_NAME, 'getData', [
             'ScopeStatement' => [],
             'ReturnStatement' => array_fill(0, 1, $this->getNode('return')),
             'Variable' => array_fill(0, 1, $this->getNode('$this')),
@@ -55,7 +55,7 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
      */
     public function testWrongMethodPrefix()
     {
-        $methodNode = $this->getMethodNode('doSomething');
+        $methodNode = $this->getMethodNode(self::CLASS_NAME, 'doSomething');
         $classNode = $this->getClassNode([$methodNode]);
 
         $this->assertRule($classNode, 1);
@@ -66,7 +66,7 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
      */
     public function testForbiddenScope()
     {
-        $methodNode = $this->getMethodNode('getData', [
+        $methodNode = $this->getMethodNode(self::CLASS_NAME, 'getData', [
             'ScopeStatement' => array_fill(0, 1, $this->getNode('if')),
         ]);
         $classNode = $this->getClassNode([$methodNode]);
@@ -79,7 +79,7 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
      */
     public function testMultipleReturns()
     {
-        $methodNode = $this->getMethodNode('getData', [
+        $methodNode = $this->getMethodNode(self::CLASS_NAME, 'getData', [
             'ScopeStatement' => [],
             'ReturnStatement' => array_fill(0, 2, $this->getNode('return')),
             'Variable' => array_fill(0, 1, $this->getNode('$this')),
@@ -94,7 +94,7 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
      */
     public function testRelationReturnToThis()
     {
-        $methodNode = $this->getMethodNode('getData', [
+        $methodNode = $this->getMethodNode(self::CLASS_NAME, 'getData', [
             'ScopeStatement' => [],
             'ReturnStatement' => [],
             'Variable' => array_fill(0, 2, $this->getNode('$this')),
@@ -103,7 +103,7 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
 
         $this->assertRule($classNode, 1);
 
-        $methodNode = $this->getMethodNode('getData', [
+        $methodNode = $this->getMethodNode(self::CLASS_NAME, 'getData', [
             'ScopeStatement' => [],
             'ReturnStatement' => array_fill(0, 1, $this->getNode('return')),
             'Variable' => array_fill(0, 3, $this->getNode('$this')),
@@ -111,26 +111,6 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
         $classNode = $this->getClassNode([$methodNode]);
 
         $this->assertRule($classNode, 1);
-    }
-
-    /**
-     * @param string $methodName
-     * @param array  $findChildrenOfType
-     *
-     * @return \Mockery\MockInterface
-     */
-    private function getMethodNode($methodName, array $findChildrenOfType = [])
-    {
-        $methodNode = \Mockery::mock('PHPMD\Node\MethodNode');
-        $methodNode->shouldReceive('getImage')->andReturn($methodName);
-        $methodNode->shouldReceive('getParentName')->andReturn(self::CLASS_NAME);
-        $methodNode->shouldReceive('getName')->andReturn($methodName);
-
-        foreach ($findChildrenOfType as $argument => $return) {
-            $methodNode->shouldReceive('findChildrenOfType')->with($argument)->andReturn($return);
-        }
-
-        return $methodNode;
     }
 
     /**
