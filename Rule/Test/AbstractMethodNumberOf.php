@@ -21,7 +21,7 @@ abstract class AbstractMethodNumberOf extends AbstractRule implements ClassAware
     private $names;
 
     /**
-     * @var int
+     * @var bool
      */
     private $match;
 
