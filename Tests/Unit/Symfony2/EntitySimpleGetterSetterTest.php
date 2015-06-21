@@ -12,6 +12,8 @@ use MS\PHPMD\Tests\Unit\AbstractApplyTest;
  */
 class EntitySimpleGetterSetterTest extends AbstractApplyTest
 {
+    const CLASS_NAME = 'TestEntity';
+
     /**
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
      */
@@ -36,30 +38,128 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
     /**
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
      */
-    public function testApply()
+    public function testValidEntity()
     {
-        $className = 'TestController';
-        $validMethodName = 'getData';
-        $notValidMethodName = 'doSomething';
+        $methodNode = $this->getMethodNode('getData', [
+            'ScopeStatement' => [],
+            'ReturnStatement' => array_fill(0, 1, $this->getNode('return')),
+            'Variable' => array_fill(0, 1, $this->getNode('$this')),
+        ]);
+        $classNode = $this->getClassNode([$methodNode]);
 
-        $validMethodNode = \Mockery::mock('PHPMD\Node\MethodNode');
-        $validMethodNode->shouldReceive('getImage')->andReturn($validMethodName);
-        $validMethodNode->shouldReceive('getParentName')->andReturn($className);
-        $validMethodNode->shouldReceive('getName')->andReturn($validMethodName);
-        $validMethodNode->shouldReceive('findChildrenOfType')->andReturn(0);
+        $this->assertRule($classNode, 0);
+    }
 
-        $notValidMethodNode = \Mockery::mock('PHPMD\Node\MethodNode');
-        $notValidMethodNode->shouldReceive('getImage')->andReturn($notValidMethodName);
-        $notValidMethodNode->shouldReceive('getParentName')->andReturn($className);
-        $notValidMethodNode->shouldReceive('getName')->andReturn($notValidMethodName);
-        $notValidMethodNode->shouldReceive('findChildrenOfType')->andReturn(1);
+    /**
+     * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     */
+    public function testWrongMethodPrefix()
+    {
+        $methodNode = $this->getMethodNode('doSomething');
+        $classNode = $this->getClassNode([$methodNode]);
 
+        $this->assertRule($classNode, 1);
+    }
+
+    /**
+     * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     */
+    public function testForbiddenScope()
+    {
+        $methodNode = $this->getMethodNode('getData', [
+            'ScopeStatement' => array_fill(0, 1, $this->getNode('if')),
+        ]);
+        $classNode = $this->getClassNode([$methodNode]);
+
+        $this->assertRule($classNode, 1);
+    }
+
+    /**
+     * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     */
+    public function testMultipleReturns()
+    {
+        $methodNode = $this->getMethodNode('getData', [
+            'ScopeStatement' => [],
+            'ReturnStatement' => array_fill(0, 2, $this->getNode('return')),
+            'Variable' => array_fill(0, 1, $this->getNode('$this')),
+        ]);
+        $classNode = $this->getClassNode([$methodNode]);
+
+        $this->assertRule($classNode, 1);
+    }
+
+    /**
+     * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     */
+    public function testRelationReturnToThis()
+    {
+        $methodNode = $this->getMethodNode('getData', [
+            'ScopeStatement' => [],
+            'ReturnStatement' => [],
+            'Variable' => array_fill(0, 2, $this->getNode('$this')),
+        ]);
+        $classNode = $this->getClassNode([$methodNode]);
+
+        $this->assertRule($classNode, 1);
+
+        $methodNode = $this->getMethodNode('getData', [
+            'ScopeStatement' => [],
+            'ReturnStatement' => array_fill(0, 1, $this->getNode('return')),
+            'Variable' => array_fill(0, 3, $this->getNode('$this')),
+        ]);
+        $classNode = $this->getClassNode([$methodNode]);
+
+        $this->assertRule($classNode, 1);
+    }
+
+    /**
+     * @param string $methodName
+     * @param array  $findChildrenOfType
+     *
+     * @return \Mockery\MockInterface
+     */
+    private function getMethodNode($methodName, array $findChildrenOfType = [])
+    {
+        $methodNode = \Mockery::mock('PHPMD\Node\MethodNode');
+        $methodNode->shouldReceive('getImage')->andReturn($methodName);
+        $methodNode->shouldReceive('getParentName')->andReturn(self::CLASS_NAME);
+        $methodNode->shouldReceive('getName')->andReturn($methodName);
+
+        foreach ($findChildrenOfType as $argument => $return) {
+            $methodNode->shouldReceive('findChildrenOfType')->with($argument)->andReturn($return);
+        }
+
+        return $methodNode;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return \Mockery\MockInterface
+     */
+    private function getNode($name)
+    {
+        $node = \Mockery::mock('PHPMD\AbstractNode');
+        $node->shouldReceive('getName')->andReturn($name);
+        $node->shouldReceive('getImage')->andReturn($name);
+
+        return $node;
+    }
+
+    /**
+     * @param array $methodNodes
+     *
+     * @return \Mockery\MockInterface
+     */
+    private function getClassNode(array $methodNodes)
+    {
         $classNode = \Mockery::mock('PHPMD\Node\ClassNode');
         $classNode->shouldReceive('getDocComment')->andReturn('* @ORM\Entity()');
-        $classNode->shouldReceive('getImage')->andReturn($className);
-        $classNode->shouldReceive('getMethods')->andReturn([$validMethodNode, $notValidMethodNode]);
+        $classNode->shouldReceive('getImage')->andReturn(self::CLASS_NAME);
+        $classNode->shouldReceive('getMethods')->andReturn($methodNodes);
 
-        $this->assertRule($classNode, 2);
+        return $classNode;
     }
 
     /**
@@ -70,7 +170,6 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
         $rule = new EntitySimpleGetterSetter();
         $rule->addProperty('delimiter', ',');
         $rule->addProperty('prefixes', 'get,set');
-        $rule->addProperty('tokens', '18');
 
         return $rule;
     }

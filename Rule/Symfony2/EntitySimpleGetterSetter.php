@@ -100,7 +100,7 @@ class EntitySimpleGetterSetter extends AbstractRule implements ClassAware
             return false;
         }
 
-        if ((0 === $countReturn && 1 < $countThis) || (1 === $countReturn && 2 < $countThis)) {
+        if (($countReturn + 1) < $countThis) {
             return false;
         }
 
