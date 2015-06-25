@@ -1,11 +1,15 @@
 <?php
 
+namespace AppBundle\Entity;
+
+use AppBundle\Model\Foo as FooModel;
+
 /**
- * Class Entity
+ * Class Foo
  *
  * @Entity
  */
-class Entity
+class Foo extends FooModel
 {
     private $data;
 

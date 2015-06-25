@@ -17,11 +17,11 @@ class MethodOneTryCatchTest extends AbstractProcessTest
     public function testRule()
     {
         $output = $this
-            ->runPhpmd('TryThings.php', 'cleancode.xml')
+            ->runPhpmd('Utility/TryThings.php', 'cleancode.xml')
             ->getOutput();
 
-        $this->assertContains('TryThings.php:37	This method contains more than one try statement. Swap out the try statement in an extra method. It increase the readability.', $output);
-        $this->assertContains('TryThings.php:51	This method contains more than one try statement. Swap out the try statement in an extra method. It increase the readability.', $output);
+        $this->assertContains('Utility/TryThings.php:39	This method contains more than one try statement. Swap out the try statement in an extra method. It increase the readability.', $output);
+        $this->assertContains('Utility/TryThings.php:53	This method contains more than one try statement. Swap out the try statement in an extra method. It increase the readability.', $output);
     }
 
     /**

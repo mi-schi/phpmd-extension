@@ -1,5 +1,7 @@
 <?php
 
+namespace AppBundle\Utility;
+
 /**
  * Class Maybe
  */

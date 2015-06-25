@@ -17,10 +17,10 @@ class ControllerMethodNameTest extends AbstractProcessTest
     public function testRule()
     {
         $output = $this
-            ->runPhpmd('FooController.php', 'symfony2.xml')
+            ->runPhpmd('Controller/FooController.php', 'symfony2.xml')
             ->getOutput();
 
-        $this->assertContains('FooController.php:19	The method name should end with Action in this controller.', $output);
+        $this->assertContains('Controller/FooController.php:21	The method name should end with Action in this controller.', $output);
     }
 
     /**
@@ -29,7 +29,7 @@ class ControllerMethodNameTest extends AbstractProcessTest
     public function testRuleWithAbstractClass()
     {
         $output = $this
-            ->runPhpmd('AbstractFooController.php', 'symfony2.xml')
+            ->runPhpmd('Controller/AbstractFooController.php', 'symfony2.xml')
             ->getOutput();
 
         $this->assertEmpty(trim($output));
