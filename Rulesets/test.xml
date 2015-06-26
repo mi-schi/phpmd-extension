@@ -53,7 +53,9 @@ class Test extends \PHPUnit_Framework_TestCase
           class="MS\PHPMD\Rule\Test\MethodNumberOfMocks">
         <description>
             <![CDATA[
-
+If a test fails and you have an excessive usage of asserts in this test, then it is difficult to find the problem.
+Also the maintainability will increase, because the test case is not so complex.
+Testing a lot of dependencies with one test violate the single responsibility principle.
             ]]>
         </description>
         <priority>4</priority>
