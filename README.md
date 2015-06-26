@@ -67,7 +67,7 @@ Then you can extend this configuration with the rules from this repository.
     <rule ref="rulesets/codesize.xml/ExcessiveMethodLength">
         <priority>3</priority>
         <properties>
-            <property name="minimum" value="21" />
+            <property name="minimum" value="31" />
             <property name="ignore-whitespace" value="true" />
         </properties>
     </rule>
