@@ -1,5 +1,7 @@
 <?php
 
+namespace AppBundle\Service;
+
 /**
  * Class GeneralManager
  */

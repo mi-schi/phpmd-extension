@@ -1,9 +1,11 @@
 <?php
 
+namespace AppBundle\Model;
+
 /**
- * Class Model
+ * Class Foo
  */
-class Model
+class Foo
 {
     /**
      * ok

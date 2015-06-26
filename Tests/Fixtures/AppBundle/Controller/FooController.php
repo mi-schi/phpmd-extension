@@ -1,9 +1,11 @@
 <?php
 
+namespace AppBundle\Controller;
+
 /**
- * Class AbstractFooController
+ * Class FooController
  */
-abstract class AbstractFooController
+class FooController extends AbstractFooController
 {
     /**
      * good
@@ -14,7 +16,7 @@ abstract class AbstractFooController
     }
 
     /**
-     * good
+     * bad
      */
     public function doSomething()
     {

@@ -24,7 +24,7 @@ abstract class AbstractProcessTest extends \PHPUnit_Framework_TestCase
         $processBuilder->setPrefix(__DIR__ . '/../../vendor/bin/phpmd');
 
         $processBuilder
-            ->add(__DIR__ . '/../Fixtures/' . $filename)
+            ->add(__DIR__ . '/../Fixtures/AppBundle/' . $filename)
             ->add('text')
             ->add(__DIR__ . '/../../Rulesets/' . $ruleset);
 

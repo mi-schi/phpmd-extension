@@ -19,11 +19,11 @@ class MethodNumberOfTest extends AbstractProcessTest
     public function testRule()
     {
         $output = $this
-            ->runPhpmd('Test.php', 'test.xml')
+            ->runPhpmd('Tests/Test.php', 'test.xml')
             ->getOutput();
 
-        $this->assertContains('Test.php:35	4 mocks are found in this test. Try to reduce the mocks to 3 or less.', $output);
-        $this->assertContains('Test.php:50	5 asserts are found in this test. Try to reduce the asserts to 3 or less.', $output);
+        $this->assertContains('Tests/Test.php:35	4 mocks are found in this test. Try to reduce the mocks to 3 or less.', $output);
+        $this->assertContains('Tests/Test.php:50	5 asserts are found in this test. Try to reduce the asserts to 3 or less.', $output);
     }
 
     /**
@@ -34,7 +34,7 @@ class MethodNumberOfTest extends AbstractProcessTest
     public function testRuleNoTest()
     {
         $output = $this
-            ->runPhpmd('Entity.php', 'test.xml')
+            ->runPhpmd('Entity/Entity.php', 'test.xml')
             ->getOutput();
 
         $this->assertEmpty(trim($output));
