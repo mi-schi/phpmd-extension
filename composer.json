@@ -1,6 +1,16 @@
 {
-  "name": "ms/phpmd-symfony2",
-  "description": "Extended mess detection rules for Symfony applications.",
+  "name": "mi-schi/phpmd-symfony2",
+  "description": "Extended mess detection rules from phpmd for Symfony applications.",
+  "keywords": [
+      "phpmd",
+      "symfony2",
+      "clean code",
+      "rules",
+      "mess detection",
+      "extends"
+  ],
+  "homepage": "https://github.com/mi-schi/phpmd-symfony2",
+  "version": "1.0.0",
   "authors": [
     {
       "name": "Michael Schindler",
