@@ -25,14 +25,8 @@ Extends phpmd with rules for Symfony2. Also add extra rules from clean code.
 ## Installation
 
 ```
-"repositories": [
-    {
-      "type": "git",
-      "url" : "https://github.com/mi-schi/phpmd-symfony2.git"
-    }
-],
 "require-dev": {
-    "ms/phpmd-symfony2": "dev-master"
+    "mi-schi/phpmd-symfony2": "dev-master"
 }
 ```
 
