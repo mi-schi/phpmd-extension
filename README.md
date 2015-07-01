@@ -26,6 +26,8 @@ Extends phpmd with rules for Symfony2. Also add extra rules from clean code.
 
 ## Installation
 
+Use ```composer``` for installation by adding the following to your ```composer.json``` file:
+
 ```
 "require-dev": {
     "mi-schi/phpmd-symfony2": "dev-master"
