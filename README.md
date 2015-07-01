@@ -6,10 +6,8 @@
 [![Code Coverage](https://scrutinizer-ci.com/g/mi-schi/phpmd-symfony2/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/mi-schi/phpmd-symfony2/?branch=master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mi-schi/phpmd-symfony2/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mi-schi/phpmd-symfony2/?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/556054ac634daa30fb00115d/badge.svg?style=flat)](https://www.versioneye.com/user/projects/556054ac634daa30fb00115d)
-
 [![Latest Stable Version](https://poser.pugx.org/mi-schi/phpmd-symfony2/v/stable)](https://packagist.org/packages/mi-schi/phpmd-symfony2)
 [![Total Downloads](https://poser.pugx.org/mi-schi/phpmd-symfony2/downloads)](https://packagist.org/packages/mi-schi/phpmd-symfony2)
-
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/892d02a2-5e5e-4b4e-b2d3-ee086edfbd78/small.png)](https://insight.sensiolabs.com/projects/892d02a2-5e5e-4b4e-b2d3-ee086edfbd78)
 
 ## Features
