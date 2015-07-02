@@ -101,9 +101,9 @@ Then you can extend this configuration with the rules from this repository.
 ### Add extra rules
 
 ```xml
-    <rule ref="../../../../../ms/phpmd-symfony2/Rulesets/cleancode.xml" />
-    <rule ref="../../../../../ms/phpmd-symfony2/Rulesets/symfony2.xml" />
-    <rule ref="../../../../../ms/phpmd-symfony2/Rulesets/test.xml" />
+    <rule ref="../../../../../mi-schi/phpmd-symfony2/Rulesets/cleancode.xml" />
+    <rule ref="../../../../../mi-schi/phpmd-symfony2/Rulesets/symfony2.xml" />
+    <rule ref="../../../../../mi-schi/phpmd-symfony2/Rulesets/test.xml" />
 ```
 
 You can also adapt the rules with properties or use only special rules. Take a look in the xmls. It works like the basic ruleset logic.
