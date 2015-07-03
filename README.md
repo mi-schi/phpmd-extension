@@ -111,6 +111,7 @@ You can also adapt the rules with properties or use only special rules. Take a l
 ## ToDos
 
 - [ ] Rule against Train Wreck (getFoo()->getBar()->getMuh()->getMeh())
+- [ ] testCanAddTwoNumbers is better than testAdd
 - [ ] Rule for high cohesion (member variables are used by a lot of methods)
 - [ ] Rule against inline ifs (? '' : '')
 - [ ] Rule that a service should never call a controller
