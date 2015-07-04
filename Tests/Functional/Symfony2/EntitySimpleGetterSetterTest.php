@@ -20,10 +20,10 @@ class EntitySimpleGetterSetterTest extends AbstractProcessTest
             ->runPhpmd('Entity/Foo.php', 'symfony2.xml')
             ->getOutput();
 
-        $this->assertContains('Entity/Foo.php:69	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
-        $this->assertContains('Entity/Foo.php:80	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
-        $this->assertContains('Entity/Foo.php:90	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
-        $this->assertContains('Entity/Foo.php:102	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity/Foo.php:77	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity/Foo.php:88	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity/Foo.php:98	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity/Foo.php:110	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
     }
 
     /**
@@ -32,7 +32,19 @@ class EntitySimpleGetterSetterTest extends AbstractProcessTest
     public function testRuleWithModel()
     {
         $output = $this
-            ->runPhpmd('Modle/Foo.php', 'symfony2.xml')
+            ->runPhpmd('Model/Foo.php', 'symfony2.xml')
+            ->getOutput();
+
+        $this->assertEmpty(trim($output));
+    }
+
+    /**
+     * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     */
+    public function testRuleWithTestForEntity()
+    {
+        $output = $this
+            ->runPhpmd('Tests/Test.php', 'symfony2.xml')
             ->getOutput();
 
         $this->assertEmpty(trim($output));

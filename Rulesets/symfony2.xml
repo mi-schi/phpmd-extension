@@ -47,6 +47,8 @@ Use a factory or an abstract MappedSuperclass for the model methods.
         <properties>
             <property name="delimiter" value="," description="delimiter for explode" />
             <property name="prefixes" value="get,set,is,has,add,remove" description="allowed prefixes in the methods" />
+            <property name="whitelist" value="__construct,__destruct,__set,__get,__call,__callStatic,__isset,__unset,__sleep,__wakeup,__toString,__invoke,__set_state,__clone" description="allowed method names" />
+            <property name="entityRegex" value="(\*\s*@\S*Entity)i" description="entity regex for class doc comment" />
         </properties>
         <example>
             <![CDATA[

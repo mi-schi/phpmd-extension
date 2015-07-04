@@ -33,6 +33,11 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
         $node->shouldReceive('getDocComment')->andReturn('');
 
         $this->assertRule($node, 0);
+
+        $node = \Mockery::mock('PHPMD\Node\ClassNode');
+        $node->shouldReceive('getDocComment')->andReturn('* @covers ORM\Entity');
+
+        $this->assertRule($node, 0);
     }
 
     /**
@@ -45,6 +50,17 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
             'ReturnStatement' => array_fill(0, 1, $this->getNode('return')),
             'Variable' => array_fill(0, 1, $this->getNode('$this')),
         ]);
+        $classNode = $this->getClassNode([$methodNode]);
+
+        $this->assertRule($classNode, 0);
+    }
+
+    /**
+     * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     */
+    public function testValidEntityWithWhitelist()
+    {
+        $methodNode = $this->getMethodNode(self::CLASS_NAME, '__construct');
         $classNode = $this->getClassNode([$methodNode]);
 
         $this->assertRule($classNode, 0);
@@ -136,6 +152,8 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
         $rule = new EntitySimpleGetterSetter();
         $rule->addProperty('delimiter', ',');
         $rule->addProperty('prefixes', 'get,set');
+        $rule->addProperty('whitelist', '__construct');
+        $rule->addProperty('entityRegex', '(\*\s*@\S*Entity)i');
 
         return $rule;
     }

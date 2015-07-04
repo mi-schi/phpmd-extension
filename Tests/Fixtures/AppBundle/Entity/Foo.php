@@ -14,6 +14,14 @@ class Foo extends FooModel
     private $data;
 
     /**
+     * on whitelist
+     */
+    public function __construct()
+    {
+        $this->doSomething();
+    }
+
+    /**
      * @param mixed $data
      *
      * good
