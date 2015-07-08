@@ -10,7 +10,7 @@
       "extends"
   ],
   "homepage": "https://github.com/mi-schi/phpmd-symfony2",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "authors": [
     {
       "name": "Michael Schindler",
