@@ -31,11 +31,13 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
     {
         $node = \Mockery::mock('PHPMD\Node\ClassNode');
         $node->shouldReceive('getDocComment')->andReturn('');
+        $node->shouldReceive('isAbstract')->andReturn(false);
 
         $this->assertRule($node, 0);
 
         $node = \Mockery::mock('PHPMD\Node\ClassNode');
         $node->shouldReceive('getDocComment')->andReturn('* @covers ORM\Entity');
+        $node->shouldReceive('isAbstract')->andReturn(false);
 
         $this->assertRule($node, 0);
     }
