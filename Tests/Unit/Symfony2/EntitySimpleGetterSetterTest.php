@@ -130,6 +130,17 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
     }
 
     /**
+     * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     */
+    public function testAbstractClass()
+    {
+        $node = \Mockery::mock('PHPMD\Node\ClassNode');
+        $node->shouldReceive('isAbstract')->andReturn(true);
+
+        $this->assertRule($node, 0);
+    }
+
+    /**
      * @param array $methodNodes
      *
      * @return \Mockery\MockInterface
@@ -139,6 +150,7 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
         $classNode = \Mockery::mock('PHPMD\Node\ClassNode');
         $classNode->shouldReceive('getDocComment')->andReturn('* @ORM\Entity()');
         $classNode->shouldReceive('getImage')->andReturn(self::CLASS_NAME);
+        $classNode->shouldReceive('isAbstract')->andReturn(false);
         $classNode->shouldReceive('getMethods')->andReturn($methodNodes);
 
         return $classNode;

@@ -67,6 +67,10 @@ class EntitySimpleGetterSetter extends AbstractRule implements ClassAware
      */
     private function isEntity(ClassNode $node)
     {
+        if (true === $node->isAbstract()) {
+            return false;
+        }
+
         if (0 < preg_match($this->getStringProperty('entityRegex'), $node->getDocComment())) {
             return true;
         }
