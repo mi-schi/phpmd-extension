@@ -116,3 +116,4 @@ You can also adapt the rules with properties or use only special rules. Take a l
 - [ ] Rule against inline ifs (? '' : '')
 - [ ] Rule that a service should never call a controller
 - [ ] Rule against useless comments (same name as method name)
+- [ ] Try to avoid "return $this->doSomething() && !$this->doOtherthings()"
