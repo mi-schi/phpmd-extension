@@ -23,6 +23,7 @@ Extends phpmd with rules for Symfony2. Also add extra rules from clean code.
 * Tests
     * [MethodNumberOfMocks](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/test.xml#L14-L17)
     * [MethodNumberOfAsserts](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/test.xml#L56-L58)
+    * [MethodNameUnderstandable](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/test.xml#L98-L99)
 
 ## Installation
 
