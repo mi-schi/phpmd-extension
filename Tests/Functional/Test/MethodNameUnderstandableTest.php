@@ -5,11 +5,11 @@ namespace MS\PHPMD\Tests\Functional\Test;
 use MS\PHPMD\Tests\Functional\AbstractProcessTest;
 
 /**
- * Class TestMethodNameUnderstandable
+ * Class MethodNameUnderstandableTest
  *
  * @package MS\PHPMD\Tests\Functional\Test
  */
-class TestMethodNameUnderstandable extends AbstractProcessTest
+class MethodNameUnderstandableTest extends AbstractProcessTest
 {
     /**
      * @covers MS\PHPMD\Rule\Test\MethodNameUnderstandable

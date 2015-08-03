@@ -3,17 +3,14 @@
 namespace MS\PHPMD\Tests\Unit\Test;
 
 use MS\PHPMD\Rule\Test\MethodNumberOfMocks;
-use MS\PHPMD\Tests\Unit\AbstractApplyTest;
 
 /**
  * Class MethodNumberOfMocksTest
  *
  * @package MS\PHPMD\Tests\Unit\Test
  */
-class MethodNumberOfMocksTest extends AbstractApplyTest
+class MethodNumberOfMocksTest extends AbstractClassTest
 {
-    const CLASS_NAME = 'FooControllerTest';
-
     /**
      * @covers MS\PHPMD\Rule\Test\MethodNumberOfMocks
      * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
@@ -31,7 +28,7 @@ class MethodNumberOfMocksTest extends AbstractApplyTest
         );
 
         $node = \Mockery::mock('PHPMD\Node\ClassNode');
-        $node->shouldReceive('getImage')->andReturn('FooControllerTest');
+        $node->shouldReceive('getImage')->andReturn(self::CLASS_NAME);
         $node->shouldReceive('getMethods')->andReturn([$methodNode]);
 
         $this->assertRule($node, 1);

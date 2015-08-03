@@ -3,42 +3,14 @@
 namespace MS\PHPMD\Tests\Unit\Test;
 
 use MS\PHPMD\Rule\Test\MethodNumberOfAsserts;
-use MS\PHPMD\Tests\Unit\AbstractApplyTest;
 
 /**
  * Class MethodNumberOfAssertsTest
  *
  * @package MS\PHPMD\Tests\Unit\Test
  */
-class MethodNumberOfAssertsTest extends AbstractApplyTest
+class MethodNumberOfAssertsTest extends AbstractClassTest
 {
-    const CLASS_NAME = 'FooControllerTest';
-
-    /**
-     * @covers MS\PHPMD\Rule\Test\MethodNumberOfAsserts
-     * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
-     * @covers MS\PHPMD\Rule\Test\AbstractTestRule
-     */
-    public function testApplyNoClassNode()
-    {
-        $node = \Mockery::mock('PHPMD\Node\MethodNode');
-
-        $this->assertRule($node, 0);
-    }
-
-    /**
-     * @covers MS\PHPMD\Rule\Test\MethodNumberOfAsserts
-     * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
-     * @covers MS\PHPMD\Rule\Test\AbstractTestRule
-     */
-    public function testClassIsNoTest()
-    {
-        $node = \Mockery::mock('PHPMD\Node\ClassNode');
-        $node->shouldReceive('getImage')->andReturn('FooController');
-
-        $this->assertRule($node, 0);
-    }
-
     /**
      * @covers MS\PHPMD\Rule\Test\MethodNumberOfAsserts
      * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
@@ -56,7 +28,7 @@ class MethodNumberOfAssertsTest extends AbstractApplyTest
         );
 
         $node = \Mockery::mock('PHPMD\Node\ClassNode');
-        $node->shouldReceive('getImage')->andReturn('FooControllerTest');
+        $node->shouldReceive('getImage')->andReturn(self::CLASS_NAME);
         $node->shouldReceive('getMethods')->andReturn([$methodNode]);
 
         $this->assertRule($node, 0);
@@ -76,7 +48,7 @@ class MethodNumberOfAssertsTest extends AbstractApplyTest
         );
 
         $node = \Mockery::mock('PHPMD\Node\ClassNode');
-        $node->shouldReceive('getImage')->andReturn('FooControllerTest');
+        $node->shouldReceive('getImage')->andReturn(self::CLASS_NAME);
         $node->shouldReceive('getMethods')->andReturn([$methodNode]);
 
         $this->assertRule($node, 1);
