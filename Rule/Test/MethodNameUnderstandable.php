@@ -8,7 +8,7 @@ use PHPMD\Node\ClassNode;
 /**
  * Class MethodNameUnderstandable
  *
- * The method names in your test should describe what they will check. This work only with a few more words.
+ * The method name in your test should describe what they will check. This works only with a few more words.
  *
  * @package MS\PHPMD\Rule\Test
  */
@@ -27,14 +27,14 @@ class MethodNameUnderstandable extends AbstractTestRule
             return;
         }
 
-        $match = $this->getBooleanProperty('match');
+        $regex = $this->getBooleanProperty('regex');
         $number = $this->getIntProperty('number');
 
         foreach ($node->getMethods() as $method) {
-            $words = count(preg_split($match, $method->getImage()));
+            $words = count(preg_split($regex, $method->getImage()));
 
             if ($number > $words) {
-                $this->addViolation($method, [$number, $words]);
+                $this->addViolation($method, [$words, $number]);
             }
         }
     }

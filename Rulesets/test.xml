@@ -90,4 +90,34 @@ class Test extends \PHPUnit_Framework_TestCase
         </example>
     </rule>
 
+    <rule name="MethodNameUnderstandable"
+          message="Only {0} words are found in the method name. Try to describe your code as good as you can with {1} or more words."
+          class="MS\PHPMD\Rule\Test\MethodNameUnderstandable">
+        <description>
+            <![CDATA[
+The method name in your test should describe what they will check. This works only with a few more words.
+Then you can use the --testdox argument for phpunit to display a nice overview from what you check.
+            ]]>
+        </description>
+        <priority>4</priority>
+        <properties>
+            <property name="number" value="3" description="minimum Number of words" />
+            <property name="regex" value="[A-Z]" description="Regex for a new word" />
+        </properties>
+        <example>
+            <![CDATA[
+class Test extends \PHPUnit_Framework_TestCase
+{
+    public function testCanAddTwoNumbers() // good
+    {
+    }
+
+    public function testAdd() // bad
+    {
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
 </ruleset>
