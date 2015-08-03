@@ -99,7 +99,7 @@ The method name in your test should describe what they will check. This works on
 Then you can use the --testdox argument for phpunit to display a nice overview from what you check.
             ]]>
         </description>
-        <priority>4</priority>
+        <priority>3</priority>
         <properties>
             <property name="number" value="3" description="minimum Number of words" />
             <property name="regex" value="([A-Z])" description="Regex for a new word" />
