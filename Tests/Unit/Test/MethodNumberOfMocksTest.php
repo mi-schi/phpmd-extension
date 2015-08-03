@@ -17,6 +17,7 @@ class MethodNumberOfMocksTest extends AbstractApplyTest
     /**
      * @covers MS\PHPMD\Rule\Test\MethodNumberOfMocks
      * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
+     * @covers MS\PHPMD\Rule\Test\AbstractTestRule
      */
     public function testMoreMocks()
     {

@@ -102,7 +102,7 @@ Then you can use the --testdox argument for phpunit to display a nice overview f
         <priority>4</priority>
         <properties>
             <property name="number" value="3" description="minimum Number of words" />
-            <property name="regex" value="[A-Z]" description="Regex for a new word" />
+            <property name="regex" value="([A-Z])" description="Regex for a new word" />
         </properties>
         <example>
             <![CDATA[

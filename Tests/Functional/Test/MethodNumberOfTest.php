@@ -15,6 +15,7 @@ class MethodNumberOfTest extends AbstractProcessTest
      * @covers MS\PHPMD\Rule\Test\MethodNumberOfAsserts
      * @covers MS\PHPMD\Rule\Test\MethodNumberOfMocks
      * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
+     * @covers MS\PHPMD\Rule\Test\AbstractTestRule
      */
     public function testRule()
     {
@@ -30,6 +31,7 @@ class MethodNumberOfTest extends AbstractProcessTest
      * @covers MS\PHPMD\Rule\Test\MethodNumberOfAsserts
      * @covers MS\PHPMD\Rule\Test\MethodNumberOfMocks
      * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
+     * @covers MS\PHPMD\Rule\Test\AbstractTestRule
      */
     public function testRuleNoTest()
     {

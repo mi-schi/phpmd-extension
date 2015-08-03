@@ -17,6 +17,7 @@ class MethodNumberOfAssertsTest extends AbstractApplyTest
     /**
      * @covers MS\PHPMD\Rule\Test\MethodNumberOfAsserts
      * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
+     * @covers MS\PHPMD\Rule\Test\AbstractTestRule
      */
     public function testApplyNoClassNode()
     {
@@ -28,6 +29,7 @@ class MethodNumberOfAssertsTest extends AbstractApplyTest
     /**
      * @covers MS\PHPMD\Rule\Test\MethodNumberOfAsserts
      * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
+     * @covers MS\PHPMD\Rule\Test\AbstractTestRule
      */
     public function testClassIsNoTest()
     {
@@ -40,6 +42,7 @@ class MethodNumberOfAssertsTest extends AbstractApplyTest
     /**
      * @covers MS\PHPMD\Rule\Test\MethodNumberOfAsserts
      * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
+     * @covers MS\PHPMD\Rule\Test\AbstractTestRule
      */
     public function testLessAsserts()
     {
@@ -62,6 +65,7 @@ class MethodNumberOfAssertsTest extends AbstractApplyTest
     /**
      * @covers MS\PHPMD\Rule\Test\MethodNumberOfAsserts
      * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
+     * @covers MS\PHPMD\Rule\Test\AbstractTestRule
      */
     public function testMoreAsserts()
     {

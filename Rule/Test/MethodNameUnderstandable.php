@@ -27,11 +27,12 @@ class MethodNameUnderstandable extends AbstractTestRule
             return;
         }
 
-        $regex = $this->getBooleanProperty('regex');
+        $regex = $this->getStringProperty('regex');
         $number = $this->getIntProperty('number');
 
         foreach ($node->getMethods() as $method) {
-            $words = count(preg_split($regex, $method->getImage()));
+            $wordsInclusiveTest = count(preg_split($regex, $method->getImage()));
+            $words = $wordsInclusiveTest - 1;
 
             if ($number > $words) {
                 $this->addViolation($method, [$words, $number]);

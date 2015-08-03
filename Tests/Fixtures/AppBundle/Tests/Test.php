@@ -10,7 +10,7 @@ class Test extends \PHPUnit_Framework_TestCase
     /**
      * good
      */
-    public function testCorrect()
+    public function testIsCorrectForMockAndAssert()
     {
         $mock = $this
             ->getMockBuilder('Class')
@@ -22,7 +22,7 @@ class Test extends \PHPUnit_Framework_TestCase
     /**
      * good
      */
-    public function testMockery()
+    public function testMockeryFitsAssert()
     {
         $mock = \Mockery::mock('Class');
 
