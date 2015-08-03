@@ -2,18 +2,16 @@
 
 namespace MS\PHPMD\Rule\Test;
 
-use PHPMD\AbstractRule;
 use PHPMD\Node\ClassNode;
 use PHPMD\Node\MethodNode;
-use PHPMD\Rule\ClassAware;
 use PHPMD\AbstractNode;
 
 /**
  * Class AbstractMethodNumberOf
  *
- * @package MS\PHPMD\Rule\CleanCode
+ * @package MS\PHPMD\Rule\Test
  */
-abstract class AbstractMethodNumberOf extends AbstractRule implements ClassAware
+abstract class AbstractMethodNumberOf extends AbstractTestRule
 {
     /**
      * @var array
@@ -49,20 +47,6 @@ abstract class AbstractMethodNumberOf extends AbstractRule implements ClassAware
                 $this->addViolation($method, [$count, $number]);
             }
         }
-    }
-
-    /**
-     * @param ClassNode $node
-     *
-     * @return bool
-     */
-    private function isTest(ClassNode $node)
-    {
-        if ('Test' === substr($node->getImage(), -4, 4)) {
-            return true;
-        }
-
-        return false;
     }
 
     /**
