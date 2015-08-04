@@ -89,4 +89,61 @@ class TryThings
         </example>
     </rule>
 
+    <rule name="SuperfluousComment"
+          message="It seems that this {0} has a superfluous comment description. It fits {1} percent with the name of the {0}."
+          class="MS\PHPMD\Rule\CleanCode\SuperfluousComment">
+        <description>
+            <![CDATA[
+Comments should be considered thoroughly in advance. Don't comment bad code. Rewrite it.
+Also try to avoid superfluous comments. It is obvious that getName returns a name.
+It is normal that you maintenance your code but not your comments. So the comment will mislead you later on.
+Comments who describe why you write this code are good comments.
+            ]]>
+        </description>
+        <priority>2</priority>
+        <properties>
+            <property name="percent" value="75" description="allowed name-to-comment similarity in percent" />
+        </properties>
+        <example>
+            <![CDATA[
+class SuperfluousComment
+{
+    /**
+     * @var string
+     *
+     * the name
+     */
+    private $name;
+
+    /**
+     * get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @param string $value
+     */
+    public function doSomething($value)
+    {
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
 </ruleset>
