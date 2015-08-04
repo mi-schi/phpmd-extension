@@ -22,8 +22,9 @@ class SuperfluousCommentTest extends AbstractProcessTest
 
         $this->assertNotContains('SuperfluousComment.php:42', $output);
 
-        $this->assertContains('SuperfluousComment.php:10	It seems that this class has a superfluous comment description. It fits 88 percent with the name of the class.', $output);
-        $this->assertContains('SuperfluousComment.php:24	It seems that this method has a superfluous comment description. It fits 100 percent with the name of the method.', $output);
-        $this->assertContains('SuperfluousComment.php:34	It seems that this method has a superfluous comment description. It fits 82 percent with the name of the method.', $output);
+        $this->assertContains('SuperfluousComment.php:10	It seems that the class has a superfluous comment description. It fits 88 percent with the name of that.', $output);
+        $this->assertContains('SuperfluousComment.php:10	It seems that the property $name has a superfluous comment description. It fits 73 percent with the name of that.', $output);
+        $this->assertContains('SuperfluousComment.php:24	It seems that the method has a superfluous comment description. It fits 100 percent with the name of that.', $output);
+        $this->assertContains('SuperfluousComment.php:34	It seems that the method has a superfluous comment description. It fits 82 percent with the name of that.', $output);
     }
 }

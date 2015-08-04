@@ -2,6 +2,7 @@
 
 namespace MS\PHPMD\Rule\CleanCode;
 
+use PDepend\Source\AST\ASTClass;
 use PHPMD\AbstractNode;
 use PHPMD\AbstractRule;
 use PHPMD\Node\ClassNode;
@@ -18,33 +19,49 @@ use PDepend\Source\AST\AbstractASTArtifact;
 class SuperfluousComment extends AbstractRule implements ClassAware
 {
     /**
-     * @param AbstractNode $node
+     * @var int
+     */
+    private $percent;
+
+    /**
+     * @param AbstractNode|ClassNode|ASTClass $node
      */
     public function apply(AbstractNode $node)
     {
-        if (!$node instanceof ClassNode) {
-            return;
+        $this->percent = $this->getIntProperty('percent');
+
+        $this->addViolationWithCondition(
+            $node,
+            $node->getType(),
+            $this->calculateNameToCommentSimilarityInPercent($node)
+        );
+
+        foreach ($node->getProperties() as $property) {
+            $this->addViolationWithCondition(
+                $node,
+                'property ' . $property->getName(),
+                $this->calculateNameToCommentSimilarityInPercent($property)
+            );
         }
 
-        $percent = $this->getIntProperty('percent');
-
-        $this->checkDocComment($node, $percent);
-
         foreach ($node->getMethods() as $method) {
-            $this->checkDocComment($method, $percent);
+            $this->addViolationWithCondition(
+                $method,
+                $method->getType(),
+                $this->calculateNameToCommentSimilarityInPercent($method)
+            );
         }
     }
 
     /**
      * @param AbstractNode $node
-     * @param int $percent
+     * @param string       $type
+     * @param int          $percent
      */
-    private function checkDocComment($node, $percent)
+    private function addViolationWithCondition($node, $type, $percent)
     {
-        $calculatedPercent = round($this->calculateNameToCommentSimilarityInPercent($node));
-
-        if ($percent < $calculatedPercent) {
-            $this->addViolation($node, [$node->getType(), $calculatedPercent]);
+        if ($this->percent < $percent) {
+            $this->addViolation($node, [$type, $percent]);
         }
     }
 
@@ -62,12 +79,12 @@ class SuperfluousComment extends AbstractRule implements ClassAware
         }
 
         similar_text(
-            strtolower($node->getName()),
+            $this->transformString($node->getName()),
             $this->getCommentDescription($docComment),
             $percent
         );
 
-        return $percent;
+        return round($percent);
     }
 
     /**
@@ -100,12 +117,22 @@ class SuperfluousComment extends AbstractRule implements ClassAware
         $description = '';
 
         foreach ($descriptionLines as $line) {
-            $line = strtolower($line);
-            $line = preg_replace('/[^a-z0-9]/', '', $line);
-
-            $description .= $line;
+            $description .= $this->transformString($line);
         }
 
         return $description;
+    }
+
+    /**
+     * @param string $string
+     *
+     * @return string
+     */
+    private function transformString($string)
+    {
+        $string = strtolower($string);
+        $string = preg_replace('/[^a-z0-9]/', '', $string);
+
+        return $string;
     }
 }

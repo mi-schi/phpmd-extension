@@ -90,7 +90,7 @@ class TryThings
     </rule>
 
     <rule name="SuperfluousComment"
-          message="It seems that this {0} has a superfluous comment description. It fits {1} percent with the name of the {0}."
+          message="It seems that the {0} has a superfluous comment description. It fits {1} percent with the name of that."
           class="MS\PHPMD\Rule\CleanCode\SuperfluousComment">
         <description>
             <![CDATA[
@@ -102,7 +102,7 @@ Comments who describe why you write this code are good comments.
         </description>
         <priority>2</priority>
         <properties>
-            <property name="percent" value="75" description="allowed name-to-comment similarity in percent" />
+            <property name="percent" value="60" description="allowed name-to-comment similarity in percent" />
         </properties>
         <example>
             <![CDATA[
