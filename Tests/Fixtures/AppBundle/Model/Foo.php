@@ -12,7 +12,6 @@ class Foo
      */
     public function doMore()
     {
-
     }
 
     /**
