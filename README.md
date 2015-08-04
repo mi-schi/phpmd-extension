@@ -18,6 +18,7 @@ Extends phpmd with rules for Symfony2. Also add extra rules from clean code.
     * [ClassNameSingleResponsibility](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/cleancode.xml#L15-L18)
     * [MethodOneTryCatch](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/cleancode.xml#L47)
     * [SuperfluousComment](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/cleancode.xml#L97-L100)
+    * [InlineIf](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/cleancode.xml#L154-L155)
 * Symfony2
     * [ControllerMethodName](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/symfony2.xml#L14-L16)
     * [EntitySimpleGetterSetter](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/symfony2.xml#L41-L43)
@@ -115,7 +116,7 @@ You can also adapt the rules with properties or use only special rules. Take a l
 - [ ] Rule against Train Wreck (getFoo()->getBar()->getMuh()->getMeh())
 - [x] testCanAddTwoNumbers is better than testAdd
 - [ ] Rule for high cohesion (member variables are used by a lot of methods)
-- [ ] Rule against inline ifs (? '' : '')
+- [x] Rule against inline ifs (? '' : '')
 - [ ] Rule that a service should never call a controller
 - [x] Rule against useless comments (same name as method name)
 - [ ] Try to avoid "return $this->doSomething() && !$this->doOtherthings()"
