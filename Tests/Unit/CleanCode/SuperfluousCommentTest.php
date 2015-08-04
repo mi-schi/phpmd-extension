@@ -28,9 +28,7 @@ class SuperfluousCommentTest extends AbstractApplyTest
      */
     public function testClassWithSuperfluousComment()
     {
-        $this->assertRule($this->getClassNode(
-            self::CLASS_NAME
-        ), 1);
+        $this->assertRule($this->getClassNode(self::CLASS_NAME), 1);
     }
 
     /**
