@@ -30,14 +30,10 @@ class EntitySimpleGetterSetter extends AbstractRule implements ClassAware
     private $whitelist;
 
     /**
-     * @param AbstractNode $node
+     * @param AbstractNode|ClassNode $node
      */
     public function apply(AbstractNode $node)
     {
-        if (!$node instanceof ClassNode) {
-            return;
-        }
-
         if (false === $this->isEntity($node)) {
             return;
         }

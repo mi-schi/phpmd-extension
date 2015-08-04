@@ -15,14 +15,10 @@ use PHPMD\Node\ClassNode;
 class MethodNameUnderstandable extends AbstractTestRule
 {
     /**
-     * @param AbstractNode $node
+     * @param AbstractNode|ClassNode $node
      */
     public function apply(AbstractNode $node)
     {
-        if (!$node instanceof ClassNode) {
-            return;
-        }
-
         if (false === $this->isTest($node)) {
             return;
         }

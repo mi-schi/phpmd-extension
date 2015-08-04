@@ -17,14 +17,10 @@ use PHPMD\Rule\MethodAware;
 class MethodOneTryCatch extends AbstractRule implements MethodAware
 {
     /**
-     * @param AbstractNode $node
+     * @param AbstractNode|MethodNode $node
      */
     public function apply(AbstractNode $node)
     {
-        if (!$node instanceof MethodNode) {
-            return;
-        }
-
         $countTry = count($node->findChildrenOfType('TryStatement'));
 
         if (1 < $countTry) {

@@ -17,16 +17,6 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
     /**
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
      */
-    public function testApplyNoClassNode()
-    {
-        $node = \Mockery::mock('PHPMD\Node\MethodNode');
-
-        $this->assertRule($node, 0);
-    }
-
-    /**
-     * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
-     */
     public function testApplyNoEntity()
     {
         $node = \Mockery::mock('PHPMD\Node\ClassNode');

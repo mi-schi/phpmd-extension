@@ -15,16 +15,6 @@ class ClassNameSingleResponsibilityTest extends AbstractApplyTest
     /**
      * @covers MS\PHPMD\Rule\CleanCode\ClassNameSingleResponsibility
      */
-    public function testApplyNoClassNode()
-    {
-        $node = \Mockery::mock('PHPMD\Node\MethodNode');
-
-        $this->assertRule($node, 0);
-    }
-
-    /**
-     * @covers MS\PHPMD\Rule\CleanCode\ClassNameSingleResponsibility
-     */
     public function testApplyWithSingleResponsibilityClass()
     {
         $className = 'UserConverter';
@@ -39,7 +29,7 @@ class ClassNameSingleResponsibilityTest extends AbstractApplyTest
     /**
      * @covers MS\PHPMD\Rule\CleanCode\ClassNameSingleResponsibility
      */
-    public function testApply()
+    public function testApplyWithManagerClass()
     {
         $className = 'UserManager';
 

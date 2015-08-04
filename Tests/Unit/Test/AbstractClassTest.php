@@ -18,18 +18,6 @@ abstract class AbstractClassTest extends AbstractApplyTest
      * @covers MS\PHPMD\Rule\Test\MethodNameUnderstandable
      * @covers MS\PHPMD\Rule\Test\AbstractTestRule
      */
-    public function testApplyNoClassNode()
-    {
-        $node = \Mockery::mock('PHPMD\Node\MethodNode');
-
-        $this->assertRule($node, 0);
-    }
-
-    /**
-     * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
-     * @covers MS\PHPMD\Rule\Test\MethodNameUnderstandable
-     * @covers MS\PHPMD\Rule\Test\AbstractTestRule
-     */
     public function testClassIsNoTest()
     {
         $node = \Mockery::mock('PHPMD\Node\ClassNode');

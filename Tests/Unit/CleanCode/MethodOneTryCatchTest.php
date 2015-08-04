@@ -15,16 +15,6 @@ class MethodOneTryCatchTest extends AbstractApplyTest
     /**
      * @covers MS\PHPMD\Rule\CleanCode\MethodOneTryCatch
      */
-    public function testApplyNoMethodNode()
-    {
-        $node = \Mockery::mock('PHPMD\Node\ClassNode');
-
-        $this->assertRule($node, 0);
-    }
-
-    /**
-     * @covers MS\PHPMD\Rule\CleanCode\MethodOneTryCatch
-     */
     public function testMoreTryStatements()
     {
         $node = $this->getMethodNode('TestClass', 'tryMore', [

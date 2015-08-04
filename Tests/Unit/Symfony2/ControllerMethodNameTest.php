@@ -15,16 +15,6 @@ class ControllerMethodNameTest extends AbstractApplyTest
     /**
      * @covers MS\PHPMD\Rule\Symfony2\ControllerMethodName
      */
-    public function testApplyNoClassNode()
-    {
-        $node = \Mockery::mock('PHPMD\Node\MethodNode');
-
-        $this->assertRule($node, 0);
-    }
-
-    /**
-     * @covers MS\PHPMD\Rule\Symfony2\ControllerMethodName
-     */
     public function testApplyNoConcreteClass()
     {
         $node = \Mockery::mock('PHPMD\Node\ClassNode');
@@ -48,7 +38,7 @@ class ControllerMethodNameTest extends AbstractApplyTest
     /**
      * @covers MS\PHPMD\Rule\Symfony2\ControllerMethodName
      */
-    public function testApply()
+    public function testApplyWithDirtyController()
     {
         $className = 'TestController';
         $validMethodName = 'testAction';

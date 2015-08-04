@@ -17,14 +17,10 @@ use PHPMD\Rule\ClassAware;
 class ClassNameSingleResponsibility extends AbstractRule implements ClassAware
 {
     /**
-     * @param AbstractNode $node
+     * @param AbstractNode|ClassNode $node
      */
     public function apply(AbstractNode $node)
     {
-        if (!$node instanceof ClassNode) {
-            return;
-        }
-
         $suffixes = $this->getStringProperty('suffixes');
         $generalSuffixes = explode($this->getStringProperty('delimiter'), $suffixes);
 
