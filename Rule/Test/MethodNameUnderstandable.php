@@ -27,6 +27,10 @@ class MethodNameUnderstandable extends AbstractTestRule
         $number = $this->getIntProperty('number');
 
         foreach ($node->getMethods() as $method) {
+            if ('test' !== substr($method->getImage(), 0, 4)) {
+                continue;
+            }
+
             $wordsInclusiveTest = count(preg_split($regex, $method->getImage()));
             $words = $wordsInclusiveTest - 1;
 

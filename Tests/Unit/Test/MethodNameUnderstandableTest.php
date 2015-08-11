@@ -15,6 +15,21 @@ class MethodNameUnderstandableTest extends AbstractClassTest
      * @covers MS\PHPMD\Rule\Test\MethodNameUnderstandable
      * @covers MS\PHPMD\Rule\Test\AbstractTestRule
      */
+    public function testIgnoreMethodsWithoutTestPrefix()
+    {
+        $methodNode = $this->getMethodNode(self::CLASS_NAME, 'getEntityManager');
+
+        $node = \Mockery::mock('PHPMD\Node\ClassNode');
+        $node->shouldReceive('getImage')->andReturn(self::CLASS_NAME);
+        $node->shouldReceive('getMethods')->andReturn([$methodNode]);
+
+        $this->assertRule($node, 0);
+    }
+
+    /**
+     * @covers MS\PHPMD\Rule\Test\MethodNameUnderstandable
+     * @covers MS\PHPMD\Rule\Test\AbstractTestRule
+     */
     public function testMoreWordsInMethod()
     {
         $methodNode = $this->getMethodNode(self::CLASS_NAME, 'testCanAddTwoNumbers');
