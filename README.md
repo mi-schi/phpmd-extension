@@ -88,7 +88,6 @@ Then you can extend this configuration with the rules from this repository.
         </properties>
     </rule>
     <rule ref="rulesets/naming.xml/LongVariable">
-        <priority>3</priority>
         <properties>
             <property name="maximum" value="30" />
         </properties>
