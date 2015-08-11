@@ -6,7 +6,7 @@
          xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
     <description>Contains rules for PHPUnit tests.</description>
 
-    <rule name="MethodNumberOfMocks"
+    <rule name="TestMethodNumberOfMocks"
           message="{0} mocks are found in this test. Try to reduce the mocks to {1} or less."
           class="MS\PHPMD\Rule\Test\MethodNumberOfMocks">
         <description>
@@ -48,7 +48,7 @@ class Test extends \PHPUnit_Framework_TestCase
         </example>
     </rule>
 
-    <rule name="MethodNumberOfAsserts"
+    <rule name="TestMethodNumberOfAsserts"
           message="{0} asserts are found in this test. Try to reduce the asserts to {1} or less."
           class="MS\PHPMD\Rule\Test\MethodNumberOfMocks">
         <description>
@@ -90,7 +90,7 @@ class Test extends \PHPUnit_Framework_TestCase
         </example>
     </rule>
 
-    <rule name="MethodNameUnderstandable"
+    <rule name="TestMethodNameUnderstandable"
           message="Only {0} words are found in the method name. Try to describe your code as good as you can with {1} or more words."
           class="MS\PHPMD\Rule\Test\MethodNameUnderstandable">
         <description>
