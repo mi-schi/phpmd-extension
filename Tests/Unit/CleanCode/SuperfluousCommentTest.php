@@ -62,6 +62,9 @@ class SuperfluousCommentTest extends AbstractApplyTest
     {
         $rule =  new SuperfluousComment();
         $rule->addProperty('percent', '60');
+        $rule->addProperty('checkClass', '1');
+        $rule->addProperty('checkProperties', '1');
+        $rule->addProperty('checkMethods', '1');
 
         return $rule;
     }

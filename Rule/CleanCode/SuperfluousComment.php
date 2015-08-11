@@ -24,28 +24,58 @@ class SuperfluousComment extends AbstractRule implements ClassAware
     private $percent;
 
     /**
-     * @param AbstractNode|ClassNode|ASTClass $node
+     * @param AbstractNode $node
      */
     public function apply(AbstractNode $node)
     {
         $this->percent = $this->getIntProperty('percent');
 
-        $this->addViolationWithCondition(
+        if (true === $this->getBooleanProperty('checkClass')) {
+            $this->checkClass($node);
+        }
+
+        if (true === $this->getBooleanProperty('checkProperties')) {
+            $this->checkProperties($node);
+        }
+
+        if (true === $this->getBooleanProperty('checkMethods')) {
+            $this->checkMethods($node);
+        }
+    }
+
+    /**
+     * @param AbstractNode $node
+     */
+    private function checkClass(AbstractNode $node)
+    {
+        $this->checkNode(
             $node,
             $node->getType(),
             $this->calculateNameToCommentSimilarityInPercent($node)
         );
+    }
 
+    /**
+     * @param AbstractNode|ASTClass $node
+     */
+    private function checkProperties(AbstractNode $node)
+    {
         foreach ($node->getProperties() as $property) {
-            $this->addViolationWithCondition(
+            $this->checkNode(
                 $node,
                 'property ' . $property->getName(),
                 $this->calculateNameToCommentSimilarityInPercent($property)
             );
         }
+    }
 
+    /**
+     * @param AbstractNode|ClassNode $node
+     */
+    private function checkMethods(AbstractNode $node)
+    {
         foreach ($node->getMethods() as $method) {
-            $this->addViolationWithCondition(
+            $this->checkNode(
                 $method,
                 $method->getType(),
                 $this->calculateNameToCommentSimilarityInPercent($method)
@@ -58,7 +88,7 @@ class SuperfluousComment extends AbstractRule implements ClassAware
      * @param string       $type
      * @param int          $percent
      */
-    private function addViolationWithCondition($node, $type, $percent)
+    private function checkNode(AbstractNode $node, $type, $percent)
     {
         if ($this->percent < $percent) {
             $this->addViolation($node, [$type, $percent]);
