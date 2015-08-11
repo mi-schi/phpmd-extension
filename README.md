@@ -60,20 +60,17 @@ Then you can extend this configuration with the rules from this repository.
         <exclude name="ExcessiveClassLength" />
     </rule>
     <rule ref="rulesets/codesize.xml/ExcessiveParameterList">
-        <priority>3</priority>
         <properties>
             <property name="minimum" value="4" />
         </properties>
     </rule>
     <rule ref="rulesets/codesize.xml/ExcessiveMethodLength">
-        <priority>3</priority>
         <properties>
             <property name="minimum" value="31" />
             <property name="ignore-whitespace" value="true" />
         </properties>
     </rule>
     <rule ref="rulesets/codesize.xml/ExcessiveClassLength">
-        <priority>3</priority>
         <properties>
             <property name="minimum" value="301" />
             <property name="ignore-whitespace" value="true" />
@@ -86,7 +83,6 @@ Then you can extend this configuration with the rules from this repository.
         <exclude name="LongVariable" />
     </rule>
     <rule ref="rulesets/naming.xml/ShortVariable">
-        <priority>3</priority>
         <properties>
             <property name="minimum" value="2" />
         </properties>

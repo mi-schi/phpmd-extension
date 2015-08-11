@@ -16,13 +16,9 @@ class ClassNameSingleResponsibilityTest extends AbstractProcessTest
      */
     public function testRule()
     {
-        $p = $this
-            ->runPhpmd('Service/GeneralManager.php', 'cleancode.xml');
-
-        $output = $p->getOutput();
-
-        var_dump($p->getErrorOutput());
-        var_dump($p->getExitCodeText());
+        $output = $this
+            ->runPhpmd('Service/GeneralManager.php', 'cleancode.xml')
+            ->getOutput();
 
         $this->assertContains('Service/GeneralManager.php:8	Try to avoid general suffixes like Manager,Handler,Helper,Util,Information,Processor found Manager. It might violate of the single responsibility principle.', $output);
     }

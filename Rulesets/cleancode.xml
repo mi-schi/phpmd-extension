@@ -172,18 +172,4 @@ class Example
         </example>
     </rule>
 
-    <rule name="ComplexReturnStatement"
-          message="{0}"
-          class="MS\PHPMD\Rule\CleanCode\ComplexReturnStatement">
-        <description>
-            <![CDATA[
-            ]]>
-        </description>
-        <priority>5</priority>
-        <example>
-            <![CDATA[
-            ]]>
-        </example>
-    </rule>
-
 </ruleset>
