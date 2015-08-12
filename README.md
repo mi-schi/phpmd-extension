@@ -58,6 +58,7 @@ Then you can extend this configuration with the rules from this repository.
         <exclude name="ExcessiveParameterList" />
         <exclude name="ExcessiveMethodLength" />
         <exclude name="ExcessiveClassLength" />
+        <exclude name="CyclomaticComplexity" />
     </rule>
     <rule ref="rulesets/codesize.xml/ExcessiveParameterList">
         <properties>
@@ -74,6 +75,13 @@ Then you can extend this configuration with the rules from this repository.
         <properties>
             <property name="minimum" value="301" />
             <property name="ignore-whitespace" value="true" />
+        </properties>
+    </rule>
+    <rule ref="rulesets/codesize.xml/CyclomaticComplexity">
+        <properties>
+            <property name="reportLevel" value="6" />
+            <property name="showClassesComplexity" value="true" />
+            <property name="showMethodsComplexity" value="true" />
         </properties>
     </rule>
     <rule ref="rulesets/controversial.xml" />
