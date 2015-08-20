@@ -124,3 +124,4 @@ You can also adapt the rules with properties or use only special rules. Take a l
 - [x] Rule against useless comments (same name as method name)
 - [ ] Try to avoid "return $this->doSomething() && !$this->doOtherthings()"
 - [ ] No const in entities
+- [ ] Are public methods in traits useful?
