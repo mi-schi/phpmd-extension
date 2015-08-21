@@ -2,13 +2,10 @@
 
 namespace MS\PHPMD\Rule\Symfony2;
 
-use PDepend\Source\AST\ASTClass;
 use PDepend\Source\AST\ASTMethod;
 use PHPMD\AbstractNode;
-use PHPMD\AbstractRule;
 use PHPMD\Node\ClassNode;
 use PHPMD\Node\MethodNode;
-use PHPMD\Rule\ClassAware;
 
 /**
  * Class EntitySimpleGetterSetter
@@ -17,7 +14,7 @@ use PHPMD\Rule\ClassAware;
  *
  * @package MS\PHPMD\Rule\Symfony2
  */
-class EntitySimpleGetterSetter extends AbstractRule implements ClassAware
+class EntitySimpleGetterSetter extends AbstractEntityRule
 {
     /**
      * @var array
@@ -54,24 +51,6 @@ class EntitySimpleGetterSetter extends AbstractRule implements ClassAware
 
             $this->addViolation($method, [$prefixes]);
         }
-    }
-
-    /**
-     * @param ClassNode|ASTClass $node
-     *
-     * @return bool
-     */
-    private function isEntity(ClassNode $node)
-    {
-        if (true === $node->isAbstract()) {
-            return false;
-        }
-
-        if (0 < preg_match($this->getStringProperty('entityRegex'), $node->getDocComment())) {
-            return true;
-        }
-
-        return false;
     }
 
     /**

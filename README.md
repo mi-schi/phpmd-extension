@@ -22,7 +22,7 @@ Extends phpmd with rules for Symfony2. Also add extra rules from clean code.
     * [MeaninglessMethodName](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/cleancode.xml#L180-L182)
 * Symfony2
     * [ControllerMethodName](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/symfony2.xml#L14-L16)
-    * [EntitySimpleGetterSetter](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/symfony2.xml#L41-L43)
+    * [EntitySimpleGetterSetter](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/symfony2.xml#L41-L44)
 * Tests
     * [MethodNumberOfMocks](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/test.xml#L14-L17)
     * [MethodNumberOfAsserts](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/test.xml#L56-L58)

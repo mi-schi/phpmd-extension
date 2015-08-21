@@ -16,6 +16,7 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
 
     /**
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
      */
     public function testApplyNoEntity()
     {
@@ -34,6 +35,7 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
 
     /**
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
      */
     public function testValidEntity()
     {
@@ -49,6 +51,7 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
 
     /**
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
      */
     public function testValidEntityWithWhitelist()
     {
@@ -60,6 +63,7 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
 
     /**
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
      */
     public function testWrongMethodPrefix()
     {
@@ -71,6 +75,7 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
 
     /**
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
      */
     public function testForbiddenScope()
     {
@@ -84,6 +89,7 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
 
     /**
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
      */
     public function testMultipleReturns()
     {
@@ -99,6 +105,7 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
 
     /**
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
      */
     public function testRelationReturnToThis()
     {
@@ -123,13 +130,36 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
 
     /**
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
      */
     public function testAbstractClass()
     {
         $node = \Mockery::mock('PHPMD\Node\ClassNode');
+        $node->shouldReceive('getDocComment')->andReturn('');
         $node->shouldReceive('isAbstract')->andReturn(true);
 
         $this->assertRule($node, 0);
+    }
+
+    /**
+     * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
+     */
+    public function testForceClassIsAnEntity()
+    {
+        $methodNode = $this->getMethodNode(self::CLASS_NAME, 'getData', [
+            'ScopeStatement' => [],
+            'ReturnStatement' => array_fill(0, 1, $this->getNode('return')),
+            'Variable' => array_fill(0, 3, $this->getNode('$this')),
+        ]);
+
+        $classNode = \Mockery::mock('PHPMD\Node\ClassNode');
+        $classNode->shouldReceive('getDocComment')->andReturn('* @isEntity');
+        $classNode->shouldReceive('getImage')->andReturn(self::CLASS_NAME);
+        $classNode->shouldReceive('isAbstract')->andReturn(true);
+        $classNode->shouldReceive('getMethods')->andReturn([$methodNode]);
+
+        $this->assertRule($classNode, 1);
     }
 
     /**
@@ -158,6 +188,7 @@ class EntitySimpleGetterSetterTest extends AbstractApplyTest
         $rule->addProperty('prefixes', 'get,set');
         $rule->addProperty('whitelist', '__construct');
         $rule->addProperty('entityRegex', '(\*\s*@\S*Entity)i');
+        $rule->addProperty('classIsEntityRegex', '(\*\s*@isEntity)i');
 
         return $rule;
     }

@@ -41,6 +41,7 @@ class FooController
 If the class is an entity, it should contain only simple getter or setter.
 Otherwise you have a data object and a business object in once. Swap out the methods with business logic to a model.
 Use a factory or an abstract MappedSuperclass for the model methods.
+If your class is an entity, use the "@isEntity" annotation to force the validation.
             ]]>
         </description>
         <priority>2</priority>
@@ -49,6 +50,7 @@ Use a factory or an abstract MappedSuperclass for the model methods.
             <property name="prefixes" value="get,set,is,has,add,remove" description="allowed prefixes in the methods" />
             <property name="whitelist" value="__construct,__destruct,__set,__get,__call,__callStatic,__isset,__unset,__sleep,__wakeup,__toString,__invoke,__set_state,__clone" description="allowed method names" />
             <property name="entityRegex" value="(\*\s*@\S*Entity)i" description="entity regex for class doc comment" />
+            <property name="classIsEntityRegex" value="(\*\s*@isEntity)i" description="annotation that the class is an entity" />
         </properties>
         <example>
             <![CDATA[

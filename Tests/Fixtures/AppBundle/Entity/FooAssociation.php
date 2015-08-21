@@ -2,12 +2,16 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Model\Foo;
+
 /**
- * Class Foo
+ * Class FooAssociation
  *
- * @Entity
+ * @isEntity
+ *
+ * @package AppBundle\Entity
  */
-class Foo extends FooAssociation
+class FooAssociation extends Foo
 {
     private $data;
 

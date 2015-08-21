@@ -13,6 +13,7 @@ class EntitySimpleGetterSetterTest extends AbstractProcessTest
 {
     /**
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
      */
     public function testRule()
     {
@@ -20,14 +21,37 @@ class EntitySimpleGetterSetterTest extends AbstractProcessTest
             ->runPhpmd('Entity/Foo.php', 'symfony2.xml')
             ->getOutput();
 
-        $this->assertContains('Entity/Foo.php:77	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
-        $this->assertContains('Entity/Foo.php:88	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
-        $this->assertContains('Entity/Foo.php:98	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
-        $this->assertContains('Entity/Foo.php:110	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity/Foo.php:75	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity/Foo.php:86	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity/Foo.php:96	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity/Foo.php:108	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+
+        $this->assertNotContains('Entity/Foo.php:17', $output);
+        $this->assertNotContains('Entity/Foo.php:29', $output);
+        $this->assertNotContains('Entity/Foo.php:41', $output);
+        $this->assertNotContains('Entity/Foo.php:51', $output);
+        $this->assertNotContains('Entity/Foo.php:63', $output);
     }
 
     /**
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
+     */
+    public function testForceRule()
+    {
+        $output = $this
+            ->runPhpmd('Entity/FooAssociation.php', 'symfony2.xml')
+            ->getOutput();
+
+        $this->assertContains('Entity/FooAssociation.php:79	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity/FooAssociation.php:90	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity/FooAssociation.php:100	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity/FooAssociation.php:112	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+    }
+
+    /**
+     * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
      */
     public function testRuleWithModel()
     {
@@ -40,6 +64,7 @@ class EntitySimpleGetterSetterTest extends AbstractProcessTest
 
     /**
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
+     * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
      */
     public function testRuleWithTestForEntity()
     {
