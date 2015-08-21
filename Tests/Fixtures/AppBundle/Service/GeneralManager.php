@@ -12,7 +12,7 @@ class GeneralManager
      *
      * @return int|string
      */
-    public function doSomething()
+    public function getData()
     {
         return 1 === 1 ? '1' : 2;
     }

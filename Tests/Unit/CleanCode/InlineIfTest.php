@@ -41,7 +41,7 @@ class InlineIfTest extends AbstractApplyTest
      */
     protected function getRule()
     {
-        $rule =  new InlineIf();
+        $rule = new InlineIf();
 
         return $rule;
     }
