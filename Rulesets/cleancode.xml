@@ -100,7 +100,7 @@ It is normal that you maintenance your code but not your comments. So the commen
 Comments who describe why you write this code are good comments.
             ]]>
         </description>
-        <priority>2</priority>
+        <priority>3</priority>
         <properties>
             <property name="percent" value="60" description="allowed name-to-comment similarity in percent" />
             <property name="checkClass" value="1" description="should classes be checked" />
@@ -182,7 +182,7 @@ A method should only do one atomic thing. Describe it as best as you can.
 If you couldn't find an other name, set a prefix what type of data or information you process.
             ]]>
         </description>
-        <priority>2</priority>
+        <priority>4</priority>
         <properties>
             <property name="delimiter" value="," description="delimiter for explode" />
             <property name="meaninglessNames" value="getData,getInformation,setData,setInformation" description="meaningless method names" />
