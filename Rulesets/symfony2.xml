@@ -86,4 +86,40 @@ class Entity
             ]]>
         </example>
     </rule>
+
+    <rule name="EntityConstants"
+          message="Don't contain constants in your entity. Important information are distribute throughout the project. You reduce the reusability."
+          class="MS\PHPMD\Rule\Symfony2\EntityConstants">
+        <description>
+            <![CDATA[
+Don't contain constants in your entity. Important information are distribute throughout the project. You reduce the reusability.
+It is better to create a "Static" namespace. Than you create final classes with your constants in this namespace.
+So you can use the constants independent of your entity.
+            ]]>
+        </description>
+        <priority>2</priority>
+        <properties>
+            <property name="entityRegex" value="(\*\s*@\S*Entity)i" description="entity regex for class doc comment" />
+            <property name="classIsEntityRegex" value="(\*\s*@isEntity)i" description="annotation that the class is an entity" />
+        </properties>
+        <example>
+            <![CDATA[
+// good
+class Identifier
+{
+    const SPECIAL_ID = 1;
+}
+
+// bad
+class Entity
+{
+    const SPECIAL_ID = 1;
+
+    public function getAttribute()
+    {
+    }
+}
+            ]]>
+        </example>
+    </rule>
 </ruleset>

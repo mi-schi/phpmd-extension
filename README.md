@@ -23,6 +23,7 @@ Extends phpmd with rules for Symfony2. Also add extra rules from clean code.
 * Symfony2
     * [ControllerMethodName](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/symfony2.xml#L14-L16)
     * [EntitySimpleGetterSetter](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/symfony2.xml#L41-L44)
+    * [EntityConstants](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/symfony2.xml#L95-L97)
 * Tests
     * [MethodNumberOfMocks](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/test.xml#L14-L17)
     * [MethodNumberOfAsserts](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/test.xml#L56-L58)
@@ -124,6 +125,6 @@ You can also adapt the rules with properties or use only special rules. Take a l
 - [ ] Rule that a service should never call a controller
 - [x] Rule against useless comments (same name as method name)
 - [ ] Try to avoid "return $this->doSomething() && !$this->doOtherthings()"
-- [ ] No const in entities
+- [x] No const in entities
 - [ ] Are public methods in traits useful?
 - [x] No meaningless methods (getData)
