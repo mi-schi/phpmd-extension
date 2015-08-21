@@ -9,6 +9,11 @@ namespace AppBundle\Entity;
  */
 class Foo extends FooAssociation
 {
+    /**
+     * bad
+     */
+    const SPECIAL_ID = 1;
+
     private $data;
 
     /**

@@ -21,16 +21,16 @@ class EntitySimpleGetterSetterTest extends AbstractProcessTest
             ->runPhpmd('Entity/Foo.php', 'symfony2.xml')
             ->getOutput();
 
-        $this->assertContains('Entity/Foo.php:75	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
-        $this->assertContains('Entity/Foo.php:86	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
-        $this->assertContains('Entity/Foo.php:96	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
-        $this->assertContains('Entity/Foo.php:108	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity/Foo.php:80	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity/Foo.php:91	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity/Foo.php:101	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
+        $this->assertContains('Entity/Foo.php:113	The method should only be a simple get,set,is,has,add,remove in this entity.', $output);
 
-        $this->assertNotContains('Entity/Foo.php:17', $output);
-        $this->assertNotContains('Entity/Foo.php:29', $output);
-        $this->assertNotContains('Entity/Foo.php:41', $output);
-        $this->assertNotContains('Entity/Foo.php:51', $output);
-        $this->assertNotContains('Entity/Foo.php:63', $output);
+        $this->assertNotContains('Entity/Foo.php:22', $output);
+        $this->assertNotContains('Entity/Foo.php:34', $output);
+        $this->assertNotContains('Entity/Foo.php:46', $output);
+        $this->assertNotContains('Entity/Foo.php:56', $output);
+        $this->assertNotContains('Entity/Foo.php:68', $output);
     }
 
     /**
