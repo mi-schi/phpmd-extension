@@ -122,4 +122,4 @@ You can also adapt the rules with properties or use only special rules. Take a l
 - [ ] Rule for high cohesion (member variables are used by a lot of methods)
 - [ ] Rule that a service should never call a controller
 - [ ] Try to avoid "return $this->doSomething() && !$this->doOtherthings()"
-- [ ] Are public methods in traits useful? Waiting for [Pull request #304](https://github.com/phpmd/phpmd/pull/304)
+- [ ] Are public methods in traits useful? *Waiting for [Pull request #304](https://github.com/phpmd/phpmd/pull/304)*
