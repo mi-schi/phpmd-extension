@@ -119,12 +119,7 @@ You can also adapt the rules with properties or use only special rules. Take a l
 ## ToDos
 
 - [ ] Rule against Train Wreck (getFoo()->getBar()->getMuh()->getMeh())
-- [x] testCanAddTwoNumbers is better than testAdd
 - [ ] Rule for high cohesion (member variables are used by a lot of methods)
-- [x] Rule against inline ifs (? '' : '')
 - [ ] Rule that a service should never call a controller
-- [x] Rule against useless comments (same name as method name)
 - [ ] Try to avoid "return $this->doSomething() && !$this->doOtherthings()"
-- [x] No const in entities
-- [ ] Are public methods in traits useful?
-- [x] No meaningless methods (getData)
+- [ ] Are public methods in traits useful? Waiting for [Pull request #304](https://github.com/phpmd/phpmd/pull/304)
