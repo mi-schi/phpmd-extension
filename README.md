@@ -31,7 +31,7 @@ Extends phpmd with rules for Symfony2. Also add extra rules from clean code.
 
 ## Installation
 
-Use ```composer``` for installation by adding the following to your ```composer.json``` file:
+Composer is used for installation. Add the following lines to your ```composer.json``` file:
 
 ```
 "require-dev": {
@@ -41,8 +41,7 @@ Use ```composer``` for installation by adding the following to your ```composer.
 
 ## Usage
 
-Create a phpmd.xml file and import the basic rules from phpmd. The example below contains useful changes.
-Then you can extend this configuration with the rules from this repository.
+Create a ```phpmd.xml``` file and import the basic rules from phpmd. The example below contains some useful changes. Afterwards you can extend the configuration with rules from this repository.
 
 ### Basic Rules
 
@@ -114,7 +113,7 @@ Then you can extend this configuration with the rules from this repository.
     <rule ref="../../../../../mi-schi/phpmd-symfony2/Rulesets/test.xml" />
 ```
 
-You can also adapt the rules with properties or use only special rules. Take a look in the xmls. It works like the basic ruleset logic.
+You can also customize the rules with own properties or use only specific rules. Just take a look in the xmls file. It works as the basic ruleset logic.
 
 ## ToDos
 
