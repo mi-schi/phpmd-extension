@@ -113,7 +113,7 @@ Create a ```phpmd.xml``` file and import the basic rules from phpmd. The example
     <rule ref="../../../../../mi-schi/phpmd-symfony2/Rulesets/test.xml" />
 ```
 
-You can also customize the rules with own properties or use only specific rules. Just take a look in the xmls file. It works as the basic ruleset logic.
+You can also customize the rules with own properties or use only specific rules. Just take a look in the xml files. It works as the basic ruleset logic.
 
 ## ToDos
 
