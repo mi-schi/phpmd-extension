@@ -7,7 +7,7 @@ namespace AppBundle\Statics;
  *
  * @package AppBundle\Statics
  */
-class Identifier
+final class Identifier
 {
     /**
      * good
