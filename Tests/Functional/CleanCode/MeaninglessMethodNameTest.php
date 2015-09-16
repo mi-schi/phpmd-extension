@@ -14,7 +14,7 @@ class MeaninglessMethodNameTest extends AbstractProcessTest
     /**
      * @covers MS\PHPMD\Rule\CleanCode\MeaninglessMethodName
      */
-    public function testRule()
+    public function testMeaninglessMethodNameRule()
     {
         $output = $this
             ->runPhpmd('Service/GeneralManager.php', 'cleancode.xml')

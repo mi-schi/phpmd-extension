@@ -14,7 +14,7 @@ class InlineIfTest extends AbstractProcessTest
     /**
      * @covers MS\PHPMD\Rule\CleanCode\InlineIf
      */
-    public function testRule()
+    public function testInlineIfRule()
     {
         $output = $this
             ->runPhpmd('Service/GeneralManager.php', 'cleancode.xml')

@@ -14,7 +14,7 @@ class ControllerMethodNameTest extends AbstractProcessTest
     /**
      * @covers MS\PHPMD\Rule\Symfony2\ControllerMethodName
      */
-    public function testRule()
+    public function testControllerMethodNameRule()
     {
         $output = $this
             ->runPhpmd('Controller/FooController.php', 'symfony2.xml')

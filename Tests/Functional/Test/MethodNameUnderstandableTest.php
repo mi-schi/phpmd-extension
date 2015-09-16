@@ -15,7 +15,7 @@ class MethodNameUnderstandableTest extends AbstractProcessTest
      * @covers MS\PHPMD\Rule\Test\MethodNameUnderstandable
      * @covers MS\PHPMD\Rule\Test\AbstractTestRule
      */
-    public function testRule()
+    public function testMethodNameUnderstandableRule()
     {
         $output = $this
             ->runPhpmd('Tests/Test.php', 'test.xml')

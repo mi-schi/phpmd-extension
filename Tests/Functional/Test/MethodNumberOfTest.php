@@ -17,7 +17,7 @@ class MethodNumberOfTest extends AbstractProcessTest
      * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
      * @covers MS\PHPMD\Rule\Test\AbstractTestRule
      */
-    public function testRule()
+    public function testMethodNumberOfRule()
     {
         $output = $this
             ->runPhpmd('Tests/Test.php', 'test.xml')

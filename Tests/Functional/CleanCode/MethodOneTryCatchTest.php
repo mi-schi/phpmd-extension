@@ -14,7 +14,7 @@ class MethodOneTryCatchTest extends AbstractProcessTest
     /**
      * @covers MS\PHPMD\Rule\CleanCode\MethodOneTryCatch
      */
-    public function testRule()
+    public function testMethodOneTryCatchRule()
     {
         $output = $this
             ->runPhpmd('Utility/TryThings.php', 'cleancode.xml')

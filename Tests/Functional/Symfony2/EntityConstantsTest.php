@@ -15,7 +15,7 @@ class EntityConstantsTest extends AbstractProcessTest
      * @covers MS\PHPMD\Rule\Symfony2\EntityConstants
      * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
      */
-    public function testRule()
+    public function testEntityConstantsRule()
     {
         $output = $this
             ->runPhpmd('Entity/Foo.php', 'symfony2.xml')

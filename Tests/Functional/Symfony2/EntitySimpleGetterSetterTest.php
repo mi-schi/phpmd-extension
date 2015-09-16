@@ -15,7 +15,7 @@ class EntitySimpleGetterSetterTest extends AbstractProcessTest
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
      * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
      */
-    public function testRule()
+    public function testEntitySimpleGetterSetterRule()
     {
         $output = $this
             ->runPhpmd('Entity/Foo.php', 'symfony2.xml')
@@ -37,7 +37,7 @@ class EntitySimpleGetterSetterTest extends AbstractProcessTest
      * @covers MS\PHPMD\Rule\Symfony2\EntitySimpleGetterSetter
      * @covers MS\PHPMD\Rule\Symfony2\AbstractEntityRule
      */
-    public function testForceRule()
+    public function testForceEntitySimpleGetterSetterRule()
     {
         $output = $this
             ->runPhpmd('Entity/FooAssociation.php', 'symfony2.xml')
