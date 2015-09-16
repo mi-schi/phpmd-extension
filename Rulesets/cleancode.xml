@@ -21,7 +21,7 @@ Can you use the event dispatcher pattern? No? Maybe better general suffixes are 
         <priority>5</priority>
         <properties>
             <property name="delimiter" value="," description="delimiter for explode" />
-            <property name="suffixes" value="Manager,Handler,Helper,Util,Information,Processor" description="bad general suffixes" />
+            <property name="suffixes" value="Manager,Handler,Helper,Util,Utility,Information,Processor" description="bad general suffixes" />
         </properties>
         <example>
             <![CDATA[
