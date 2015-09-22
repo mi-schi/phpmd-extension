@@ -26,7 +26,7 @@
     "phpmd/phpmd": "@stable"
   },
   "require-dev": {
-    "phpunit/phpunit": "4.7.6",
+    "phpunit/phpunit": "@stable",
     "symfony/process": "~2.0",
     "mockery/mockery": "0.9.4"
   },
