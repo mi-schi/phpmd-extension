@@ -23,12 +23,12 @@
   },
   "license": "MIT",
   "require": {
-    "phpmd/phpmd": "@stable"
+    "phpmd/phpmd": ">=2.3.0"
   },
   "require-dev": {
     "phpunit/phpunit": "@stable",
-    "symfony/process": "~2.0",
-    "mockery/mockery": "0.9.4"
+    "symfony/process": "@stable",
+    "mockery/mockery": "@stable"
   },
   "autoload": {
     "psr-4": {
