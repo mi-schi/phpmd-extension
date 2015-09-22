@@ -121,5 +121,5 @@ You can also customize the rules with own properties or use only specific rules.
 - [ ] Rule for high cohesion (member variables are used by a lot of methods)
 - [ ] Rule that a service should never call a controller
 - [ ] Try to avoid "return $this->doSomething() && !$this->doOtherthings()"
-- [ ] Are public methods in traits useful? *Waiting for [Pull request #304](https://github.com/phpmd/phpmd/pull/304)*
+- [ ] Are public methods in traits useful?
 - [ ] Avoid new operator in constructor
