@@ -122,4 +122,41 @@ class Entity
             ]]>
         </example>
     </rule>
+
+    <rule name="ConstructorNewOperator"
+          message="With a new operator in the constructor you have a strong dependency. Make your class flexible and inject the new instance via DI."
+          class="MS\PHPMD\Rule\Symfony2\ConstructorNewOperator">
+        <description>
+            <![CDATA[
+With a new operator in the constructor you have a strong dependency. Make your class flexible and inject the new instance via DI.
+Even better is to define an interface and inject this via the constructor parameter. So you can replace the dependency with an other instance.
+You can use the symfony service container and define a service with arguments. Please check also the calls argument.
+With this rule you support the open-close principle.
+            ]]>
+        </description>
+        <priority>4</priority>
+        <example>
+            <![CDATA[
+class Converter
+{
+    private $reader;
+
+    public function __construct()
+    {
+        $this->reader = new Reader(); // bad
+    }
+}
+
+class Converter
+{
+    private $reader;
+
+    public function __construct(ReaderInterface $reader)
+    {
+        $this->reader = $reader; // good
+    }
+}
+            ]]>
+        </example>
+    </rule>
 </ruleset>
