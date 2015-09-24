@@ -2,7 +2,6 @@
 
 namespace MS\PHPMD\Rule\Symfony2;
 
-use PDepend\Source\AST\ASTNode;
 use PHPMD\AbstractNode;
 use PHPMD\AbstractRule;
 use PHPMD\Node\MethodNode;
