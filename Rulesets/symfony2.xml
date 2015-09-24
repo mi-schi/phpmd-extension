@@ -137,7 +137,7 @@ With this rule you support the open-close principle.
         <priority>4</priority>
         <properties>
             <property name="delimiter" value="," description="delimiter for explode" />
-            <property name="allowedClassNames" value="DateTime" description="whitelist for class names. These are allowed to instantiate in the constructor" />
+            <property name="allowedClassNames" value="\DateTime,DateTime" description="whitelist for class names. These are allowed to instantiate in the constructor" />
         </properties>
         <example>
             <![CDATA[

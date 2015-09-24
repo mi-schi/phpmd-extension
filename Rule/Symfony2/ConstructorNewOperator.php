@@ -24,26 +24,16 @@ class ConstructorNewOperator extends AbstractRule implements MethodAware
     {
         $classReferences = $node->findChildrenOfType('ClassReference');
 
-        if ('__construct' === $node->getImage() && 0 < count($classReferences) && false === $this->isClassNameAllowed($classReferences)) {
-            $this->addViolation($node);
+        if ('__construct' !== $node->getImage() || 0 === count($classReferences)) {
+            return;
         }
-    }
 
-    /**
-     * @param ASTNode[] $classReferences
-     *
-     * @return bool
-     */
-    private function isClassNameAllowed(array $classReferences)
-    {
         $allowedClassNames = explode($this->getStringProperty('delimiter'), $this->getStringProperty('allowedClassNames'));
 
         foreach ($classReferences as $classReference) {
             if (false === in_array($classReference->getImage(), $allowedClassNames)) {
-                return false;
+                $this->addViolation($classReference);
             }
         }
-
-        return true;
     }
 }

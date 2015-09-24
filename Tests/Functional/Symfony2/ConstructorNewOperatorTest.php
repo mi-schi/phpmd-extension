@@ -20,8 +20,9 @@ class ConstructorNewOperatorTest extends AbstractProcessTest
             ->runPhpmd('Service/UserConverter.php', 'symfony2.xml')
             ->getOutput();
 
-        $this->assertContains('Service/UserConverter.php:15	With a new operator in the constructor you have a strong dependency. Make your class flexible and inject the new instance via DI.', $output);
-        $this->assertNotContains('Service/UserConverter.php:26', $output);
+        $this->assertContains('Service/UserConverter.php:17	With a new operator in the constructor you have a strong dependency. Make your class flexible and inject the new instance via DI.', $output);
+        $this->assertNotContains('Service/UserConverter.php:20', $output);
+        $this->assertNotContains('Service/UserConverter.php:28', $output);
     }
 
     /**
@@ -33,6 +34,6 @@ class ConstructorNewOperatorTest extends AbstractProcessTest
             ->runPhpmd('Entity/Foo.php', 'symfony2.xml')
             ->getOutput();
 
-        $this->assertNotContains('Entity/Foo.php:22', $output);
+        $this->assertNotContains('Entity/Foo.php:24', $output);
     }
 }

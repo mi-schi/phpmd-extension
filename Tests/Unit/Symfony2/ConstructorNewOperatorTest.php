@@ -30,7 +30,7 @@ class ConstructorNewOperatorTest extends AbstractApplyTest
     public function testConstructorWithNewAllowedClassName()
     {
         $node = $this->getMethodNode('TestService', '__construct', [
-            'ClassReference' => array_fill(0, 1, $this->getNode('DateTime'))
+            'ClassReference' => array_fill(0, 1, $this->getNode('\DateTime'))
         ]);
 
         $this->assertRule($node, 0);
@@ -67,7 +67,7 @@ class ConstructorNewOperatorTest extends AbstractApplyTest
     {
         $rule = new ConstructorNewOperator();
         $rule->addProperty('delimiter', ',');
-        $rule->addProperty('allowedClassNames', 'DateTime');
+        $rule->addProperty('allowedClassNames', '\DateTime');
 
         return $rule;
     }
