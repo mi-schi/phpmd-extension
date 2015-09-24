@@ -15,6 +15,9 @@ class UserConverter
     public function __construct()
     {
         $reader = new Reader();
+
+        // this is ok
+        $datetime = new \DateTime();
     }
 
     /**

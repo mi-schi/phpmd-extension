@@ -21,7 +21,7 @@ class ConstructorNewOperatorTest extends AbstractProcessTest
             ->getOutput();
 
         $this->assertContains('Service/UserConverter.php:15	With a new operator in the constructor you have a strong dependency. Make your class flexible and inject the new instance via DI.', $output);
-        $this->assertNotContains('Service/UserConverter.php:23', $output);
+        $this->assertNotContains('Service/UserConverter.php:26', $output);
     }
 
     /**
