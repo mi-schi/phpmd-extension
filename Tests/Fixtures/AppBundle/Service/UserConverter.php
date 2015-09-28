@@ -18,6 +18,7 @@ class UserConverter
 
         // this is ok
         $datetime = new \DateTime();
+        $collection = new ArrayCollection();
     }
 
     /**

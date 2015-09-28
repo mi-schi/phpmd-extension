@@ -61,13 +61,25 @@ class ConstructorNewOperatorTest extends AbstractApplyTest
     }
 
     /**
+     * @covers MS\PHPMD\Rule\Symfony2\ConstructorNewOperator
+     */
+    public function testMethodWithNamespaceNewOperator()
+    {
+        $node = $this->getMethodNode('TestService', 'doThings', [
+            'ClassReference' => array_fill(0, 1, $this->getNode('Doctrine\ArrayCollection'))
+        ]);
+
+        $this->assertRule($node, 0);
+    }
+
+    /**
      * @return ConstructorNewOperator
      */
     protected function getRule()
     {
         $rule = new ConstructorNewOperator();
         $rule->addProperty('delimiter', ',');
-        $rule->addProperty('allowedClassNames', '\DateTime');
+        $rule->addProperty('allowedClassNames', '\DateTime,ArrayCollection');
 
         return $rule;
     }

@@ -30,9 +30,26 @@ class ConstructorNewOperator extends AbstractRule implements MethodAware
         $allowedClassNames = explode($this->getStringProperty('delimiter'), $this->getStringProperty('allowedClassNames'));
 
         foreach ($classReferences as $classReference) {
-            if (false === in_array($classReference->getImage(), $allowedClassNames)) {
+            if (false === $this->containsClassName($classReference->getImage(), $allowedClassNames)) {
                 $this->addViolation($classReference);
             }
         }
+    }
+
+    /**
+     * @param string $className
+     * @param array  $allowedClassNames
+     *
+     * @return bool
+     */
+    private function containsClassName($className, array $allowedClassNames)
+    {
+        foreach ($allowedClassNames as $allowedClassName) {
+            if (false !== stripos($className, $allowedClassName)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
