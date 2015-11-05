@@ -25,6 +25,7 @@ Extends phpmd with rules for Symfony2. Also add extra rules from clean code.
     * [ControllerMethodName](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/symfony2.xml#L14-L16)
     * [EntitySimpleGetterSetter](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/symfony2.xml#L41-L44)
     * [EntityConstants](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/symfony2.xml#L95-L97)
+    * [ConstructorNewOperator](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/symfony2.xml#L131-L134)
 * Tests
     * [MethodNumberOfMocks](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/test.xml#L14-L17)
     * [MethodNumberOfAsserts](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/test.xml#L56-L58)
