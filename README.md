@@ -37,7 +37,7 @@ Composer is used for installation. Add the following lines to your ```composer.j
 
 ```
 "require-dev": {
-    "mi-schi/phpmd-symfony2": "dev-master"
+    "mi-schi/phpmd-symfony2": "^2.0"
 }
 ```
 
