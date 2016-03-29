@@ -20,6 +20,6 @@ class SwitchStatementTest extends AbstractProcessTest
             ->runPhpmd('Service/Switcher.php', 'cleancode.xml')
             ->getOutput();
 
-        $this->assertContains('GeneralManager.php:17	Try to avoid using switch-case statements. Use polymorphism instead.', $output);
+        $this->assertContains('Switcher.php:17	Try to avoid using switch-case statements. Use polymorphism instead.', $output);
     }
 }

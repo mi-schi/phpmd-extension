@@ -56,5 +56,6 @@ class Test extends \PHPUnit_Framework_TestCase
         $this->assertCount(true);
         $this->assertContains(true);
         $this->assertContains(true);
+        $this->assertContains(true);
     }
 }

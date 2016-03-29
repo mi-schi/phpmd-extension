@@ -24,7 +24,7 @@ class MethodNumberOfTest extends AbstractProcessTest
             ->getOutput();
 
         $this->assertContains('Tests/Test.php:37	4 mocks are found in this test. Try to reduce the mocks to 3 or less.', $output);
-        $this->assertContains('Tests/Test.php:52	5 asserts are found in this test. Try to reduce the asserts to 3 or less.', $output);
+        $this->assertContains('Tests/Test.php:52	6 asserts are found in this test. Try to reduce the asserts to 5 or less.', $output);
     }
 
     /**

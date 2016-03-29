@@ -44,7 +44,7 @@ class MethodNumberOfAssertsTest extends AbstractClassTest
         $methodNode = $this->getMethodNode(
             self::CLASS_NAME,
             'testBar',
-            ['MethodPostfix' => array_fill(0, 4, $this->getNode('assertContains'))]
+            ['MethodPostfix' => array_fill(0, 6, $this->getNode('assertContains'))]
         );
 
         $node = \Mockery::mock('PHPMD\Node\ClassNode');
@@ -60,7 +60,7 @@ class MethodNumberOfAssertsTest extends AbstractClassTest
     protected function getRule()
     {
         $rule =  new MethodNumberOfAsserts();
-        $rule->addProperty('number', '3');
+        $rule->addProperty('number', '5');
         $rule->addProperty('names', 'assert');
         $rule->addProperty('delimiter', ',');
         $rule->addProperty('match', '0');
