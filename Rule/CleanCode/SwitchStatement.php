@@ -27,4 +27,4 @@ class SwitchStatement extends AbstractRule implements MethodAware
             $this->addViolation($switchStatement);
         }
     }
-} 
+}
