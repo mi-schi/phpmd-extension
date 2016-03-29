@@ -26,8 +26,8 @@
     "phpmd/phpmd": ">=2.3.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "@stable",
-    "symfony/process": "@stable",
+    "phpunit/phpunit": "^4.7",
+    "symfony/process": "^2.7",
     "mockery/mockery": "@stable"
   },
   "autoload": {

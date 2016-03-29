@@ -60,7 +60,7 @@ Testing a lot of dependencies with one test violate of the single responsibility
         </description>
         <priority>4</priority>
         <properties>
-            <property name="number" value="3" description="allowed Number of asserts" />
+            <property name="number" value="5" description="allowed Number of asserts" />
             <property name="names" value="assert" description="filtered assert names in the test" />
             <property name="delimiter" value="," description="delimiter for names" />
             <property name="match" value="0" description="should the assert name match" />

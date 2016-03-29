@@ -21,6 +21,7 @@ Extends phpmd with rules for Symfony2. Also add extra rules from clean code.
     * [InlineIf](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/cleancode.xml#L154-L155)
     * [MeaninglessMethodName](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/cleancode.xml#L180-L182)
     * [TraitPublicMethod](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/cleancode.xml#L211-L214)
+    * [SwitchStatement](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/cleancode.xml#L247-L251)
 * Symfony2
     * [ControllerMethodName](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/symfony2.xml#L14-L16)
     * [EntitySimpleGetterSetter](https://github.com/mi-schi/phpmd-symfony2/blob/master/Rulesets/symfony2.xml#L41-L44)

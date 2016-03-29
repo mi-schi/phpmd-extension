@@ -238,4 +238,60 @@ $things = $class->doOtherThings();
             ]]>
         </example>
     </rule>
+
+    <rule name="SwitchStatement"
+          message="Try to avoid using switch-case statements. Use polymorphism instead."
+          class="MS\PHPMD\Rule\CleanCode\SwitchStatement">
+        <description>
+            <![CDATA[
+Switch statements scaling the complexity of your code in a vertical way. You have to change the statement every time when you add a new clause.
+You violate the Open-Close principe. If you extend your code, you will become troubles with dependencies and sub-statements.
+Use polymorphism instead. First extract the switch statement and then move the methods to get it onto the class where the polymorphism is needed.
+Then you have to decide whether replace the type code with subclasses or replace the type code with state/strategy.
+When you have set up the inheritance structure, you can replace the conditional with polymorphism.
+            ]]>
+        </description>
+        <priority>5</priority>
+        <example>
+            <![CDATA[
+class Example
+{
+    public function getType() // bad solution
+    {
+        switch ($type) {
+            case 'one':
+                return 'one';
+                break;
+            case 'two':
+                return 'two';
+                break;
+        }
+    }
+}
+
+// good solution using polymorphism
+
+interface ExampleInterface
+{
+    public function getType();
+}
+
+class One implements ExampleInterface
+{
+    public function getType()
+    {
+        return 'one';
+    }
+}
+
+class Two implements ExampleInterface
+{
+    public function getType()
+    {
+        return 'two';
+    }
+}
+            ]]>
+        </example>
+    </rule>
 </ruleset>
