@@ -67,6 +67,10 @@ class ControllerMethodNameTest extends AbstractApplyTest
      */
     protected function getRule()
     {
-        return new ControllerMethodName();
+        $rule = new ControllerMethodName();
+        $rule->addProperty('delimiter', ',');
+        $rule->addProperty('allowedMethodNames', '__construct');
+
+        return $rule;
     }
 }
