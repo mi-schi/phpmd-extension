@@ -17,6 +17,10 @@ So you have to outsource your business logic to services or event listeners.
             ]]>
         </description>
         <priority>3</priority>
+        <properties>
+            <property name="delimiter" value="," description="delimiter for explode" />
+            <property name="allowedMethodNames" value="__construct" description="whitelist for method names. These are allowed reside in the controller though they are no actions." />
+        </properties>
         <example>
             <![CDATA[
 class FooController

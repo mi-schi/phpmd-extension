@@ -27,8 +27,15 @@ class ControllerMethodName extends AbstractRule implements ClassAware
             return;
         }
 
+        $allowedMethodNames = explode($this->getStringProperty('delimiter'), $this->getStringProperty('allowedMethodNames'));
+
         /** @var MethodNode $method */
         foreach ($node->getMethods() as $method) {
+            // Check if method is whitelisted
+            if (true === in_array($method->getImage(), $allowedMethodNames)) {
+              continue;
+            }
+
             if ('Action' !== substr($method->getImage(), -6, 6)) {
                 $this->addViolation($method);
             }

@@ -20,7 +20,8 @@ class ControllerMethodNameTest extends AbstractProcessTest
             ->runPhpmd('Controller/FooController.php', 'symfony2.xml')
             ->getOutput();
 
-        $this->assertContains('Controller/FooController.php:21	The method name should end with Action in this controller.', $output);
+        $this->assertNotContains('Controller/FooController.php:18	The method name should end with Action in this controller.', $output);
+        $this->assertContains('Controller/FooController.php:33	The method name should end with Action in this controller.', $output);
     }
 
     /**
