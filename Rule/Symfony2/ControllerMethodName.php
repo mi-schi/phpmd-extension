@@ -31,7 +31,6 @@ class ControllerMethodName extends AbstractRule implements ClassAware
 
         /** @var MethodNode $method */
         foreach ($node->getMethods() as $method) {
-            // Check if method is whitelisted
             if (true === in_array($method->getImage(), $allowedMethodNames)) {
               continue;
             }
