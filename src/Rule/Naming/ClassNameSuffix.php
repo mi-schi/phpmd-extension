@@ -1,6 +1,6 @@
 <?php
 
-namespace MS\PHPMD\Rule\CleanCode;
+namespace MS\PHPMD\Rule\Naming;
 
 use PHPMD\AbstractNode;
 use PHPMD\AbstractRule;
@@ -8,13 +8,9 @@ use PHPMD\Node\ClassNode;
 use PHPMD\Rule\ClassAware;
 
 /**
- * Class ClassNameSingleResponsibility
- *
  * Try to avoid general suffixes like Manager. It might violate the single responsibility principle.
- *
- * @package MS\PHPMD\Rule\CleanCode
  */
-class ClassNameSingleResponsibility extends AbstractRule implements ClassAware
+class ClassNameSuffix extends AbstractRule implements ClassAware
 {
     /**
      * @param AbstractNode|ClassNode $node

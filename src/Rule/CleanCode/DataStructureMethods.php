@@ -1,6 +1,6 @@
 <?php
 
-namespace MS\PHPMD\Rule\Symfony2;
+namespace MS\PHPMD\Rule\CleanCode;
 
 use PDepend\Source\AST\ASTMethod;
 use PHPMD\AbstractNode;
@@ -8,13 +8,9 @@ use PHPMD\Node\ClassNode;
 use PHPMD\Node\MethodNode;
 
 /**
- * Class EntitySimpleGetterSetter
- *
- * The entities have to contain only simple getter and setter.
- *
- * @package MS\PHPMD\Rule\Symfony2
+ * The data structure have to contain only simple getter and setter.
  */
-class EntitySimpleGetterSetter extends AbstractEntityRule
+class DataStructureMethods extends AbstractDataStructure
 {
     /**
      * @var array
@@ -31,7 +27,7 @@ class EntitySimpleGetterSetter extends AbstractEntityRule
      */
     public function apply(AbstractNode $node)
     {
-        if (false === $this->isEntity($node)) {
+        if (false === $this->isDataStructure($node)) {
             return;
         }
 

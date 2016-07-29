@@ -9,14 +9,13 @@
 
     <testsuites>
         <testsuite name="PHPMD">
-            <directory>Tests/Functional</directory>
-            <directory>Tests/Unit</directory>
+            <directory>tests/Functional</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">Rule</directory>
+            <directory suffix=".php">src/Rule</directory>
         </whitelist>
     </filter>
 

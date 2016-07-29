@@ -1,6 +1,6 @@
 <?php
 
-namespace MS\PHPMD\Rule\Symfony2;
+namespace MS\PHPMD\Rule\Naming;
 
 use PDepend\Source\AST\ASTClass;
 use PHPMD\AbstractNode;
@@ -10,11 +10,7 @@ use PHPMD\Node\MethodNode;
 use PHPMD\Rule\ClassAware;
 
 /**
- * Class ControllerMethodName
- *
  * When the class is concrete and ends with Controller, the method names have to end with Action.
- *
- * @package PHPMD\Rule\Symfony2
  */
 class ControllerMethodName extends AbstractRule implements ClassAware
 {

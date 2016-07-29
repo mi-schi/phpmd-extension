@@ -1,6 +1,6 @@
 <?php
 
-namespace MS\PHPMD\Rule\CleanCode;
+namespace MS\PHPMD\Rule\Design;
 
 use PDepend\Source\AST\ASTMethod;
 use PHPMD\AbstractNode;
@@ -10,11 +10,8 @@ use PHPMD\Node\TraitNode;
 use PHPMD\Rule\MethodAware;
 
 /**
- * Class TraitPublicMethod
- *
- * The purpose of a trait should be the reuse of methods which help the basic classes. Make your code clearly and define interfaces of your class as public methods.
- *
- * @package MS\PHPMD\Rule\CleanCode
+ * The purpose of a trait should be the reuse of methods which help the basic classes.
+ * Make your code clearly and define interfaces of your class as public methods.
  */
 class TraitPublicMethod extends AbstractRule implements MethodAware
 {

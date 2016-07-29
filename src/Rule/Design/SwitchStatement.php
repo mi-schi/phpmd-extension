@@ -1,6 +1,6 @@
 <?php
 
-namespace MS\PHPMD\Rule\CleanCode;
+namespace MS\PHPMD\Rule\Design;
 
 use PHPMD\AbstractNode;
 use PHPMD\AbstractRule;
@@ -8,11 +8,7 @@ use PHPMD\Node\MethodNode;
 use PHPMD\Rule\MethodAware;
 
 /**
- * Class SwitchStatement
- *
  * Try to avoid using switch-case statements. Use polymorphism instead.
- *
- * @package MS\PHPMD\Rule\CleanCode
  */
 class SwitchStatement extends AbstractRule implements MethodAware
 {

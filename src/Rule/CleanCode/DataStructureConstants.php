@@ -1,26 +1,23 @@
 <?php
 
-namespace MS\PHPMD\Rule\Symfony2;
+namespace MS\PHPMD\Rule\CleanCode;
 
 use PDepend\Source\AST\ASTClass;
 use PHPMD\AbstractNode;
 use PHPMD\Node\ClassNode;
 
 /**
- * Class EntityConstants
- *
- * Don't contain constants in your entity. Important information are distribute throughout the project. You reduce the reusability.
- *
- * @package MS\PHPMD\Rule\Symfony2
+ * Don't contain constants in your data structure. Important information are distribute throughout the project.
+ * You reduce the reusability.
  */
-class EntityConstants extends AbstractEntityRule
+class DataStructureConstants extends AbstractDataStructure
 {
     /**
      * @param AbstractNode|ClassNode|ASTClass $node
      */
     public function apply(AbstractNode $node)
     {
-        if (false === $this->isEntity($node)) {
+        if (false === $this->isDataStructure($node)) {
             return;
         }
 

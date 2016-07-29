@@ -1,6 +1,6 @@
 <?php
 
-namespace MS\PHPMD\Rule\CleanCode;
+namespace MS\PHPMD\Rule\Design;
 
 use PHPMD\AbstractNode;
 use PHPMD\AbstractRule;
@@ -8,13 +8,9 @@ use PHPMD\Node\MethodNode;
 use PHPMD\Rule\MethodAware;
 
 /**
- * Class MethodOneTryCatch
- *
  * Methods should only have one try statement. If not, swap out the try statement in an extra method. It increase the readability.
- *
- * @package MS\PHPMD\Rule\CleanCode
  */
-class MethodOneTryCatch extends AbstractRule implements MethodAware
+class TryStatement extends AbstractRule implements MethodAware
 {
     /**
      * @param AbstractNode|MethodNode $node

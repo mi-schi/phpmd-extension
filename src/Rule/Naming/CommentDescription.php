@@ -1,6 +1,6 @@
 <?php
 
-namespace MS\PHPMD\Rule\CleanCode;
+namespace MS\PHPMD\Rule\Naming;
 
 use PDepend\Source\AST\ASTClass;
 use PHPMD\AbstractNode;
@@ -10,13 +10,9 @@ use PHPMD\Rule\ClassAware;
 use PDepend\Source\AST\AbstractASTArtifact;
 
 /**
- * Class SuperfluousComment
- *
  * Don't write superfluous comments. It's adding by subtracting.
- *
- * @package MS\PHPMD\Rule\CleanCode
  */
-class SuperfluousComment extends AbstractRule implements ClassAware
+class CommentDescription extends AbstractRule implements ClassAware
 {
     /**
      * @var int
@@ -102,7 +98,7 @@ class SuperfluousComment extends AbstractRule implements ClassAware
      */
     private function calculateNameToCommentSimilarityInPercent($node)
     {
-        $docComment = $node->getDocComment();
+        $docComment = $node->getComment();
 
         if (empty($docComment)) {
             return 0;

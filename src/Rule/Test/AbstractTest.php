@@ -11,7 +11,7 @@ use PHPMD\Node\ClassNode;
  *
  * @package MS\PHPMD\Rule\Test
  */
-abstract class AbstractTestRule extends AbstractRule implements ClassAware
+abstract class AbstractTest extends AbstractRule implements ClassAware
 {
     /**
      * @param ClassNode $node

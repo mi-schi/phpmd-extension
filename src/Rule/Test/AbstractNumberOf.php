@@ -7,11 +7,8 @@ use PHPMD\Node\MethodNode;
 use PHPMD\AbstractNode;
 
 /**
- * Class AbstractMethodNumberOf
- *
- * @package MS\PHPMD\Rule\Test
  */
-abstract class AbstractMethodNumberOf extends AbstractTestRule
+abstract class AbstractNumberOf extends AbstractTest
 {
     /**
      * @var array

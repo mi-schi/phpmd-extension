@@ -6,13 +6,9 @@ use PHPMD\AbstractNode;
 use PHPMD\Node\ClassNode;
 
 /**
- * Class MethodNameUnderstandable
- *
  * The method name in your test should describe what they will check. This works only with a few more words.
- *
- * @package MS\PHPMD\Rule\Test
  */
-class MethodNameUnderstandable extends AbstractTestRule
+class MethodName extends AbstractTest
 {
     /**
      * @param AbstractNode|ClassNode $node
