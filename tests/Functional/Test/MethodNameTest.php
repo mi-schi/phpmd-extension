@@ -4,17 +4,8 @@ namespace MS\PHPMD\Tests\Functional\Test;
 
 use MS\PHPMD\Tests\Functional\AbstractProcessTest;
 
-/**
- * Class MethodNameUnderstandableTest
- *
- * @package MS\PHPMD\Tests\Functional\Test
- */
-class MethodNameUnderstandableTest extends AbstractProcessTest
+class MethodNameTest extends AbstractProcessTest
 {
-    /**
-     * @covers MS\PHPMD\Rule\Test\MethodNameUnderstandable
-     * @covers MS\PHPMD\Rule\Test\AbstractTestRule
-     */
     public function testMethodNameUnderstandableRule()
     {
         $output = $this

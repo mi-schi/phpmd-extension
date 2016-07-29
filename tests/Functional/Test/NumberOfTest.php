@@ -4,19 +4,8 @@ namespace MS\PHPMD\Tests\Functional\Test;
 
 use MS\PHPMD\Tests\Functional\AbstractProcessTest;
 
-/**
- * Class MethodNumberOfTest
- *
- * @package MS\PHPMD\Tests\Functional\Test
- */
 class MethodNumberOfTest extends AbstractProcessTest
 {
-    /**
-     * @covers MS\PHPMD\Rule\Test\MethodNumberOfAsserts
-     * @covers MS\PHPMD\Rule\Test\MethodNumberOfMocks
-     * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
-     * @covers MS\PHPMD\Rule\Test\AbstractTestRule
-     */
     public function testMethodNumberOfRule()
     {
         $output = $this
@@ -27,12 +16,6 @@ class MethodNumberOfTest extends AbstractProcessTest
         $this->assertContains('Tests/Test.php:52	6 asserts are found in this test. Try to reduce the asserts to 5 or less.', $output);
     }
 
-    /**
-     * @covers MS\PHPMD\Rule\Test\MethodNumberOfAsserts
-     * @covers MS\PHPMD\Rule\Test\MethodNumberOfMocks
-     * @covers MS\PHPMD\Rule\Test\AbstractMethodNumberOf
-     * @covers MS\PHPMD\Rule\Test\AbstractTestRule
-     */
     public function testRuleNoTest()
     {
         $output = $this

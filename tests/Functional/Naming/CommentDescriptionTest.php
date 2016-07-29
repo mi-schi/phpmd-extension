@@ -1,23 +1,15 @@
 <?php
 
-namespace MS\PHPMD\Tests\Functional\CleanCode;
+namespace MS\PHPMD\Tests\Functional\Naming;
 
 use MS\PHPMD\Tests\Functional\AbstractProcessTest;
 
-/**
- * Class SuperfluousCommentTest
- *
- * @package MS\PHPMD\Tests\Functional\CleanCode
- */
-class SuperfluousCommentTest extends AbstractProcessTest
+class CommentDescriptionTest extends AbstractProcessTest
 {
-    /**
-     * @covers MS\PHPMD\Rule\CleanCode\SuperfluousComment
-     */
     public function testSuperfluousCommentRule()
     {
         $output = $this
-            ->runPhpmd('Service/SuperfluousComment.php', 'cleancode.xml')
+            ->runPhpmd('Service/SuperfluousComment.php', 'naming.xml')
             ->getOutput();
 
         $this->assertNotContains('SuperfluousComment.php:42	It seems', $output);

@@ -1,23 +1,15 @@
 <?php
 
-namespace MS\PHPMD\Tests\Functional\CleanCode;
+namespace MS\PHPMD\Tests\Functional\Design;
 
 use MS\PHPMD\Tests\Functional\AbstractProcessTest;
 
-/**
- * Class InlineIfTest
- *
- * @package MS\PHPMD\Tests\Functional\CleanCode
- */
-class InlineIfTest extends AbstractProcessTest
+class ConditionalExpressionTest extends AbstractProcessTest
 {
-    /**
-     * @covers MS\PHPMD\Rule\CleanCode\InlineIf
-     */
-    public function testInlineIfRule()
+    public function testConditionalExpressionRule()
     {
         $output = $this
-            ->runPhpmd('Service/GeneralManager.php', 'cleancode.xml')
+            ->runPhpmd('Service/GeneralManager.php', 'design.xml')
             ->getOutput();
 
         $this->assertContains('GeneralManager.php:17	Try to avoid using inline ifs. They conceal the complexity of your code. Furthermore they obstruct the expandability. Refactor your code and increase the readability.', $output);

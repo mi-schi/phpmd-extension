@@ -1,23 +1,15 @@
 <?php
 
-namespace MS\PHPMD\Tests\Functional\CleanCode;
+namespace MS\PHPMD\Tests\Functional\Naming;
 
 use MS\PHPMD\Tests\Functional\AbstractProcessTest;
 
-/**
- * Class MeaninglessMethodNameTest
- *
- * @package MS\PHPMD\Tests\Functional\CleanCode
- */
-class MeaninglessMethodNameTest extends AbstractProcessTest
+class MethodNameTest extends AbstractProcessTest
 {
-    /**
-     * @covers MS\PHPMD\Rule\CleanCode\MeaninglessMethodName
-     */
-    public function testMeaninglessMethodNameRule()
+    public function testMethodNameRule()
     {
         $output = $this
-            ->runPhpmd('Service/GeneralManager.php', 'cleancode.xml')
+            ->runPhpmd('Service/GeneralManager.php', 'naming.xml')
             ->getOutput();
 
         $this->assertContains('GeneralManager.php:15	Try to avoid meaningless method names like getData. Also getData,getInformation,setData,setInformation are meaningless. Find a name which is not so general.', $output);
