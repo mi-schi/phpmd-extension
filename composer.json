@@ -1,15 +1,15 @@
 {
-  "name": "mi-schi/phpmd-symfony2",
-  "description": "Extended mess detection rules from phpmd for Symfony applications.",
+  "name": "mi-schi/phpmd-extension",
+  "description": "Contains extra phpmd rules from clean code book and the best practices of my experiences.",
   "keywords": [
       "phpmd",
-      "symfony2",
+      "extension",
       "clean code",
       "rules",
       "mess detection",
-      "extends"
+      "best practices"
   ],
-  "homepage": "https://github.com/mi-schi/phpmd-symfony2",
+  "homepage": "https://github.com/mi-schi/phpmd-extension",
   "authors": [
     {
       "name": "Michael Schindler",
@@ -18,8 +18,8 @@
   ],
   "support": {
     "email": "madsn@gmx.de",
-    "source": "https://github.com/mi-schi/phpmd-symfony2",
-    "issues": "https://github.com/mi-schi/phpmd-symfony2/issues"
+    "source": "https://github.com/mi-schi/phpmd-extension",
+    "issues": "https://github.com/mi-schi/phpmd-extension/issues"
   },
   "license": "MIT",
   "require": {
@@ -32,12 +32,13 @@
   },
   "autoload": {
     "psr-4": {
-      "MS\\PHPMD\\Rule\\": "Rule/"
+      "MS\\PHPMD\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "MS\\PHPMD\\": ""
+      "MS\\PHPMD\\": "src/",
+      "MS\\PHPMD\\Tests\\": "tests/"
     }
   }
 }
