@@ -1,0 +1,163 @@
+<ruleset name="Clean Code Rules Extended"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0
+                      http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+    <description>Contains naming rules for easy readable code.</description>
+
+    <rule name="ClassNameSuffix"
+          message="Try to avoid general suffixes like {0} found {1}. It might violate of the single responsibility principle."
+          class="MS\PHPMD\Rule\Naming\ClassNameSuffix"
+          externalInfoUrl="http://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager">
+        <description>
+            <![CDATA[
+Yeah you are on the right track. There is no business logic in the entities and the controllers are slim.
+Oh dear. Now you have classes like UserManager or PageHandler. But what do this classes?
+You might violate of the single responsibility principle. Split the Manager class. What do the methods?
+Can you use the event dispatcher pattern? No? Maybe better general suffixes are Builder, Writer, Reader, Converter.
+            ]]>
+        </description>
+        <priority>5</priority>
+        <properties>
+            <property name="delimiter" value="," description="delimiter for explode" />
+            <property name="suffixes" value="Manager,Handler,Helper,Util,Utility,Information,Processor" description="bad general suffixes" />
+        </properties>
+        <example>
+            <![CDATA[
+class FooManager // bad
+{
+    public function doSomething()
+    {
+    }
+
+    public function doCompletelyOtherThings()
+    {
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
+    <rule name="CommentDescription"
+          message="It seems that the {0} has a superfluous comment description. It fits {1} percent with the name of that."
+          class="MS\PHPMD\Rule\Naming\CommentDescription">
+        <description>
+            <![CDATA[
+Comments should be considered thoroughly in advance. Don't comment bad code. Rewrite it.
+Also try to avoid superfluous comments. It is obvious that getName returns a name.
+It is normal that you maintenance your code but not your comments. So the comment will mislead you later on.
+Comments who describe why you write this code are good comments.
+            ]]>
+        </description>
+        <priority>3</priority>
+        <properties>
+            <property name="percent" value="60" description="allowed name-to-comment similarity in percent" />
+            <property name="checkClass" value="1" description="should classes be checked" />
+            <property name="checkProperties" value="1" description="should properties be checked" />
+            <property name="checkMethods" value="1" description="should methods be checked" />
+        </properties>
+        <example>
+            <![CDATA[
+class SuperfluousComment
+{
+    /**
+     * @var string
+     *
+     * the name
+     */
+    private $name;
+
+    /**
+     * get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @param string $value
+     */
+    public function doSomething($value)
+    {
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
+    <rule name="ControllerMethodName"
+          message="The method name should end with Action in this controller."
+          class="MS\PHPMD\Rule\Naming\ControllerMethodName">
+        <description>
+            <![CDATA[
+When the class is a concrete implementation and ends with Controller, the method names have to end with Action.
+If not, it is an indication for business logic in your controller.
+So you have to outsource your business logic to services or event listeners.
+            ]]>
+        </description>
+        <priority>3</priority>
+        <properties>
+            <property name="delimiter" value="," description="delimiter for explode" />
+            <property name="allowedMethodNames" value="__construct" description="whitelist for method names. These are allowed reside in the controller though they are no actions." />
+        </properties>
+        <example>
+            <![CDATA[
+class FooController
+{
+    public function barAction() // good
+    {
+    }
+
+    public function doSomething() // bad
+    {
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
+    <rule name="MethodName"
+          message="Try to avoid meaningless method names like {0}. Also {1} are meaningless. Find a name which is not so general."
+          class="MS\PHPMD\Rule\Naming\MethodName">
+        <description>
+            <![CDATA[
+Try to avoid meaningless method names. You or other developers don't understand what the method does in a few month.
+A method should only do one atomic thing. Describe it as best as you can.
+If you couldn't find an other name, set a prefix what type of data or information you process.
+            ]]>
+        </description>
+        <priority>4</priority>
+        <properties>
+            <property name="delimiter" value="," description="delimiter for explode" />
+            <property name="meaninglessNames" value="getData,getInformation,setData,setInformation" description="meaningless method names" />
+        </properties>
+        <example>
+            <![CDATA[
+class Example
+{
+    public function getStatisticInformation() // good
+    {
+    }
+
+    public function getData() // bad
+    {
+    }
+}
+            ]]>
+        </example>
+    </rule>
+</ruleset>

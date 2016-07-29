@@ -6,9 +6,9 @@
          xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
     <description>Contains rules for PHPUnit tests.</description>
 
-    <rule name="TestMethodNumberOfMocks"
+    <rule name="NumberOfMocks"
           message="{0} mocks are found in this test. Try to reduce the mocks to {1} or less."
-          class="MS\PHPMD\Rule\Test\MethodNumberOfMocks">
+          class="MS\PHPMD\Rule\Test\NumberOfMocks">
         <description>
             <![CDATA[
 A test should be smaller than the production code. If you have an excessive usage of mocks
@@ -48,9 +48,9 @@ class Test extends \PHPUnit_Framework_TestCase
         </example>
     </rule>
 
-    <rule name="TestMethodNumberOfAsserts"
+    <rule name="NumberOfAsserts"
           message="{0} asserts are found in this test. Try to reduce the asserts to {1} or less."
-          class="MS\PHPMD\Rule\Test\MethodNumberOfMocks">
+          class="MS\PHPMD\Rule\Test\NumberOfAsserts">
         <description>
             <![CDATA[
 If a test fails and you have an excessive usage of asserts in this test, then it is difficult to find the problem.
@@ -90,9 +90,9 @@ class Test extends \PHPUnit_Framework_TestCase
         </example>
     </rule>
 
-    <rule name="TestMethodNameUnderstandable"
+    <rule name="MethodName"
           message="Only {0} words are found in the method name. Try to describe your code as good as you can with {1} or more words."
-          class="MS\PHPMD\Rule\Test\MethodNameUnderstandable">
+          class="MS\PHPMD\Rule\Test\MethodName">
         <description>
             <![CDATA[
 The method name in your test should describe what they will check. This works only with a few more words.

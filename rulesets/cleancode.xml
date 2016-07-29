@@ -4,34 +4,37 @@
          xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0
                       http://pmd.sf.net/ruleset_xml_schema.xsd"
          xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
-    <description>Contains specific clean code rules for the Symfony2 framework.</description>
+    <description>Contains rules from clean code book.</description>
 
-    <rule name="ClassNameSingleResponsibility"
-          message="Try to avoid general suffixes like {0} found {1}. It might violate of the single responsibility principle."
-          class="MS\PHPMD\Rule\CleanCode\ClassNameSingleResponsibility"
-          externalInfoUrl="http://stackoverflow.com/questions/1866794/naming-classes-how-to-avoid-calling-everything-a-whatevermanager">
+    <rule name="DataStructureConstants"
+          message="Don't contain constants in your data structure. Important information are distribute throughout the project. You reduce the reusability."
+          class="MS\PHPMD\Rule\CleanCode\DataStructureConstants">
         <description>
             <![CDATA[
-Yeah you are on the right track. There is no business logic in the entities and the controllers are slim.
-Oh dear. Now you have classes like UserManager or PageHandler. But what do this classes?
-You might violate of the single responsibility principle. Split the Manager class. What do the methods?
-Can you use the event dispatcher pattern? No? Maybe better general suffixes are Builder, Writer, Reader, Converter.
+Don't contain constants in your data structure. Important information are distribute throughout the project. You reduce the reusability.
+It is better to create a "Statics" namespace. Than you create final classes with your constants in this namespace.
+So you can use the constants independent of your data structure.
             ]]>
         </description>
-        <priority>5</priority>
+        <priority>2</priority>
         <properties>
-            <property name="delimiter" value="," description="delimiter for explode" />
-            <property name="suffixes" value="Manager,Handler,Helper,Util,Utility,Information,Processor" description="bad general suffixes" />
+            <property name="dataStructureNamespaceRegex" value="(((?!.*Repository).*Domain)|(?!.*Repository).*Entity)i" description="data structure regex for class namespace" />
+            <property name="dataStructureCommentRegex" value="((\*\s*@isDataStructure)|(\*\s*@\S*Entity))i" description="annotation that the class is an data structure" />
         </properties>
         <example>
             <![CDATA[
-class FooManager // bad
+// good
+class Identifier
 {
-    public function doSomething()
-    {
-    }
+    const SPECIAL_ID = 1;
+}
 
-    public function doCompletelyOtherThings()
+// bad
+class Entity
+{
+    const SPECIAL_ID = 1;
+
+    public function getAttribute()
     {
     }
 }
@@ -39,256 +42,53 @@ class FooManager // bad
         </example>
     </rule>
 
-    <rule name="MethodOneTryCatch"
-          message="This method contains more than one try statement. Swap out the try statement in an extra method. It increase the readability."
-          class="MS\PHPMD\Rule\CleanCode\MethodOneTryCatch">
+    <rule name="DataStructureMethods"
+          message="The method should only be a simple {0} in this data structure."
+          class="MS\PHPMD\Rule\CleanCode\DataStructureMethods">
         <description>
             <![CDATA[
-A method should be a wrapper for a try statement. It increase the readability. Try to find a good name for the method.
+If the class is an data structure representation, it should contain only simple getter or setter.
+Otherwise you have a data object and a business object in once. Swap out the methods with business logic to a service.
+If your class is an data structure, use the "@isDataStructure" annotation to force the validation.
             ]]>
         </description>
         <priority>2</priority>
         <properties>
             <property name="delimiter" value="," description="delimiter for explode" />
-            <property name="allowedChildren" value="catch,finally" description="allowed children" />
+            <property name="prefixes" value="get,set,is,has,add,remove" description="allowed prefixes in the methods" />
+            <property name="whitelist" value="__construct,__destruct,__set,__get,__call,__callStatic,__isset,__unset,__sleep,__wakeup,__toString,__invoke,__set_state,__clone" description="allowed method names" />
+            <property name="dataStructureNamespaceRegex" value="(((?!.*Repository).*Domain)|(?!.*Repository).*Entity)i" description="data structure regex for class namespace" />
+            <property name="dataStructureCommentRegex" value="((\*\s*@isDataStructure)|(\*\s*@\S*Entity))i" description="annotation that the class is an data structure" />
         </properties>
         <example>
             <![CDATA[
-class TryThings
+class Entity
 {
-    public function tryToDoSomething() // good
+    private $data;
+
+    public function getData() // good
     {
-        try {
-            $this->doSomething();
-        } catch () {
+        return $this->data;
+    }
+
+    public function setData($data) // good
+    {
+        $this->data = $data;
+
+        return $this;
+    }
+
+    public function setData($data) // bad
+    {
+        $this->data = $data;
+        $this->doSomething();
+    }
+
+    public function doSomthing() // bad
+    {
+        foreach ($this->data as $data) {
+            calculate($data);
         }
-    }
-
-    public function doSomething() // bad
-    {
-        $this->work();
-
-        try {
-            $this->doSomething();
-        } catch () {
-        }
-
-        try {
-            $this->doSomething();
-        } catch () {
-        }
-
-        if (1 === 1) {
-            foreach ($data as $item) {
-                $this->doMore();
-            }
-        }
-    }
-}
-            ]]>
-        </example>
-    </rule>
-
-    <rule name="SuperfluousComment"
-          message="It seems that the {0} has a superfluous comment description. It fits {1} percent with the name of that."
-          class="MS\PHPMD\Rule\CleanCode\SuperfluousComment">
-        <description>
-            <![CDATA[
-Comments should be considered thoroughly in advance. Don't comment bad code. Rewrite it.
-Also try to avoid superfluous comments. It is obvious that getName returns a name.
-It is normal that you maintenance your code but not your comments. So the comment will mislead you later on.
-Comments who describe why you write this code are good comments.
-            ]]>
-        </description>
-        <priority>3</priority>
-        <properties>
-            <property name="percent" value="60" description="allowed name-to-comment similarity in percent" />
-            <property name="checkClass" value="1" description="should classes be checked" />
-            <property name="checkProperties" value="1" description="should properties be checked" />
-            <property name="checkMethods" value="1" description="should methods be checked" />
-        </properties>
-        <example>
-            <![CDATA[
-class SuperfluousComment
-{
-    /**
-     * @var string
-     *
-     * the name
-     */
-    private $name;
-
-    /**
-     * get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * set name
-     *
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @param string $value
-     */
-    public function doSomething($value)
-    {
-    }
-}
-            ]]>
-        </example>
-    </rule>
-
-    <rule name="InlineIf"
-          message="Try to avoid using inline ifs. They conceal the complexity of your code. Furthermore they obstruct the expandability. Refactor your code and increase the readability."
-          class="MS\PHPMD\Rule\CleanCode\InlineIf">
-        <description>
-            <![CDATA[
-Inline ifs conceal the complexity of your code. When you extend your code you will nest inline ifs. Don't even mention that.
-Keep clean and use only one notation for decisions. It increase the readability.
-            ]]>
-        </description>
-        <priority>5</priority>
-        <example>
-            <![CDATA[
-class Example
-{
-    public function doSomething()
-    {
-        $a = 1 === 1 ? (3 === 2 ? 'true' : 1) : false;
-    }
-}
-            ]]>
-        </example>
-    </rule>
-
-    <rule name="MeaninglessMethodName"
-          message="Try to avoid meaningless method names like {0}. Also {1} are meaningless. Find a name which is not so general."
-          class="MS\PHPMD\Rule\CleanCode\MeaninglessMethodName">
-        <description>
-            <![CDATA[
-Try to avoid meaningless method names. You or other developers don't understand what the method does in a few month.
-A method should only do one atomic thing. Describe it as best as you can.
-If you couldn't find an other name, set a prefix what type of data or information you process.
-            ]]>
-        </description>
-        <priority>4</priority>
-        <properties>
-            <property name="delimiter" value="," description="delimiter for explode" />
-            <property name="meaninglessNames" value="getData,getInformation,setData,setInformation" description="meaningless method names" />
-        </properties>
-        <example>
-            <![CDATA[
-class Example
-{
-    public function getStatisticInformation() // good
-    {
-    }
-
-    public function getData() // bad
-    {
-    }
-}
-            ]]>
-        </example>
-    </rule>
-
-    <rule name="TraitPublicMethod"
-          message="The purpose of a trait should be the reuse of methods which help the basic classes. Make your code clearly and define interfaces of your class as public methods."
-          class="MS\PHPMD\Rule\CleanCode\TraitPublicMethod">
-        <description>
-            <![CDATA[
-Traits should never have a public method. The purpose of a trait should be the reuse of methods which help the basic classes.
-Make your code clearly and define interfaces of your class as public methods. Don't hide it in traits.
-Keep in mind, every class with your trait and a public method provides this method for other classes.
-If you want to refactor your code and dissolve the inheritance, prevent an excessive usage of traits. Implement design patterns.
-            ]]>
-        </description>
-        <priority>5</priority>
-        <example>
-            <![CDATA[
-trait UserComparator
-{
-    protected function doSomething() // good
-    {
-    }
-
-    public function doOtherThings() // maybe bad?
-    {
-    }
-}
-class BasicClass
-{
-    use UserComparator;
-}
-$class = new BasicClass();
-
-// make this sense?
-$things = $class->doOtherThings();
-            ]]>
-        </example>
-    </rule>
-
-    <rule name="SwitchStatement"
-          message="Try to avoid using switch-case statements. Use polymorphism instead."
-          class="MS\PHPMD\Rule\CleanCode\SwitchStatement">
-        <description>
-            <![CDATA[
-Switch statements scaling the complexity of your code in a vertical way. You have to change the statement every time when you add a new clause.
-You violate the Open-Close principe. If you extend your code, you will become troubles with dependencies and sub-statements.
-Use polymorphism instead. First extract the switch statement and then move the methods to get it onto the class where the polymorphism is needed.
-Then you have to decide whether replace the type code with subclasses or replace the type code with state/strategy.
-When you have set up the inheritance structure, you can replace the conditional with polymorphism.
-            ]]>
-        </description>
-        <priority>5</priority>
-        <example>
-            <![CDATA[
-class Example
-{
-    public function getType() // bad solution
-    {
-        switch ($type) {
-            case 'one':
-                return 'one';
-                break;
-            case 'two':
-                return 'two';
-                break;
-        }
-    }
-}
-
-// good solution using polymorphism
-
-interface ExampleInterface
-{
-    public function getType();
-}
-
-class One implements ExampleInterface
-{
-    public function getType()
-    {
-        return 'one';
-    }
-}
-
-class Two implements ExampleInterface
-{
-    public function getType()
-    {
-        return 'two';
     }
 }
             ]]>

@@ -1,0 +1,214 @@
+<ruleset name="Clean Code Rules Extended"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0
+                      http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+    <description>Contains design rules for maintainable code.</description>
+
+    <rule name="ConditionalExpression"
+          message="Try to avoid using inline ifs. They conceal the complexity of your code. Furthermore they obstruct the expandability. Refactor your code and increase the readability."
+          class="MS\PHPMD\Rule\Design\ConditionalExpression">
+        <description>
+            <![CDATA[
+Inline ifs conceal the complexity of your code. When you extend your code you will nest inline ifs. Don't even mention that.
+Keep clean and use only one notation for decisions. It increase the readability.
+            ]]>
+        </description>
+        <priority>5</priority>
+        <example>
+            <![CDATA[
+class Example
+{
+    public function doSomething()
+    {
+        $a = 1 === 1 ? (3 === 2 ? 'true' : 1) : false;
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
+    <rule name="ConstructorNewOperator"
+          message="With a new operator in the constructor you have a strong dependency. Make your class flexible and inject the new instance via DI."
+          class="MS\PHPMD\Rule\Design\ConstructorNewOperator">
+        <description>
+            <![CDATA[
+With a new operator in the constructor you have a strong dependency. Make your class flexible and inject the new instance via DI.
+Even better is to define an interface and inject this via the constructor parameter. So you can replace the dependency with an other instance.
+You can use the symfony service container and define a service with arguments. Please check also the calls argument.
+With this rule you support the open-close principle.
+            ]]>
+        </description>
+        <priority>4</priority>
+        <properties>
+            <property name="delimiter" value="," description="delimiter for explode" />
+            <property name="allowedClassNames" value="DateTime,ArrayCollection" description="whitelist for class names. These are allowed to instantiate in the constructor" />
+        </properties>
+        <example>
+            <![CDATA[
+class Converter
+{
+    private $reader;
+
+    public function __construct()
+    {
+        $this->reader = new Reader(); // bad
+    }
+}
+
+class Converter
+{
+    private $reader;
+
+    public function __construct(ReaderInterface $reader)
+    {
+        $this->reader = $reader; // good
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
+    <rule name="SwitchStatement"
+          message="Try to avoid using switch-case statements. Use polymorphism instead."
+          class="MS\PHPMD\Rule\Design\SwitchStatement">
+        <description>
+            <![CDATA[
+Switch statements scaling the complexity of your code in a vertical way. You have to change the statement every time when you add a new clause.
+You violate the Open-Close principe. If you extend your code, you will become troubles with dependencies and sub-statements.
+Use polymorphism instead. First extract the switch statement and then move the methods to get it onto the class where the polymorphism is needed.
+Then you have to decide whether replace the type code with subclasses or replace the type code with state/strategy.
+When you have set up the inheritance structure, you can replace the conditional with polymorphism.
+            ]]>
+        </description>
+        <priority>5</priority>
+        <example>
+            <![CDATA[
+class Example
+{
+    public function getType() // bad solution
+    {
+        switch ($type) {
+            case 'one':
+                return 'one';
+                break;
+            case 'two':
+                return 'two';
+                break;
+        }
+    }
+}
+
+// good solution using polymorphism
+
+interface ExampleInterface
+{
+    public function getType();
+}
+
+class One implements ExampleInterface
+{
+    public function getType()
+    {
+        return 'one';
+    }
+}
+
+class Two implements ExampleInterface
+{
+    public function getType()
+    {
+        return 'two';
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
+    <rule name="TraitPublicMethod"
+          message="The purpose of a trait should be the reuse of methods which help the basic classes. Make your code clearly and define interfaces of your class as public methods."
+          class="MS\PHPMD\Rule\Design\TraitPublicMethod">
+        <description>
+            <![CDATA[
+Traits should never have a public method. The purpose of a trait should be the reuse of methods which help the basic classes.
+Make your code clearly and define interfaces of your class as public methods. Don't hide it in traits.
+Keep in mind, every class with your trait and a public method provides this method for other classes.
+If you want to refactor your code and dissolve the inheritance, prevent an excessive usage of traits. Implement design patterns.
+            ]]>
+        </description>
+        <priority>5</priority>
+        <example>
+            <![CDATA[
+trait UserComparator
+{
+    protected function doSomething() // good
+    {
+    }
+
+    public function doOtherThings() // maybe bad?
+    {
+    }
+}
+class BasicClass
+{
+    use UserComparator;
+}
+$class = new BasicClass();
+
+// make this sense?
+$things = $class->doOtherThings();
+            ]]>
+        </example>
+    </rule>
+
+    <rule name="TryStatement"
+          message="This method contains more than one try statement. Swap out the try statement in an extra method. It increase the readability."
+          class="MS\PHPMD\Rule\Design\TryStatement">
+        <description>
+            <![CDATA[
+A method should be a wrapper for a try statement. It increase the readability. Try to find a good name for the method.
+            ]]>
+        </description>
+        <priority>2</priority>
+        <properties>
+            <property name="delimiter" value="," description="delimiter for explode" />
+            <property name="allowedChildren" value="catch,finally" description="allowed children" />
+        </properties>
+        <example>
+            <![CDATA[
+class TryThings
+{
+    public function tryToDoSomething() // good
+    {
+        try {
+            $this->doSomething();
+        } catch () {
+        }
+    }
+
+    public function doSomething() // bad
+    {
+        $this->work();
+
+        try {
+            $this->doSomething();
+        } catch () {
+        }
+
+        try {
+            $this->doSomething();
+        } catch () {
+        }
+
+        if (1 === 1) {
+            foreach ($data as $item) {
+                $this->doMore();
+            }
+        }
+    }
+}
+            ]]>
+        </example>
+    </rule>
+</ruleset>
