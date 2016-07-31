@@ -26,12 +26,10 @@ abstract class AbstractProcessTest extends \PHPUnit_Framework_TestCase
         $processBuilder
             ->add(__DIR__ . '/../Fixtures/AppBundle/' . $filename)
             ->add('text')
-            ->add(__DIR__ . '/../../Rulesets/' . $ruleset);
+            ->add(__DIR__ . '/../../rulesets/' . $ruleset);
 
         $process = $processBuilder->getProcess();
         $process->run();
-
-        var_dump($process->getErrorOutput());die;
 
         return $process;
     }
