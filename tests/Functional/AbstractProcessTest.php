@@ -31,6 +31,8 @@ abstract class AbstractProcessTest extends \PHPUnit_Framework_TestCase
         $process = $processBuilder->getProcess();
         $process->run();
 
+        var_dump($process->getErrorOutput());die;
+
         return $process;
     }
 }
