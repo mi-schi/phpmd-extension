@@ -32,13 +32,14 @@ Contains extra phpmd rules from clean code book and the best practices of my exp
 
 Download the `phpmd-extension.phar`:
 
-    $ curl -OsL https://github.com/mi-schi/phpmd-extension/releases/download/3.0.0/phpmd-extension.phar
+    $ curl -OsL https://github.com/mi-schi/phpmd-extension/releases/download/3.1.0/phpmd-extension.phar
     
 Alternatively you can use [tooly-composer-script](https://github.com/tommy-muehle/tooly-composer-script) for installation.
 
 ## Usage
 
-Create a ```phpmd.xml``` file and import the basic rules from phpmd. The example below contains some useful changes. Afterwards you can extend the configuration with rules from this repository.
+1. Create a `phpmd.xml` file and import the basic rules from phpmd. The example below contains some useful changes. Afterwards you can extend the configuration with rules from this repository.
+2. Then execute the mess detection with `phpmd-extension.phar [path/to/src] xml [path/to/phpmd.xml]`. The `phpmd-extension.phar` pass all arguments to the basic phpmd command. You don't have to install phpmd. `phpmd-extension.phar` includes phpmd.
 
 ### Basic Rules
 
@@ -105,10 +106,10 @@ Create a ```phpmd.xml``` file and import the basic rules from phpmd. The example
 ### Add extra rules
 
 ```xml
-    <rule ref="phar://phpmd-extension.phar/rulesets/cleancode.xml" />
-    <rule ref="phar://phpmd-extension.phar/rulesets/design.xml" />
-    <rule ref="phar://phpmd-extension.phar/rulesets/naming.xml" />
-    <rule ref="phar://phpmd-extension.phar/rulesets/test.xml" />
+    <rule ref="../../../../../../rulesets/cleancode.xml" />
+    <rule ref="../../../../../../rulesets/design.xml" />
+    <rule ref="../../../../../../rulesets/naming.xml" />
+    <rule ref="../../../../../../ruesets/test.xml" />
 ```
 
 You can also customize the rules with own properties or use only specific rules. Just take a look in the xml files. It works as the basic ruleset logic.
