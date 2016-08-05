@@ -32,7 +32,7 @@ Contains extra phpmd rules from clean code book and the best practices of my exp
 
 Download the `phpmd-extension.phar`:
 
-    $ curl -OsL https://github.com/mi-schi/phpmd-extension/releases/download/3.1.0/phpmd-extension.phar
+    $ curl -OsL https://github.com/mi-schi/phpmd-extension/releases/download/3.1.1/phpmd-extension.phar
     
 Alternatively you can use [tooly-composer-script](https://github.com/tommy-muehle/tooly-composer-script) for installation.
 
