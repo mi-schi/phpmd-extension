@@ -109,7 +109,7 @@ Alternatively you can use [tooly-composer-script](https://github.com/tommy-muehl
     <rule ref="../../../../../../rulesets/cleancode.xml" />
     <rule ref="../../../../../../rulesets/design.xml" />
     <rule ref="../../../../../../rulesets/naming.xml" />
-    <rule ref="../../../../../../ruesets/test.xml" />
+    <rule ref="../../../../../../rulesets/test.xml" />
 ```
 
 You can also customize the rules with own properties or use only specific rules. Just take a look in the xml files. It works as the basic ruleset logic.
