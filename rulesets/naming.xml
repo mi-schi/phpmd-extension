@@ -143,7 +143,7 @@ If you couldn't find an other name, set a prefix what type of data or informatio
         <priority>4</priority>
         <properties>
             <property name="delimiter" value="," description="delimiter for explode" />
-            <property name="meaninglessNames" value="getData,getInformation,setData,setInformation" description="meaningless method names" />
+            <property name="meaninglessNames" value="getData,getInformation,setData,setInformation,calculateData" description="meaningless method names" />
         </properties>
         <example>
             <![CDATA[
