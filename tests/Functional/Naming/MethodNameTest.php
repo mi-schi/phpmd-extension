@@ -12,7 +12,7 @@ class MethodNameTest extends AbstractProcessTest
             ->runPhpmd('Service/GeneralManager.php', 'naming.xml')
             ->getOutput();
 
-        $this->assertContains('GeneralManager.php:15	Try to avoid meaningless method names like getData. Also getData,getInformation,setData,setInformation are meaningless. Find a name which is not so general.', $output);
+        $this->assertContains('GeneralManager.php:15	Try to avoid meaningless method names like getData. Also getData,getInformation,setData,setInformation,calculateData are meaningless. Find a name which is not so general.', $output);
         $this->assertNotContains('GeneralManager.php:25	Try to avoid meaningless method names', $output);
     }
 }
