@@ -32,10 +32,35 @@ class GeneralManager
     /**
      * bad
      *
-     * @return bool
+     * @return mixed
      */
     public function doOtherThings()
     {
         return $this->doSomething() && !$this->doAnything();
+        return 1 > count($this->returnOkThings());
+        return $object instanceOf OneClass;
+        return new GoodClass();
+    }
+
+    /**
+     * good
+     *
+     * @return mixed
+     */
+    public function returnNiceThings()
+    {
+        return $this->doOtherThings();
+        return $this->doOtherThings($this->returnNiceThings());
+        return true;
+        return is_array($a);
+        return [];
+        return $this->getThings()->doThings();
+        return;
+        return self::CONSTANT;
+        return CONSTANT::VALUE;
+        return 10;
+        return 'name';
+        return $this->value;
+        return null;
     }
 }

@@ -19,6 +19,7 @@ Contains extra phpmd rules from clean code book and the best practices of my exp
     * [SwitchStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L78-L82)
     * [TraitPublicMethod](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L134-L137)
     * [TryStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L170)
+    * [ReturnStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L220-L221)
 * Naming
     * [ClassNameSuffix](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/naming.xml#L15-L18)
     * [CommentDescription](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/naming.xml#L47-L50)
@@ -120,4 +121,3 @@ You can also customize the rules with own properties or use only specific rules.
 - [ ] Rule against Train Wreck (getFoo()->getBar()->getMuh()->getMeh())
 - [ ] Rule for high cohesion (member variables are used by a lot of methods)
 - [ ] Rule that a service should never call a controller
-- [ ] Try to avoid "return $this->doSomething() && !$this->doOtherthings()"
