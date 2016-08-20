@@ -258,4 +258,31 @@ class Returner
             ]]>
         </example>
     </rule>
+
+    <rule name="PublicFieldDeclaration"
+          message="Try to avoid public class variables. Use Getter to access the variable. It supports the law of demeter."
+          class="MS\PHPMD\Rule\Design\PublicFieldDeclaration">
+        <description>
+            <![CDATA[
+Try to avoid public class variables. Use Getter to access the variable. It supports the law of demeter.
+The class follows the principle of privacy and don't tell other classes the inner structure. Also you can control the access.
+            ]]>
+        </description>
+        <priority>5</priority>
+        <example>
+            <![CDATA[
+class Service
+{
+    public $variable; // bad
+
+    private $variable;
+
+    public function getVariable() // good
+    {
+        return $this->variable;
+    }
+}
+            ]]>
+        </example>
+    </rule>
 </ruleset>

@@ -20,6 +20,7 @@ Contains extra phpmd rules from clean code book and the best practices of my exp
     * [TraitPublicMethod](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L134-L137)
     * [TryStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L170)
     * [ReturnStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L220-L221)
+    * [PublicFieldDeclaration](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L267-L268)
 * Naming
     * [ClassNameSuffix](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/naming.xml#L15-L18)
     * [CommentDescription](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/naming.xml#L47-L50)
