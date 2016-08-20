@@ -1,6 +1,6 @@
 <?php
 
-namespace Unit\Design;
+namespace MS\PHPMD\Tests\Unit\Design;
 
 use MS\PHPMD\Tests\Unit\AbstractPhpmdTest;
 
