@@ -10,7 +10,7 @@ class MemberPrimaryPrefixTest extends AbstractPhpmdTest
 
     public function testMethodChainCount()
     {
-        $this->generateRuleViolations('Service/GeneralManager.php', 'design.xml');
+        $this->generateRuleViolations('Service/GeneralManager.php', 'cleancode.xml');
 
         $this->assertTrue($this->hasLineAndDescription(57, self::DESCRIPTION));
         $this->assertFalse($this->hasLineAndDescription(52, self::DESCRIPTION));

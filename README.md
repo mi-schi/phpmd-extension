@@ -14,14 +14,14 @@ Contains extra phpmd rules from clean code book and the best practices of my exp
     * [DataStructureConstants](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L14-L16)
     * [DataStructureMethods](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L50-L52)
     * [MemberPrimaryPrefix](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L103-L104)
+    * [ReturnStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L151-L152)
 * Design
     * [ConditionalExpression](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L14-L15)
     * [ConstructorNewOperator](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L37-L40)
     * [SwitchStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L78-L82)
     * [TraitPublicMethod](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L134-L137)
     * [TryStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L170)
-    * [ReturnStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L220-L221)
-    * [PublicFieldDeclaration](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L267-L268)
+    * [PublicFieldDeclaration](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L220-L221)
 * Naming
     * [ClassNameSuffix](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/naming.xml#L15-L18)
     * [CommentDescription](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/naming.xml#L47-L50)

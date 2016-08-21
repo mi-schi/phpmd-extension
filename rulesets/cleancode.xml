@@ -97,7 +97,7 @@ class Entity
 
     <rule name="MemberPrimaryPrefix"
           message="Don't chain methods excessively. There are {0} concatenations allowed. The code becomes hard to test and violate the law of demeter."
-          class="MS\PHPMD\Rule\Design\MemberPrimaryPrefix">
+          class="MS\PHPMD\Rule\CleanCode\MemberPrimaryPrefix">
         <description>
             <![CDATA[
 Try to avoid train wrecks. Your class should have a low coupling. You have to use mocks excessively when you deep link to subclasses.
@@ -137,6 +137,53 @@ class Service
     {
         $name = $this->relation->getEntry()->getName(); // bad
         $name = $this->relation->getEntryName(); // good
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
+    <rule name="ReturnStatement"
+          message="A return statement line should only contains {0}. It increase the reading rate."
+          class="MS\PHPMD\Rule\CleanCode\ReturnStatement">
+        <description>
+            <![CDATA[
+Don't write your logical code in the return statement line. It is hard to understand. Move the complex structure ahead.
+It increase the reading rate. Then you can extend the code easily without touching the return statement.
+            ]]>
+        </description>
+        <priority>3</priority>
+        <properties>
+            <property name="delimiter" value="," description="delimiter for explode" />
+            <property name="allowedChildren" value="Variable,MemberPrimaryPrefix,Literal,FunctionPostfix,Array" description="allowed children" />
+        </properties>
+        <example>
+            <![CDATA[
+class Returner
+{
+    public function getType() // good
+    {
+        return $variable;
+    }
+
+    public function getType() // good
+    {
+        return $this->getVariable();
+    }
+
+    public function getType() // bad
+    {
+        return 1 === 1 ? '1' : 2;
+    }
+
+    public function getType() // bad
+    {
+        return $this->doSomething() && !$this->doAnything();
+    }
+
+    public function getType() // bad
+    {
+        return 1 > count($this->doSomething());
     }
 }
             ]]>
