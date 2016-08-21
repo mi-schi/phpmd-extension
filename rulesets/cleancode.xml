@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0
                       http://pmd.sf.net/ruleset_xml_schema.xsd"
          xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
-    <description>Contains rules from clean code book.</description>
+    <description>Contains rules from clean code book. This includes rules from SOLID.</description>
 
     <rule name="DataStructureConstants"
           message="Don't contain constants in your data structure. Important information are distribute throughout the project. You reduce the reusability."
@@ -89,6 +89,54 @@ class Entity
         foreach ($this->data as $data) {
             calculate($data);
         }
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
+    <rule name="MemberPrimaryPrefix"
+          message="Don't chain methods excessively. There are {0} concatenations allowed. The code becomes hard to test and violate the law of demeter."
+          class="MS\PHPMD\Rule\Design\MemberPrimaryPrefix">
+        <description>
+            <![CDATA[
+Try to avoid train wrecks. Your class should have a low coupling. You have to use mocks excessively when you deep link to subclasses.
+Create a a wrapper method in your related class and delegate the access. You can avoid code duplications. See law of demeter.
+            ]]>
+        </description>
+        <priority>2</priority>
+        <properties>
+            <property name="maxChainCount" value="2" description="max count of method chains" />
+        </properties>
+        <example>
+            <![CDATA[
+class Entry
+{
+    public function getName()
+    {
+        return $this->name;
+    }
+}
+
+class Relation
+{
+    public function getEntry()
+    {
+        return $this->entry;
+    }
+
+    public function getEntryName()
+    {
+        return $this->entry->getName();
+    }
+}
+
+class Service
+{
+    public function doSomething()
+    {
+        $name = $this->relation->getEntry()->getName(); // bad
+        $name = $this->relation->getEntryName(); // good
     }
 }
             ]]>

@@ -49,12 +49,12 @@ class GeneralManager
      */
     public function returnNiceThings()
     {
-        return $this->doOtherThings();
+        return $this->doOtherThings()->getThings();
         return $this->doOtherThings($this->returnNiceThings());
         return true;
         return is_array($a);
         return [];
-        return $this->getThings()->doThings();
+        return $this->getThings()->doThings()->doSomething();
         return;
         return self::CONSTANT;
         return CONSTANT::VALUE;

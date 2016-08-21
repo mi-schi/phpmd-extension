@@ -13,6 +13,7 @@ Contains extra phpmd rules from clean code book and the best practices of my exp
 * CleanCode
     * [DataStructureConstants](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L14-L16)
     * [DataStructureMethods](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L50-L52)
+    * [MemberPrimaryPrefix](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L103-L104)
 * Design
     * [ConditionalExpression](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L14-L15)
     * [ConstructorNewOperator](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L37-L40)
@@ -119,6 +120,5 @@ You can also customize the rules with own properties or use only specific rules.
 
 ## ToDos
 
-- [ ] Rule against Train Wreck (getFoo()->getBar()->getMuh()->getMeh())
 - [ ] Rule for high cohesion (member variables are used by a lot of methods)
 - [ ] Rule that a service should never call a controller
