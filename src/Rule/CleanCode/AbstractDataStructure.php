@@ -2,30 +2,23 @@
 
 namespace MS\PHPMD\Rule\CleanCode;
 
-use PDepend\Source\AST\ASTClass;
+use MS\PHPMD\Guesser\DataStructureGuesser;
 use PHPMD\AbstractRule;
-use PHPMD\Node\ClassNode;
 use PHPMD\Rule\ClassAware;
 
 /**
  */
 abstract class AbstractDataStructure extends AbstractRule implements ClassAware
 {
+    use DataStructureGuesser;
+
     /**
-     * @param ClassNode|ASTClass $node
+     * @param string $name
      *
-     * @return bool
+     * @return string
      */
-    protected function isDataStructure(ClassNode $node)
+    protected function getRegex($name)
     {
-        if (0 < preg_match($this->getStringProperty('dataStructureNamespaceRegex'), $node->getNamespaceName())) {
-            return true;
-        }
-
-        if (0 < preg_match($this->getStringProperty('dataStructureCommentRegex'), $node->getComment())) {
-            return true;
-        }
-
-        return false;
+        return $this->getStringProperty($name);
     }
 }
