@@ -1,6 +1,6 @@
 <?php
 
-namespace MS\PHPMD\Tests\Unit\Design;
+namespace MS\PHPMD\Tests\Unit\CleanCode;
 
 use MS\PHPMD\Tests\Unit\AbstractPhpmdTest;
 
@@ -10,7 +10,7 @@ class TryStatementTest extends AbstractPhpmdTest
 
     public function testTryStatementRule()
     {
-        $this->generateRuleViolations('Utility/TryThings.php', 'design.xml');
+        $this->generateRuleViolations('Utility/TryThings.php', 'cleancode.xml');
 
         $this->assertTrue($this->hasLineAndDescription(39, self::DESCRIPTION));
         $this->assertTrue($this->hasLineAndDescription(53, self::DESCRIPTION));
@@ -18,7 +18,7 @@ class TryStatementTest extends AbstractPhpmdTest
 
     public function testRuleWithoutTry()
     {
-        $this->generateRuleViolations('Entity/Foo.php', 'design.xml');
+        $this->generateRuleViolations('Entity/Foo.php', 'cleancode.xml');
 
         $this->assertFalse($this->containsDescription(self::DESCRIPTION));
     }

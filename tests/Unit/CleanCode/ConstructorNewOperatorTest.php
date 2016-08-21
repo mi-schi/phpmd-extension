@@ -1,6 +1,6 @@
 <?php
 
-namespace MS\PHPMD\Tests\Unit\Design;
+namespace MS\PHPMD\Tests\Unit\CleanCode;
 
 use MS\PHPMD\Tests\Unit\AbstractPhpmdTest;
 
@@ -10,7 +10,7 @@ class ConstructorNewOperatorTest extends AbstractPhpmdTest
 
     public function testConstructorNewOperatorRule()
     {
-        $this->generateRuleViolations('Service/UserConverter.php', 'design.xml');
+        $this->generateRuleViolations('Service/UserConverter.php', 'cleancode.xml');
 
         $this->assertTrue($this->hasLineAndDescription(17, self::DESCRIPTION));
 
@@ -21,7 +21,7 @@ class ConstructorNewOperatorTest extends AbstractPhpmdTest
 
     public function testConstructorWithoutNewOperatorRule()
     {
-        $this->generateRuleViolations('Entity/Foo.php', 'design.xml');
+        $this->generateRuleViolations('Entity/Foo.php', 'cleancode.xml');
 
         $this->assertFalse($this->hasLineAndDescription(24, self::DESCRIPTION));
     }

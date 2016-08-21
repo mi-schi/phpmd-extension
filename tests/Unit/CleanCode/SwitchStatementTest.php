@@ -1,6 +1,6 @@
 <?php
 
-namespace MS\PHPMD\Tests\Unit\Design;
+namespace MS\PHPMD\Tests\Unit\CleanCode;
 
 use MS\PHPMD\Tests\Unit\AbstractPhpmdTest;
 
@@ -10,7 +10,7 @@ class SwitchStatementTest extends AbstractPhpmdTest
 
     public function testSwitchStatementRule()
     {
-        $this->generateRuleViolations('Service/Switcher.php', 'design.xml');
+        $this->generateRuleViolations('Service/Switcher.php', 'cleancode.xml');
 
         $this->assertTrue($this->hasLineAndDescription(17, self::DESCRIPTION));
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace MS\PHPMD\Tests\Unit\Design;
+namespace MS\PHPMD\Tests\Unit\CleanCode;
 
 use MS\PHPMD\Tests\Unit\AbstractPhpmdTest;
 
@@ -10,7 +10,7 @@ class PublicFieldDeclarationTest extends AbstractPhpmdTest
 
     public function testViolationForPublicVariables()
     {
-        $this->generateRuleViolations('Service/MiddlewareService.php', 'design.xml');
+        $this->generateRuleViolations('Service/MiddlewareService.php', 'cleancode.xml');
 
         $this->assertTrue($this->hasLineAndDescription(7, self::DESCRIPTION));
         $this->assertTrue($this->hasLineAndDescription(11, self::DESCRIPTION));

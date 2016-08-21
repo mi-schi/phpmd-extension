@@ -1,6 +1,6 @@
 <?php
 
-namespace MS\PHPMD\Rule\Design;
+namespace MS\PHPMD\Rule\CleanCode;
 
 use PDepend\Source\AST\ASTMethod;
 use PHPMD\AbstractNode;
