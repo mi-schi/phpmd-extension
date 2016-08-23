@@ -18,9 +18,9 @@ Contains extra phpmd rules from clean code book and the best practices of my exp
     * [MemberPrimaryPrefix](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L167-L168) - supports low coupling, increase testability, see law of demeter
     * [PublicFieldDeclaration](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L215-L216) - increase maintainability, see encapsulation/information hiding
     * [ReturnStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L242-L243) - increase reading rate, increase extensibility
-    * [SwitchStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L289-L293) - increase extensibility, see open-close principle
-    * [TraitPublicMethod](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L345-L348) - increase maintainability, see encapsulation/information hiding
-    * [TryStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/design.xml#L381) - increase readability
+    * [SwitchStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L289-L293) - increase extensibility, see open-close principle
+    * [TraitPublicMethod](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L345-L348) - increase maintainability, see encapsulation/information hiding
+    * [TryStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L381) - increase readability
 * Naming
     * [ClassNameSuffix](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/naming.xml#L15-L18) - increase extensibility, see single-responsibility principle
     * [CommentDescription](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/naming.xml#L47-L50) - reduce unused declarations, increase comprehensibility
