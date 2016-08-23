@@ -2,25 +2,16 @@
 
 namespace MS\PHPMD\Rule\CleanCode;
 
-use PHPMD\AbstractNode;
-use PHPMD\AbstractRule;
-use PHPMD\Node\MethodNode;
-use PHPMD\Rule\MethodAware;
-
 /**
  * Try to avoid using switch-case statements. Use polymorphism instead.
  */
-class SwitchStatement extends AbstractRule implements MethodAware
+class SwitchStatement extends AbstractForbiddenNode
 {
     /**
-     * @param AbstractNode|MethodNode $node
+     * @return string
      */
-    public function apply(AbstractNode $node)
+    protected function getTypeName()
     {
-        $switchStatements = $node->findChildrenOfType('SwitchStatement');
-
-        foreach ($switchStatements as $switchStatement) {
-            $this->addViolation($switchStatement);
-        }
+        return 'SwitchStatement';
     }
 }
