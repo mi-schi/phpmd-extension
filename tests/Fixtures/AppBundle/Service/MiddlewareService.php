@@ -2,7 +2,7 @@
 
 namespace AppBundle\Service;
 
-class MiddleWareService
+class MiddlewareService
 {
     public $variable;
     protected $car;

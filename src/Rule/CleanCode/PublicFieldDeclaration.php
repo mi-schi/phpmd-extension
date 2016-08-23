@@ -2,7 +2,6 @@
 
 namespace MS\PHPMD\Rule\CleanCode;
 
-use PDepend\Source\AST\ASTFieldDeclaration;
 use PHPMD\AbstractNode;
 use PHPMD\AbstractRule;
 use PHPMD\Node\ClassNode;
@@ -18,7 +17,6 @@ class PublicFieldDeclaration extends AbstractRule implements ClassAware
      */
     public function apply(AbstractNode $node)
     {
-        /** @var ASTFieldDeclaration $field */
         foreach ($node->findChildrenOfType('FieldDeclaration') as $field) {
             if (true === $field->isPublic()) {
                 $this->addViolation($field);
