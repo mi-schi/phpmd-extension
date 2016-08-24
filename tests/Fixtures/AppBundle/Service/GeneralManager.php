@@ -39,7 +39,6 @@ class GeneralManager
         return $this->doSomething() && !$this->doAnything();
         return 1 > count($this->returnOkThings());
         return $object instanceOf OneClass;
-        return new GoodClass();
     }
 
     /**
@@ -50,7 +49,7 @@ class GeneralManager
     public function returnNiceThings()
     {
         return $this->doOtherThings()->getThings();
-        return $this->doOtherThings($this->returnNiceThings());
+        return $this->doOtherThings->getOne($this->returnNiceThings());
         return true;
         return is_array($a);
         return [];
@@ -62,5 +61,8 @@ class GeneralManager
         return 'name';
         return $this->value;
         return null;
+        return $this->getType()->doSomething(self::class);
+        return $this->getType()->doSomething('1', [self::class]);
+        return new GoodClass();
     }
 }
