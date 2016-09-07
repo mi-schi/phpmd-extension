@@ -22,6 +22,7 @@ class DataStructureMethodsTest extends AbstractPhpmdTest
         $this->assertFalse($this->hasLineAndDescription(56, self::DESCRIPTION));
         $this->assertFalse($this->hasLineAndDescription(68, self::DESCRIPTION));
         $this->assertFalse($this->hasLineAndDescription(123, self::DESCRIPTION));
+        $this->assertFalse($this->hasLineAndDescription(136, self::DESCRIPTION));
     }
 
     public function testForceDataStructureMethodsRule()

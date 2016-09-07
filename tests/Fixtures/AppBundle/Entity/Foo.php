@@ -125,4 +125,19 @@ class Foo extends FooAssociation
         $type->setFoo($this);
         $this->types->add($type);
     }
+
+    /**
+     * @param mixed $data
+     *
+     * good
+     *
+     * @return $this
+     */
+    public function setData2($data)
+    {
+        $this->data = $data;
+        $data->setFoo($this);
+
+        return $this;
+    }
 }
