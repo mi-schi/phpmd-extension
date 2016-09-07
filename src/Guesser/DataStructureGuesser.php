@@ -16,7 +16,7 @@ trait DataStructureGuesser
      */
     protected function isDataStructure(ClassNode $node)
     {
-        if (0 < preg_match($this->getRegex('dataStructureNamespaceRegex'), $node->getNamespaceName())) {
+        if (0 < preg_match($this->getRegex('dataStructurePathRegex'), $node->getNamespaceName() . $node->getName())) {
             return true;
         }
 

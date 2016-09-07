@@ -55,4 +55,11 @@ class DataStructureMethodsTest extends AbstractPhpmdTest
 
         $this->assertFalse($this->containsDescription(self::DESCRIPTION));
     }
+
+    public function testRuleWithRepositoryClass()
+    {
+        $this->generateRuleViolations('Entity/FooRepository.php', 'cleancode.xml');
+
+        $this->assertFalse($this->containsDescription(self::DESCRIPTION));
+    }
 }
