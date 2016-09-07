@@ -65,5 +65,7 @@ class GeneralManager
         return $this->getType()->doSomething('1', [self::class]);
         return new GoodClass();
         return $this->variable->getOne();
+        return $data[$field];
+        return (string) $this->name;
     }
 }
