@@ -90,12 +90,13 @@ class DataStructureMethods extends AbstractDataStructure
 
         $countReturn = count($node->findChildrenOfType('ReturnStatement'));
         $countThis = $this->countThis($node);
+        $countSetter = $this->countSetter($node);
 
         if (1 < $countReturn) {
             return false;
         }
 
-        if (($countReturn + 1) < $countThis) {
+        if (($countReturn + 1) < $countThis - $countSetter) {
             return false;
         }
 
@@ -113,7 +114,21 @@ class DataStructureMethods extends AbstractDataStructure
         $variables = $node->findChildrenOfType('Variable');
 
         foreach ($variables as $variable) {
-            if ($variable->getImage() === '$this') {
+            if ('$this' === $variable->getImage()) {
+                $count++;
+            }
+        }
+
+        return $count;
+    }
+
+    private function countSetter(MethodNode $node)
+    {
+        $count = 0;
+        $methods = $node->findChildrenOfType('MethodPostfix');
+
+        foreach ($methods as $method) {
+            if ('set' === substr($method->getImage(), 0, 3) && '$this' === $method->getFirstChildOfType('Variable')->getImage()) {
                 $count++;
             }
         }

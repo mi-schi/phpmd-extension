@@ -116,4 +116,13 @@ class Foo extends FooAssociation
             $this->doSimple();
         }
     }
+
+    /**
+     * good
+     */
+    public function addType($type)
+    {
+        $type->setFoo($this);
+        $this->types->add($type);
+    }
 }
