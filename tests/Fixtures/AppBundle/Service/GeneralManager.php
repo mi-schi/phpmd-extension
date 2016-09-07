@@ -64,5 +64,6 @@ class GeneralManager
         return $this->getType()->doSomething(self::class);
         return $this->getType()->doSomething('1', [self::class]);
         return new GoodClass();
+        return $this->variable->getOne();
     }
 }

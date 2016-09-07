@@ -3,6 +3,7 @@
 namespace MS\PHPMD\Rule\CleanCode;
 
 use MS\PHPMD\Guesser\TestGuesser;
+use PDepend\Source\AST\ASTMemberPrimaryPrefix;
 use PHPMD\AbstractNode;
 use PHPMD\AbstractRule;
 use PHPMD\Node\ClassNode;
@@ -28,7 +29,7 @@ class MemberPrimaryPrefix extends AbstractRule implements ClassAware
 
         foreach ($node->getMethods() as $method) {
             foreach ($method->findChildrenOfType('MemberPrimaryPrefix') as $memberPrimaryPrefix) {
-                if (null !== $this->getMemberPrimaryPrefixWithChainCount($memberPrimaryPrefix, $maxChainCount)) {
+                if (true === $this->isMethodsChainExcessively($memberPrimaryPrefix, $maxChainCount)) {
                     $this->addViolation($memberPrimaryPrefix, [$maxChainCount]);
                 }
             }
@@ -39,18 +40,20 @@ class MemberPrimaryPrefix extends AbstractRule implements ClassAware
      * @param AbstractNode $memberPrimaryPrefix
      * @param int          $chainCount
      *
-     * @return null|AbstractNode
+     * @return bool
      */
-    private function getMemberPrimaryPrefixWithChainCount(AbstractNode $memberPrimaryPrefix, $chainCount)
+    private function isMethodsChainExcessively(AbstractNode $memberPrimaryPrefix, $chainCount)
     {
         for ($chain = 0; $chain < $chainCount; $chain++) {
-            if (null === $memberPrimaryPrefix) {
-                return null;
+            $children = $memberPrimaryPrefix->getChildren();
+
+            if (false === isset($children[1]) || !$children[1] instanceof ASTMemberPrimaryPrefix) {
+                return false;
             }
 
-            $memberPrimaryPrefix = $memberPrimaryPrefix->getFirstChildOfType('MemberPrimaryPrefix');
+            $memberPrimaryPrefix = $children[1];
         }
 
-        return $memberPrimaryPrefix;
+        return true;
     }
 }
