@@ -3,7 +3,7 @@
 /**
  * Class Test
  *
- * @covers Entity
+ * @coversEntity
  */
 class Test extends \PHPUnit_Framework_TestCase
 {

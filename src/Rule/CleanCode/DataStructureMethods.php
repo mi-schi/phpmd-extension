@@ -27,7 +27,7 @@ class DataStructureMethods extends AbstractDataStructure
      */
     public function apply(AbstractNode $node)
     {
-        if (false === $this->isDataStructure($node)) {
+        if (false === $this->isDataStructure($node) || true === $this->isTest($node)) {
             return;
         }
 
