@@ -26,14 +26,38 @@ class MemberPrimaryPrefix extends AbstractRule implements ClassAware
         }
 
         $maxChainCount = $this->getIntProperty('maxChainCount');
+        $allowedPrefixes = explode($this->getStringProperty('delimiter'), $this->getStringProperty('allowedPrefixes'));
 
         foreach ($node->getMethods() as $method) {
             foreach ($method->findChildrenOfType('MemberPrimaryPrefix') as $memberPrimaryPrefix) {
-                if (true === $this->isMethodsChainExcessively($memberPrimaryPrefix, $maxChainCount)) {
+                if (false === $this->hasMethodsChainAllowedPrefixes($memberPrimaryPrefix, $allowedPrefixes) && true === $this->isMethodsChainExcessively($memberPrimaryPrefix, $maxChainCount)) {
                     $this->addViolation($memberPrimaryPrefix, [$maxChainCount]);
                 }
             }
         }
+    }
+
+    /**
+     * @param AbstractNode $memberPrimaryPrefix
+     * @param array        $allowedPrefixes
+     *
+     * @return bool
+     */
+    private function hasMethodsChainAllowedPrefixes(AbstractNode $memberPrimaryPrefix, array $allowedPrefixes)
+    {
+        $methodPostfixes = $memberPrimaryPrefix->findChildrenOfType('MethodPostfix');
+
+        foreach ($methodPostfixes as $methodPostfix) {
+            foreach ($allowedPrefixes as $allowedPrefix) {
+                if ($allowedPrefix === substr($methodPostfix->getName(), 0, strlen($allowedPrefix))) {
+                    continue 2;
+                }
+            }
+
+            return false;
+        }
+
+        return true;
     }
 
     /**

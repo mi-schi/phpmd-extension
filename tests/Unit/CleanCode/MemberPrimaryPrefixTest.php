@@ -19,5 +19,6 @@ class MemberPrimaryPrefixTest extends AbstractPhpmdTest
         $this->assertFalse($this->hasLineAndDescription(64, self::DESCRIPTION));
         $this->assertFalse($this->hasLineAndDescription(65, self::DESCRIPTION));
         $this->assertFalse($this->hasLineAndDescription(67, self::DESCRIPTION));
+        $this->assertFalse($this->hasLineAndDescription(70, self::DESCRIPTION));
     }
 }

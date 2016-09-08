@@ -171,6 +171,8 @@ Create a a wrapper method in your related class and delegate the access. You can
         <priority>2</priority>
         <properties>
             <property name="maxChainCount" value="2" description="max count of method chains" />
+            <property name="allowedPrefixes" value="add,set" description="allowed prefixed for the method train" />
+            <property name="delimiter" value="," description="delimiter for explode" />
         </properties>
         <example>
             <![CDATA[

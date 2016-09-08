@@ -67,5 +67,6 @@ class GeneralManager
         return $this->variable->getOne();
         return $data[$field];
         return (string) $this->name;
+        return $this->add($data)->add($data)->setData($data)->addOne($one);
     }
 }
