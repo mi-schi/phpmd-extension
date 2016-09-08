@@ -28,4 +28,11 @@ class DataStructureConstantsTest extends AbstractPhpmdTest
 
         $this->assertFalse($this->containsDescription(self::DESCRIPTION));
     }
+
+    public function testRuleWithServiceClass()
+    {
+        $this->generateRuleViolations('Service/EntityConverter.php', 'cleancode.xml');
+
+        $this->assertFalse($this->containsDescription(self::DESCRIPTION));
+    }
 }

@@ -82,7 +82,7 @@ So you can use the constants independent of your data structure.
         </description>
         <priority>2</priority>
         <properties>
-            <property name="dataStructurePathRegex" value="(((?!.*Repository).*Domain)|(?!.*Repository).*Entity)i" description="data structure regex for class path" />
+            <property name="dataStructurePathRegex" value="(((?!.*Repository).*\\Domain\\)|(?!.*Repository).*\\Entity\\)i" description="data structure regex for class path" />
             <property name="dataStructureCommentRegex" value="((\*\s*@isDataStructure)|(\*\s*@\S*Entity))i" description="annotation that the class is an data structure" />
         </properties>
         <example>
@@ -121,7 +121,7 @@ If your class is an data structure, use the "@isDataStructure" annotation to for
             <property name="delimiter" value="," description="delimiter for explode" />
             <property name="prefixes" value="get,set,is,has,add,remove" description="allowed prefixes in the methods" />
             <property name="whitelist" value="__construct,__destruct,__set,__get,__call,__callStatic,__isset,__unset,__sleep,__wakeup,__toString,__invoke,__set_state,__clone" description="allowed method names" />
-            <property name="dataStructurePathRegex" value="(((?!.*Repository).*Domain)|(?!.*Repository).*Entity)i" description="data structure regex for class path" />
+            <property name="dataStructurePathRegex" value="(((?!.*Repository).*\\Domain\\)|(?!.*Repository).*\\Entity\\)i" description="data structure regex for class path" />
             <property name="dataStructureCommentRegex" value="((\*\s*@isDataStructure)|(\*\s*@\S*Entity))i" description="annotation that the class is an data structure" />
         </properties>
         <example>
