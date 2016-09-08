@@ -6,7 +6,7 @@ use MS\PHPMD\Tests\Unit\AbstractPhpmdTest;
 
 class PublicFieldDeclarationTest extends AbstractPhpmdTest
 {
-    const DESCRIPTION = 'Try to avoid public class variables. Use Getter to access the variable. It supports the law of demeter.';
+    const DESCRIPTION = 'Try to avoid public class variables. Use Getter to access the variable. It supports the principle of privacy.';
 
     public function testViolationForPublicVariables()
     {
