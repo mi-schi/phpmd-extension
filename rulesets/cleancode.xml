@@ -248,7 +248,7 @@ It increase the reading rate. Then you can extend the code easily without touchi
         <priority>3</priority>
         <properties>
             <property name="delimiter" value="," description="delimiter for explode" />
-            <property name="allowedChildren" value="Variable,MemberPrimaryPrefix,Literal,FunctionPostfix,Array,ArrayIndexExpression,CastExpression,AllocationExpression" description="allowed children" />
+            <property name="allowedChildren" value="Variable,MemberPrimaryPrefix,Literal,FunctionPostfix,Array,ArrayIndexExpression,CastExpression,AllocationExpression,CloneExpression" description="allowed children" />
         </properties>
         <example>
             <![CDATA[

@@ -6,7 +6,7 @@ use MS\PHPMD\Tests\Unit\AbstractPhpmdTest;
 
 class ReturnStatementTest extends AbstractPhpmdTest
 {
-    const DESCRIPTION = 'A return statement line should only contains Variable,MemberPrimaryPrefix,Literal,FunctionPostfix,Array,ArrayIndexExpression,CastExpression,AllocationExpression. It increase the reading rate.';
+    const DESCRIPTION = 'A return statement line should only contains Variable,MemberPrimaryPrefix,Literal,FunctionPostfix,Array,ArrayIndexExpression,CastExpression,AllocationExpression,CloneExpression. It increase the reading rate.';
 
     public function testIsReturnStatementComplex()
     {
@@ -36,5 +36,6 @@ class ReturnStatementTest extends AbstractPhpmdTest
         $this->assertFalse($this->hasLineAndDescription(66, self::DESCRIPTION));
         $this->assertFalse($this->hasLineAndDescription(68, self::DESCRIPTION));
         $this->assertFalse($this->hasLineAndDescription(69, self::DESCRIPTION));
+        $this->assertFalse($this->hasLineAndDescription(71, self::DESCRIPTION));
     }
 }

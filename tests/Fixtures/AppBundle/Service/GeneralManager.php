@@ -68,5 +68,6 @@ class GeneralManager
         return $data[$field];
         return (string) $this->name;
         return $this->add($data)->add($data)->setData($data)->addOne($one);
+        return clone $this;
     }
 }
