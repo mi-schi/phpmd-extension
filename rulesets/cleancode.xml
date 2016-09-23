@@ -83,7 +83,7 @@ So you can use the constants independent of your data structure.
         <priority>2</priority>
         <properties>
             <property name="dataStructurePathRegex" value="(((?!.*Repository).*\\Domain\\)|(?!.*Repository).*\\Entity\\)i" description="data structure regex for class path" />
-            <property name="dataStructureCommentRegex" value="((\*\s*@isDataStructure)|(\*\s*@\S*Entity))i" description="annotation that the class is an data structure" />
+            <property name="dataStructureCommentRegex" value="((\*\s*@isDataStructure)|(\*\s*@\S*Entity))i" description="annotation that the class is a data structure" />
         </properties>
         <example>
             <![CDATA[
@@ -122,7 +122,7 @@ If your class is an data structure, use the "@isDataStructure" annotation to for
             <property name="prefixes" value="get,set,is,has,add,remove" description="allowed prefixes in the methods" />
             <property name="whitelist" value="__construct,__destruct,__set,__get,__call,__callStatic,__isset,__unset,__sleep,__wakeup,__toString,__invoke,__set_state,__clone" description="allowed method names" />
             <property name="dataStructurePathRegex" value="(((?!.*Repository).*\\Domain\\)|(?!.*Repository).*\\Entity\\)i" description="data structure regex for class path" />
-            <property name="dataStructureCommentRegex" value="((\*\s*@isDataStructure)|(\*\s*@\S*Entity))i" description="annotation that the class is an data structure" />
+            <property name="dataStructureCommentRegex" value="((\*\s*@isDataStructure)|(\*\s*@\S*Entity))i" description="annotation that the class is a data structure" />
         </properties>
         <example>
             <![CDATA[
@@ -160,7 +160,7 @@ class Entity
     </rule>
 
     <rule name="MemberPrimaryPrefix"
-          message="Don't chain methods excessively. There are {0} concatenations allowed. The code becomes hard to test and violate the law of demeter."
+          message="Don't chain methods excessively. There are {0} concatenations allowed. The code becomes hard to test and violates the law of demeter."
           class="MS\PHPMD\Rule\CleanCode\MemberPrimaryPrefix">
         <description>
             <![CDATA[
@@ -171,7 +171,7 @@ Create a a wrapper method in your related class and delegate the access. You can
         <priority>2</priority>
         <properties>
             <property name="maxChainCount" value="2" description="max count of method chains" />
-            <property name="allowedPrefixes" value="add,set" description="allowed prefixed for the method train" />
+            <property name="allowedPrefixes" value="add,set" description="allowed prefixes for the method train" />
             <property name="delimiter" value="," description="delimiter for explode" />
         </properties>
         <example>
@@ -376,7 +376,7 @@ $things = $class->doOtherThings();
     </rule>
 
     <rule name="TryStatement"
-          message="This method contains more than one try statement. Swap out the try statement in an extra method. It increase the readability."
+          message="This method contains more than one try statement. Swap out the try statement in an extra method. It increases the readability."
           class="MS\PHPMD\Rule\CleanCode\TryStatement">
         <description>
             <![CDATA[

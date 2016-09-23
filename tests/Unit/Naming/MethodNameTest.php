@@ -6,7 +6,7 @@ use MS\PHPMD\Tests\Unit\AbstractPhpmdTest;
 
 class MethodNameTest extends AbstractPhpmdTest
 {
-    const DESCRIPTION = 'Try to avoid meaningless method names like getData. Also getData,getInformation,setData,setInformation,calculateData are meaningless. Find a name which is not so general.';
+    const DESCRIPTION = 'Try to avoid meaningless method names like getData. Also getData,getInformation,setData,setInformation,calculateData are meaningless. Find a name which is more specific.';
 
     public function testMethodNameRule()
     {

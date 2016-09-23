@@ -6,7 +6,7 @@ use MS\PHPMD\Tests\Unit\AbstractPhpmdTest;
 
 class TryStatementTest extends AbstractPhpmdTest
 {
-    const DESCRIPTION = 'This method contains more than one try statement. Swap out the try statement in an extra method. It increase the readability.';
+    const DESCRIPTION = 'This method contains more than one try statement. Swap out the try statement in an extra method. It increases the readability.';
 
     public function testTryStatementRule()
     {
