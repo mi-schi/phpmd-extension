@@ -131,7 +131,7 @@ class FooController
     </rule>
 
     <rule name="MethodName"
-          message="Try to avoid meaningless method names like {0}. Also {1} are meaningless. Find a name which is not so general."
+          message="Try to avoid meaningless method names like {0}. Also {1} are meaningless. Find a name which is more specific."
           class="MS\PHPMD\Rule\Naming\MethodName">
         <description>
             <![CDATA[

@@ -6,7 +6,7 @@ use MS\PHPMD\Tests\Unit\AbstractPhpmdTest;
 
 class MemberPrimaryPrefixTest extends AbstractPhpmdTest
 {
-    const DESCRIPTION = 'Don\'t chain methods excessively. There are 2 concatenations allowed. The code becomes hard to test and violate the law of demeter.';
+    const DESCRIPTION = 'Don\'t chain methods excessively. There are 2 concatenations allowed. The code becomes hard to test and violates the law of demeter.';
 
     public function testMethodChainCount()
     {
