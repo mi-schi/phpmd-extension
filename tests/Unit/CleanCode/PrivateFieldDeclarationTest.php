@@ -13,7 +13,7 @@ class PrivateFieldDeclarationTest extends AbstractPhpmdTest
 
     public function testPrivateFieldDeclarationsWithNoMethods()
     {
-        $this->generateRuleViolations('Service/MiddleWareService.php', 'cleancode.xml');
+        $this->generateRuleViolations('Service/MiddlewareService.php', 'cleancode.xml');
 
         $this->assertTrue($this->hasLineAndDescription(9, self::DESCRIPTION_0));
         $this->assertFalse($this->hasLineAndDescription(13, self::DESCRIPTION_0));
