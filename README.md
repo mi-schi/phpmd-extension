@@ -21,6 +21,7 @@ Contains extra phpmd rules from clean code book and the best practices of my exp
     * [SwitchStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L291-L295) - increase extensibility, see open-close principle
     * [TraitPublicMethod](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L347-L350) - increase maintainability, see encapsulation/information hiding
     * [TryStatement](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L383) - increase readability
+    * [PrivateFieldDeclaration](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/cleancode.xml#L433-L435) - supports high cohesion, see DRY and single-responsibility principle
 * Naming
     * [ClassNameSuffix](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/naming.xml#L15-L18) - increase extensibility, see single-responsibility principle
     * [CommentDescription](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/naming.xml#L47-L50) - reduce unused declarations, increase comprehensibility
@@ -115,8 +116,3 @@ Alternatively you can use [tooly-composer-script](https://github.com/tommy-muehl
 ```
 
 You can also customize the rules with own properties or use only specific rules. Just take a look in the xml files. It works as the basic ruleset logic.
-
-## ToDos
-
-- [ ] Rule for high cohesion (member variables are used by a lot of methods)
-- [ ] Rule that a service should never call a controller

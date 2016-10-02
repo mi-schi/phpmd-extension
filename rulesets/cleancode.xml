@@ -82,8 +82,8 @@ So you can use the constants independent of your data structure.
         </description>
         <priority>2</priority>
         <properties>
-            <property name="dataStructurePathRegex" value="(((?!.*Repository).*\\Domain\\)|(?!.*Repository).*\\Entity\\)i" description="data structure regex for class path" />
-            <property name="dataStructureCommentRegex" value="((\*\s*@isDataStructure)|(\*\s*@\S*Entity))i" description="annotation that the class is a data structure" />
+            <property name="dataStructureNamespaceRegex" value="(Entity|Domain)i" description="data structure regex for namespace" />
+            <property name="dataStructureClassNameRegex" value="((?=(^((?!Entity).)*$))(^((?!Repository).)*$))i" description="data structure regex for class name" />
         </properties>
         <example>
             <![CDATA[
@@ -121,8 +121,8 @@ If your class is an data structure, use the "@isDataStructure" annotation to for
             <property name="delimiter" value="," description="delimiter for explode" />
             <property name="prefixes" value="get,set,is,has,add,remove" description="allowed prefixes in the methods" />
             <property name="whitelist" value="__construct,__destruct,__set,__get,__call,__callStatic,__isset,__unset,__sleep,__wakeup,__toString,__invoke,__set_state,__clone" description="allowed method names" />
-            <property name="dataStructurePathRegex" value="(((?!.*Repository).*\\Domain\\)|(?!.*Repository).*\\Entity\\)i" description="data structure regex for class path" />
-            <property name="dataStructureCommentRegex" value="((\*\s*@isDataStructure)|(\*\s*@\S*Entity))i" description="annotation that the class is a data structure" />
+            <property name="dataStructureNamespaceRegex" value="(Entity|Domain)i" description="data structure regex for namespace" />
+            <property name="dataStructureClassNameRegex" value="((?=(^((?!Entity).)*$))(^((?!Repository).)*$))i" description="data structure regex for class name" />
         </properties>
         <example>
             <![CDATA[
@@ -419,6 +419,60 @@ class TryThings
                 $this->doMore();
             }
         }
+    }
+}
+            ]]>
+        </example>
+    </rule>
+
+    <rule name="PrivateFieldDeclaration"
+          message="The variable is used in {0} percent of the class methods. To have a high cohesion it should be more than {1} percent. Split the class based on the single-responsibility principle."
+          class="MS\PHPMD\Rule\CleanCode\PrivateFieldDeclaration">
+        <description>
+            <![CDATA[
+If you have a lot of private variables in you class which are used in only a few methods the cohesion is very low.
+You can split the class and create atomic classes. See single-responsibility principle.
+It is also possible, that a variable doesn't have to define as class member variable. Switch the variable to the method that uses it.
+            ]]>
+        </description>
+        <priority>2</priority>
+        <properties>
+            <property name="percent" value="50" description="min percent that a private variable should contains in methods" />
+            <property name="dataStructureNamespaceRegex" value="(Entity|Domain)i" description="data structure regex for namespace" />
+            <property name="dataStructureClassNameRegex" value="((?=(^((?!Entity).)*$))(^((?!Repository).)*$))i" description="data structure regex for class name" />
+        </properties>
+        <example>
+            <![CDATA[
+class SingleService
+{
+    private $variable25percent; // bad
+
+    private $variable50percent; // bad
+
+    private $variable75percent; // good
+
+    public function doSomething($variable25percent)
+    {
+        $this->variable25percent = $this->variable50percent;
+
+        if ($this->variable50percent && $this->variable75percent) {
+            $this->variable25percent = 1;
+        }
+    }
+
+    public function doOtherThings()
+    {
+        $this->variable50percent;
+    }
+
+    protected function getData()
+    {
+        $this->variable75percent;
+    }
+
+    private function getType()
+    {
+        return $this->variable75percent;
     }
 }
             ]]>
