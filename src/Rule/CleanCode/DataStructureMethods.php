@@ -2,6 +2,7 @@
 
 namespace MS\PHPMD\Rule\CleanCode;
 
+use MS\PHPMD\Guesser\TestGuesser;
 use PDepend\Source\AST\ASTMethod;
 use PHPMD\AbstractNode;
 use PHPMD\Node\ClassNode;
@@ -12,6 +13,8 @@ use PHPMD\Node\MethodNode;
  */
 class DataStructureMethods extends AbstractDataStructure
 {
+    use TestGuesser;
+
     /**
      * @var array
      */

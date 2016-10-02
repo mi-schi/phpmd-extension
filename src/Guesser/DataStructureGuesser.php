@@ -16,15 +16,15 @@ trait DataStructureGuesser
      */
     protected function isDataStructure(ClassNode $node)
     {
-        if (0 < preg_match($this->getRegex('dataStructurePathRegex'), $node->getNamespaceName() . $node->getName())) {
-            return true;
+        if (!preg_match($this->getRegex('dataStructureNamespaceRegex'), $node->getNamespaceName())) {
+            return false;
         }
 
-        if (0 < preg_match($this->getRegex('dataStructureCommentRegex'), $node->getComment())) {
-            return true;
+        if (!preg_match($this->getRegex('dataStructureClassNameRegex'), $node->getName())) {
+            return false;
         }
 
-        return false;
+        return true;
     }
 
     /**
