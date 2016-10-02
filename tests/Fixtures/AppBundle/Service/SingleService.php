@@ -24,13 +24,18 @@ class SingleService
         $this->variable50percent;
     }
 
-    protected function getData()
+    public function getData()
     {
         $this->variable75percent;
     }
 
-    private function getType()
+    public function getType()
     {
         return $this->variable75percent;
+    }
+
+    private function helperMethod()
+    {
+        $this->variable25percent;
     }
 }

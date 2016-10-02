@@ -23,7 +23,7 @@ class PrivateFieldDeclaration extends AbstractDataStructure
         }
 
         $minPercent = $this->getIntProperty('percent');
-        $methods = $node->getMethods();
+        $publicMethods = $this->getPublicMethods($node);
 
         foreach ($node->findChildrenOfType('FieldDeclaration') as $fieldDeclaration) {
             if (false === $fieldDeclaration->isPrivate() || true === $fieldDeclaration->isStatic()) {
@@ -33,12 +33,31 @@ class PrivateFieldDeclaration extends AbstractDataStructure
             $variableDeclarator = $fieldDeclaration->getFirstChildOfType('VariableDeclarator');
 
             $variableName = substr($variableDeclarator->getName(), 1);
-            $methodPercent = $this->calculateVariablePercentOfMethods($methods, $variableName);
+            $methodPercent = $this->calculateVariablePercentOfMethods($publicMethods, $variableName);
 
             if ($minPercent >= $methodPercent) {
                 $this->addViolation($fieldDeclaration, [$methodPercent, $minPercent]);
             }
         }
+    }
+
+    /**
+     * @param ClassNode $node
+     *
+     * @return array
+     */
+    private function getPublicMethods(ClassNode $node)
+    {
+        $methods = $node->getMethods();
+        $publicMethods = [];
+
+        foreach ($methods as $method) {
+            if (true === $method->isPublic()) {
+                $publicMethods[] = $method;
+            }
+        }
+
+        return $publicMethods;
     }
 
     /**
