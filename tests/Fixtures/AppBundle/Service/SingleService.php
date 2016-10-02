@@ -33,9 +33,4 @@ class SingleService
     {
         return $this->variable75percent;
     }
-
-    private function helperMethod()
-    {
-        $this->variable25percent;
-    }
 }
