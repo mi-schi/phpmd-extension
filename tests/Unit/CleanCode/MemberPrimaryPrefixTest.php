@@ -12,13 +12,13 @@ class MemberPrimaryPrefixTest extends AbstractPhpmdTest
     {
         $this->generateRuleViolations('Service/GeneralManager.php', 'cleancode.xml');
 
-        $this->assertTrue($this->hasLineAndDescription(56, self::DESCRIPTION));
+        $this->assertTrue($this->hasLineAndDescription(50, self::DESCRIPTION));
 
-        $this->assertFalse($this->hasLineAndDescription(51, self::DESCRIPTION));
-        $this->assertFalse($this->hasLineAndDescription(52, self::DESCRIPTION));
-        $this->assertFalse($this->hasLineAndDescription(64, self::DESCRIPTION));
-        $this->assertFalse($this->hasLineAndDescription(65, self::DESCRIPTION));
-        $this->assertFalse($this->hasLineAndDescription(67, self::DESCRIPTION));
-        $this->assertFalse($this->hasLineAndDescription(70, self::DESCRIPTION));
+        $this->assertFalse($this->hasLineAndDescription(37, self::DESCRIPTION));
+        $this->assertFalse($this->hasLineAndDescription(38, self::DESCRIPTION));
+        $this->assertFalse($this->hasLineAndDescription(39, self::DESCRIPTION));
+        $this->assertFalse($this->hasLineAndDescription(40, self::DESCRIPTION));
+        $this->assertFalse($this->hasLineAndDescription(41, self::DESCRIPTION));
+        $this->assertFalse($this->hasLineAndDescription(42, self::DESCRIPTION));
     }
 }

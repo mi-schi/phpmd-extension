@@ -237,7 +237,7 @@ class Service
     </rule>
 
     <rule name="ReturnStatement"
-          message="A return statement line should only contains {0}. It increase the reading rate."
+          message="Don't write your logical code containing {0} in the return statement line. It increase the reading rate."
           class="MS\PHPMD\Rule\CleanCode\ReturnStatement">
         <description>
             <![CDATA[
@@ -248,7 +248,7 @@ It increase the reading rate. Then you can extend the code easily without touchi
         <priority>3</priority>
         <properties>
             <property name="delimiter" value="," description="delimiter for explode" />
-            <property name="allowedChildren" value="Variable,MemberPrimaryPrefix,Literal,FunctionPostfix,Array,ArrayIndexExpression,CastExpression,AllocationExpression,CloneExpression" description="allowed children" />
+            <property name="forbiddenChildren" value="BooleanAndExpression,BooleanOrExpression,UnaryExpression" description="forbidden children" />
         </properties>
         <example>
             <![CDATA[

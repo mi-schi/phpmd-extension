@@ -19,36 +19,27 @@ class ReturnStatement extends AbstractRule implements MethodAware
      */
     public function apply(AbstractNode $node)
     {
-        $allowedChildren = $this->getStringProperty('allowedChildren');
-        $allowedClasses = $this->getAllowedClasses($allowedChildren);
-        $returnStatements = $node->findChildrenOfType('ReturnStatement');
+        $forbiddenChildTypes = explode(
+            $this->getStringProperty('delimiter'),
+            $this->getStringProperty('forbiddenChildren')
+        );
 
         /** @var AbstractNode|ASTReturnStatement $returnStatement */
-        foreach ($returnStatements as $returnStatement) {
-            foreach ($returnStatement->getChildren() as $child) {
-                $reflectChild = new \ReflectionClass($child);
+        foreach ($node->findChildrenOfType('ReturnStatement') as $returnStatement) {
+            foreach ($forbiddenChildTypes as $forbiddenChildType) {
+                $child = $returnStatement->getFirstChildOfType($forbiddenChildType);
 
-                if (false === in_array($reflectChild->getShortName(), $allowedClasses)) {
-                    $this->addViolation($returnStatement, [$allowedChildren]);
+                if (null === $child) {
+                    continue;
+                }
+
+                $reflectChild = new \ReflectionClass($child->getNode());
+
+                if ('AST' . $forbiddenChildType === $reflectChild->getShortName()) {
+                    $this->addViolation($returnStatement, [$forbiddenChildType]);
                 }
             }
         }
-    }
-
-    /**
-     * @param string $allowedChildren
-     *
-     * @return array
-     */
-    private function getAllowedClasses($allowedChildren)
-    {
-        $allowedClasses = explode($this->getStringProperty('delimiter'), $allowedChildren);
-
-        foreach ($allowedClasses as &$allowedClass) {
-            $allowedClass = 'AST'.$allowedClass;
-        }
-
-        return $allowedClasses;
     }
 }
 

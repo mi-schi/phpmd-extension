@@ -30,44 +30,23 @@ class GeneralManager
     }
 
     /**
-     * bad
      *
-     * @return mixed
      */
-    public function doOtherThings()
+    public function chainingGood()
     {
-        return $this->doSomething() && !$this->doAnything();
-        return 1 > count($this->returnOkThings());
-        return $object instanceOf OneClass;
+        $this->variable->getOne();
+        $this->doOtherThings()->getThings();
+        $this->doOtherThings->getOne($this->returnNiceThings());
+        $this->getType()->doSomething(self::class);
+        $this->getType()->doSomething('1', [self::class]);
+        $this->add($data)->add($data)->setData($data)->addOne($one);
     }
 
     /**
-     * good
      *
-     * @return mixed
      */
-    public function returnNiceThings()
+    public function chainingBad()
     {
-        return $this->doOtherThings()->getThings();
-        return $this->doOtherThings->getOne($this->returnNiceThings());
-        return true;
-        return is_array($a);
-        return [];
-        return $this->getThings()->doThings()->doSomething();
-        return;
-        return self::CONSTANT;
-        return CONSTANT::VALUE;
-        return 10;
-        return 'name';
-        return $this->value;
-        return null;
-        return $this->getType()->doSomething(self::class);
-        return $this->getType()->doSomething('1', [self::class]);
-        return new GoodClass();
-        return $this->variable->getOne();
-        return $data[$field];
-        return (string) $this->name;
-        return $this->add($data)->add($data)->setData($data)->addOne($one);
-        return clone $this;
+        $this->getThings()->doThings()->doSomething();
     }
 }
