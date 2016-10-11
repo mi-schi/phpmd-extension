@@ -35,4 +35,11 @@ class PrivateFieldDeclarationTest extends AbstractPhpmdTest
 
         $this->assertFalse($this->containsDescription('To have a high cohesion it should be more than 50 percent. Split the class based on the single-responsibility principle.'));
     }
+
+    public function testStaticProperty()
+    {
+        $this->generateRuleViolations('Service/StaticAccess.php', 'cleancode.xml');
+
+        $this->assertTrue($this->hasLineAndDescription(12, self::DESCRIPTION_0));
+    }
 }

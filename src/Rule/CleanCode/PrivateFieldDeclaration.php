@@ -77,6 +77,10 @@ class PrivateFieldDeclaration extends AbstractDataStructure
             foreach ($propertyPostfixes as $propertyPostfix) {
                 $identifier = $propertyPostfix->getFirstChildOfType('Identifier');
 
+                if (null === $identifier) {
+                    continue;
+                }
+
                 if ($variableName === $identifier->getName()) {
                     $methodsWithVariable[] = $method;
 
