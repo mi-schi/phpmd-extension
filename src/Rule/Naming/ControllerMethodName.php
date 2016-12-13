@@ -2,48 +2,48 @@
 
 namespace MS\PHPMD\Rule\Naming;
 
-use PDepend\Source\AST\ASTClass;
 use PHPMD\AbstractNode;
 use PHPMD\AbstractRule;
 use PHPMD\Node\ClassNode;
 use PHPMD\Node\MethodNode;
-use PHPMD\Rule\ClassAware;
+use PHPMD\Rule\MethodAware;
 
 /**
  * When the class is concrete and ends with Controller, the method names have to end with Action.
  */
-class ControllerMethodName extends AbstractRule implements ClassAware
+class ControllerMethodName extends AbstractRule implements MethodAware
 {
     /**
-     * @param AbstractNode|ClassNode $node
+     * @param AbstractNode|MethodNode $node
      */
     public function apply(AbstractNode $node)
     {
-        if (false === $this->isController($node)) {
+        if (false === $this->isController($node->getParentType())) {
             return;
         }
 
         $allowedMethodNames = explode($this->getStringProperty('delimiter'), $this->getStringProperty('allowedMethodNames'));
 
-        /** @var MethodNode $method */
-        foreach ($node->getMethods() as $method) {
-            if (true === in_array($method->getImage(), $allowedMethodNames)) {
-              continue;
-            }
+        if (true === in_array($node->getImage(), $allowedMethodNames)) {
+            return;
+        }
 
-            if ('Action' !== substr($method->getImage(), -6, 6)) {
-                $this->addViolation($method);
-            }
+        if ('Action' !== substr($node->getImage(), -6, 6)) {
+            $this->addViolation($node);
         }
     }
 
     /**
-     * @param ClassNode|ASTClass $node
+     * @param AbstractNode $node
      *
      * @return bool
      */
-    private function isController(ClassNode $node)
+    private function isController(AbstractNode $node)
     {
+        if (false === $node instanceof ClassNode) {
+            return false;
+        }
+
         if (true === $node->isAbstract()) {
             return false;
         }
