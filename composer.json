@@ -23,7 +23,7 @@
   },
   "license": "MIT",
   "require": {
-    "phpmd/phpmd": ">=2.3.0"
+    "phpmd/phpmd": "^2.3"
   },
   "require-dev": {
     "phpunit/phpunit": "^4.7",
