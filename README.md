@@ -40,6 +40,10 @@ Download the `phpmd-extension.phar`:
     
 Alternatively you can use [tooly-composer-script](https://github.com/tommy-muehle/tooly-composer-script) for installation.
 
+It is also possible to use composer (not recommended, see [#5](https://github.com/mi-schi/phpmd-extension/issues/5)):
+
+    composer require mi-schi/phpmd-extension --dev
+
 ## Usage
 
 1. Create a `phpmd.xml` file and import the basic rules from phpmd. The example below contains some useful changes. Afterwards you can extend the configuration with rules from this repository.
