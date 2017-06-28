@@ -120,3 +120,23 @@ It is also possible to use composer (not recommended, see [#5](https://github.co
 ```
 
 You can also customize the rules with own properties or use only specific rules. Just take a look in the xml files. It works as the basic ruleset logic.
+
+### Exclude or customize extra rule
+
+If you don't want the Law-of-Demeter rule MemberPrimaryPrefix exclude it. 
+```xml
+    <rule ref="../../../../../../rulesets/cleancode.xml">
+        <exclude name="MemberPrimaryPrefix" />
+    </rule>
+```
+
+If you want to customize it, use the following code:
+```xml
+    <rule ref="../../../../../../rulesets/cleancode.xml/MemberPrimaryPrefix">
+    	<properties>
+			<property name="maxChainCount" value="3" description="max count of method chains" />
+            <property name="allowedPrefixes" value="add,set" description="allowed prefixes for the method train" />
+            <property name="delimiter" value="," description="delimiter for explode" />
+        </properties>
+    </rule>
+```
