@@ -131,8 +131,11 @@ class DataStructureMethods extends AbstractDataStructure
         $methods = $node->findChildrenOfType('MethodPostfix');
 
         foreach ($methods as $method) {
-            if ('set' === substr($method->getImage(), 0, 3) && '$this' === $method->getFirstChildOfType('Variable')->getImage()) {
-                $count++;
+            if ('set' === substr($method->getImage(), 0, 3)) {
+                $child = $method->getFirstChildOfType('Variable');
+                if($child && '$this' === $child->getImage()) {
+                    $count++;
+                }
             }
         }
 
