@@ -133,7 +133,7 @@ If you want to customize it, use the following code:
 ```xml
     <rule ref="../../../../../../rulesets/cleancode.xml/MemberPrimaryPrefix">
     	<properties>
-			<property name="maxChainCount" value="3" description="max count of method chains" />
+	    <property name="maxChainCount" value="3" description="max count of method chains" />
             <property name="allowedPrefixes" value="add,set" description="allowed prefixes for the method train" />
             <property name="delimiter" value="," description="delimiter for explode" />
         </properties>
