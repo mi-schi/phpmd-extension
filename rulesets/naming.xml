@@ -99,37 +99,6 @@ class SuperfluousComment
         </example>
     </rule>
 
-    <rule name="ControllerMethodName"
-          message="The method name should end with Action in this controller."
-          class="MS\PHPMD\Rule\Naming\ControllerMethodName">
-        <description>
-            <![CDATA[
-When the class is a concrete implementation and ends with Controller, the method names have to end with Action.
-If not, it is an indication for business logic in your controller.
-So you have to outsource your business logic to services or event listeners.
-            ]]>
-        </description>
-        <priority>3</priority>
-        <properties>
-            <property name="delimiter" value="," description="delimiter for explode" />
-            <property name="allowedMethodNames" value="__construct" description="whitelist for method names. These are allowed reside in the controller though they are no actions." />
-        </properties>
-        <example>
-            <![CDATA[
-class FooController
-{
-    public function barAction() // good
-    {
-    }
-
-    public function doSomething() // bad
-    {
-    }
-}
-            ]]>
-        </example>
-    </rule>
-
     <rule name="MethodName"
           message="Try to avoid meaningless method names like {0}. Also {1} are meaningless. Find a name which is more specific."
           class="MS\PHPMD\Rule\Naming\MethodName">

@@ -25,7 +25,6 @@ Contains extra phpmd rules from clean code book and the best practices of my exp
 * Naming
     * [ClassNameSuffix](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/naming.xml#L15-L18) - increase extensibility, see single-responsibility principle
     * [CommentDescription](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/naming.xml#L47-L50) - reduce unused declarations, increase comprehensibility
-    * [ControllerMethodName](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/naming.xml#L107-L109) - increase reusability, see single-responsibility principle
     * [MethodName](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/naming.xml#L138-L140) - increase readability, increase comprehensibility
 * Test
     * [NumberOfMocks](https://github.com/mi-schi/phpmd-extension/blob/master/rulesets/test.xml#L14-L17) - increase testability, supports low coupling, see single-responsibility principle
